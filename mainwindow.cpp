@@ -22,6 +22,8 @@ MainWindow::MainWindow(QWidget *parent)
     scrollArea->setWidget(labelImageBook);
     scrollArea->setVisible(true);
 
+    connect(scrollArea, &ScrollAreaMy::doubleClick, this, &MainWindow::slotDoubleClickScrollArea);
+
 //    skeleton.generateContent("../BibleApp/Photos/Old_Testament");
 //    skeleton.generateContent("../BibleApp/Photos/New_Testament");
 
@@ -74,6 +76,23 @@ void MainWindow::on_pushButtonNext_clicked()
     ui->comboBoxChapter->setCurrentIndex(bible.getCurrentChapter() - 1);
 }
 
+void MainWindow::on_pushButtonRotate_clicked()
+{
+    rotateImage();
+}
+
+void MainWindow::slotDoubleClickScrollArea()
+{
+    static bool zoomIn = false;
+    if(zoomIn){
+        scaleImage(1.5);
+    }
+    else{
+        scaleImage(0.5);
+    }
+    zoomIn = !zoomIn;
+}
+
 void MainWindow::scaleImage(double factor)
 {
     if(!labelImageBook->pixmap()){
@@ -87,7 +106,15 @@ void MainWindow::scaleImage(double factor)
     adjustScrollBar(scrollArea->verticalScrollBar(), factor);
 
 //    zoomInAct->setEnabled(scaleFactor < 3.0);
-//    zoomOutAct->setEnabled(scaleFactor > 0.333);
+    //    zoomOutAct->setEnabled(scaleFactor > 0.333);
+}
+
+void MainWindow::rotateImage()
+{
+    if(!labelImageBook->pixmap()){
+        return;
+    }
+    labelImageBook->setPixmap(labelImageBook->pixmap()->transformed(QTransform().rotate(90)));
 }
 
 void MainWindow::adjustScrollBar(QScrollBar *scrollBar, double factor)
@@ -153,4 +180,5 @@ void MainWindow::showEvent(QShowEvent *)
 {
     scrollArea->resize(ui->frame->size());
 }
+
 

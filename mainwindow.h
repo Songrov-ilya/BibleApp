@@ -36,9 +36,13 @@ private slots:
     void on_comboBoxChapter_activated(int index);
     void on_pushButtonPrevious_clicked();
     void on_pushButtonNext_clicked();
+    void on_pushButtonRotate_clicked();
+    void slotDoubleClickScrollArea();
+
 
 private:
     void scaleImage(double factor);
+    void rotateImage();
     void adjustScrollBar(QScrollBar *scrollBar, double factor);
     void switchScreen();
 

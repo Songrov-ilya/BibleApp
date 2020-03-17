@@ -28,7 +28,6 @@ MainWindow::MainWindow(QWidget *parent)
 //    skeleton.generateContent("../BibleApp/Photos/New_Testament");
 
     ui->comboBoxBooks->insertItems(0, bible.getListAllBooks());
-//    ui->comboBoxBooks->setCurrentText("Exodus");
     on_comboBoxBooks_activated("Genesis");
     scaleImage(0.18);
 }

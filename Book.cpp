@@ -1,6 +1,6 @@
 #include "Book.h"
 
-Book::Book(const Book &other)
+Book::Book(const Book &other) : QObject(nullptr)
 {
     *this = other;
 }
@@ -34,7 +34,7 @@ Book::Book(QJsonObject obj) : Book(nullptr)
 void Book::operator=(const Book &other)
 {
     this->vecPhotos     = other.vecPhotos;
-    this->maxChapters    = other.maxChapters;
+    this->maxChapters   = other.maxChapters;
     this->name_en       = other.name_en;
     this->name_ru       = other.name_ru;
     this->other_info_en = other.other_info_en;
@@ -77,6 +77,9 @@ QStringList Book::getListNumberOfChapters() const
 
 Photo Book::getPhoto(const int chapter) const
 {
+    int randPhoto = qrand() % vecPhotos.size();
+    return vecPhotos.at(randPhoto);
+    /* finish at the end */ // delete two lines above
     for (const Photo &photo: vecPhotos) {
         if(photo.containsChapter(chapter)){
             return photo;

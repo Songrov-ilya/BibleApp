@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QJsonObject>
+#include <QDebug>
 
 #include "Photo.h"
 

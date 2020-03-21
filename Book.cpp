@@ -77,14 +77,16 @@ QStringList Book::getListNumberOfChapters() const
 
 Photo Book::getPhoto(const int chapter) const
 {
-    int randPhoto = qrand() % vecPhotos.size();
-    return vecPhotos.at(randPhoto);
-    /* finish at the end */ // delete two lines above
     for (const Photo &photo: vecPhotos) {
         if(photo.containsChapter(chapter)){
             return photo;
         }
     }
+
+    if(chapter <= vecPhotos.size()){
+        return vecPhotos.at(chapter - 1);
+    }    /* finish at the end */ // удалить это условие
+
     return Photo();
 }
 

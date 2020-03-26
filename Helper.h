@@ -11,8 +11,9 @@
 #include <QDebug>
 
 namespace File {
-    const QString NewTestament_Content = "../BibleApp/Other/NewTestament_Content.json";
-    const QString OldTestament_Content = "../BibleApp/Other/OldTestament_Content.json";
+    const QString newTestament_Content = "../BibleApp/Other/NewTestament_Content.json";
+    const QString oldTestament_Content = "../BibleApp/Other/OldTestament_Content.json";
+    const QString bibleTextJson = "../BibleApp/TextBible/Bible_XML_and_JSON/bible-master/json/ru_synodal.json";
 }
 class Helper : public QObject
 {
@@ -22,7 +23,7 @@ public:
 
     static void readFileJson(const QString path, QJsonDocument &doc);
     static QJsonDocument readFileJson(const QString path);
-    static void writeFileJson(const QString path, QJsonDocument &doc);
+    static void writeFileJson(const QString path, const QJsonDocument &doc);
 };
 
 #endif // HELPER_H

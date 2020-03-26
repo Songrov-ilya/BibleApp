@@ -24,7 +24,7 @@ QJsonDocument Helper::readFileJson(const QString path)
     return doc;
 }
 
-void Helper::writeFileJson(const QString path, QJsonDocument &doc)
+void Helper::writeFileJson(const QString path, const QJsonDocument &doc)
 {
     QFile file;
     file.setFileName(path);

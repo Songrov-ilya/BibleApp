@@ -2,6 +2,7 @@
 #define SKELETON_H
 
 #include <QObject>
+#include <QTextCodec>
 
 #include "Helper.h"
 #include "Book.h"
@@ -14,14 +15,16 @@ public:
     explicit Skeleton(QObject *parent = nullptr);
 
     Book getBook(const QString name);
-    Book getNextBook(const QString nameCurrenBook) const;
-    Book getPreviousBook(const QString nameCurrenBook) const;
+    Book getNextBook(const QString nameCurrentBook) const;
+    Book getPreviousBook(const QString nameCurrentBook) const;
     QStringList getListBooks() const;
 
     void loadTableOfContents();
     void generateContent(QString pathDir);
     QStringList getListDirectoryContents(const QString dir);
     void fillChapters(QJsonObject &objChapters, QString pathDir);
+
+    void readBibleTextJson();
 
 };
 

@@ -4,11 +4,13 @@
 #include <QObject>
 
 #include "Skeleton.h"
+#include "Extensions/Search.h"
 
 class Bible : public QObject
 {
     Q_OBJECT
     Skeleton *skeleton;
+    Search *search;
     Book currentBook;
     Photo currentPhoto;
     int currentChapter;

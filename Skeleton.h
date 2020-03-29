@@ -4,8 +4,7 @@
 #include <QObject>
 #include <QTextCodec>
 
-#include "Helper.h"
-#include "Book.h"
+#include "Extensions/Content.h"
 
 class Skeleton : public QObject
 {
@@ -18,13 +17,6 @@ public:
     Book getNextBook(const QString nameCurrentBook) const;
     Book getPreviousBook(const QString nameCurrentBook) const;
     QStringList getListBooks() const;
-
-    void loadTableOfContents();
-    void generateContent(QString pathDir);
-    QStringList getListDirectoryContents(const QString dir);
-    void fillChapters(QJsonObject &objChapters, QString pathDir);
-
-    void readBibleTextJson();
 
 };
 

@@ -15,6 +15,7 @@ namespace File {
     const QString oldTestament_Content = "../BibleApp/Other/OldTestament_Content.json";
     const QString bibleTextJson = "../BibleApp/TextBible/Bible_XML_and_JSON/bible-master/json/ru_synodal.json";
 }
+
 class Helper : public QObject
 {
     Q_OBJECT

@@ -3,13 +3,16 @@
 Bible::Bible(QObject *parent) : QObject(parent)
 {
     skeleton = new Skeleton;
-    skeleton->loadTableOfContents();
     currentChapter = 0;
+    search = new Search;
+    ListOfResult list = search->find("блажен", Search::Chapter);
+    list.printResult();
 }
 
 Bible::~Bible()
 {
     delete skeleton;
+    delete search;
 }
 
 void Bible::setCurrentBook(const QString &name)

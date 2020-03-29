@@ -19,6 +19,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     Bible.cpp \
     Book.cpp \
+    Extensions/Content.cpp \
+    Extensions/Search.cpp \
     Helper.cpp \
     Photo.cpp \
     ScrollAreaMy.cpp \
@@ -29,6 +31,8 @@ SOURCES += \
 HEADERS += \
     Bible.h \
     Book.h \
+    Extensions/Content.h \
+    Extensions/Search.h \
     Helper.h \
     Photo.h \
     ScrollAreaMy.h \

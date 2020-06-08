@@ -25,7 +25,7 @@ SOURCES += \
     Extensions/Search.cpp \
     Helper.cpp \
     Photo.cpp \
-    ScrollAreaMy.cpp \
+    Provider/ProviderQml.cpp \
     Skeleton.cpp \
     main.cpp \
     mainwindow.cpp
@@ -37,14 +37,16 @@ HEADERS += \
     Extensions/Search.h \
     Helper.h \
     Photo.h \
-    ScrollAreaMy.h \
+    Provider/ProviderQml.h \
     Skeleton.h \
     mainwindow.h
 
-FORMS += \
-    mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    QmlFiles/QmlTitleSlide.qml \
+    QmlFiles/mainQml.qml

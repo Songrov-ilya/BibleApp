@@ -29,7 +29,7 @@ void Helper::writeFileJson(const QString path, const QJsonDocument &doc)
     QFile file;
     file.setFileName(path);
     if (!file.open(QFile::WriteOnly | QFile::Truncate)){
-        qDebug() << "Error read file" << path << endl;
+        qDebug() << "Error read file" << path << Qt::endl;
         return;
     }
     file.write(doc.toJson());

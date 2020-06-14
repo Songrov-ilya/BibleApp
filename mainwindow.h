@@ -11,13 +11,13 @@
 
 #include "Provider/ProviderQml.h"
 #include "Bible.h"
+#include "Extensions/Data.h"
 
 class MainWindow : public QQuickView
 {
     Q_OBJECT
 
     ProviderQml providerQml;
-    Bible bible;
 public:
     MainWindow(QWindow *parent = nullptr);
     ~MainWindow();

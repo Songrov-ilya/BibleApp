@@ -4,6 +4,8 @@ QT       += quick
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
+TARGET = Bible
+
 CONFIG += c++11
 QMAKE_LFLAGS += -Wall -fPIC -no-pie
 
@@ -22,6 +24,7 @@ SOURCES += \
     Bible.cpp \
     Book.cpp \
     Extensions/Content.cpp \
+    Extensions/Data.cpp \
     Extensions/Search.cpp \
     Helper.cpp \
     Photo.cpp \
@@ -34,6 +37,7 @@ HEADERS += \
     Bible.h \
     Book.h \
     Extensions/Content.h \
+    Extensions/Data.h \
     Extensions/Search.h \
     Helper.h \
     Photo.h \
@@ -48,5 +52,15 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
+    QmlFiles/Components/QmlComponentButtonImage.qml \
+    QmlFiles/Components/QmlComponentButtonSingle.qml \
+    QmlFiles/Components/QmlComponentGridView.qml \
+    QmlFiles/QmlRoot.qml \
+    QmlFiles/QmlSlideGridChapters.qml \
+    QmlFiles/QmlSlideGridNumbersVerses.qml \
+    QmlFiles/QmlSlideListVerses.qml \
     QmlFiles/QmlTitleSlide.qml \
     QmlFiles/mainQml.qml
+
+#RESOURCES += \
+#    ResourceFiles.qrc

@@ -210,6 +210,6 @@ void ListOfResult::printResult(bool showTextQuery)
         if (showTextQuery) {
             qDebug() << textQuery;
         }
-        qDebug() << result.textRangeVerses << endl;
+        qDebug() << result.textRangeVerses << Qt::endl;
     }
 }

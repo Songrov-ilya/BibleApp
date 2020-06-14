@@ -5,22 +5,13 @@ Item {
     width: providerQml.isDebug ? 360 : Screen.width
     height: providerQml.isDebug ? 640 : Screen.height
 
-    Rectangle{
-        anchors.fill: parent
-        color: "red"
-        opacity: 0.5
-    }
 
-    QmlTitleSlide{
-        anchors.fill: parent
+    QmlRoot{
+        width: parent.width
+        height: parent.height
+        anchors.centerIn: parent.Center
     }
 
 
 
-    MouseArea{
-        anchors.fill: parent
-        propagateComposedEvents: true
-        onPressed: mouse.accepted = false
-        onDoubleClicked: Qt.quit()
-    }
 }

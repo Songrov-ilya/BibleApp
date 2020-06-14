@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/QmlFiles">
+        <file>QmlFiles/mainQml.qml</file>
+        <file>QmlFiles/QmlRoot.qml</file>
+        <file>QmlFiles/QmlTitleSlide.qml</file>
+        <file>QmlFiles/Components/QmlComponentButtonImage.qml</file>
+        <file>QmlFiles/Components/QmlComponentButtonSingle.qml</file>
+    </qresource>
+</RCC>

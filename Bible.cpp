@@ -5,8 +5,8 @@ Bible::Bible(QObject *parent) : QObject(parent)
     skeleton = new Skeleton;
     currentChapter = 0;
     search = new Search;
-    ListOfResult list = search->find("блажен", Search::Chapter);
-    list.printResult();
+//    ListOfResult list = search->find("блажен", Search::Chapter);
+//    list.printResult();
 }
 
 Bible::~Bible()

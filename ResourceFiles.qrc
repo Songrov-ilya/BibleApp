@@ -1,9 +1,14 @@
 <RCC>
     <qresource prefix="/QmlFiles">
-        <file>QmlFiles/mainQml.qml</file>
-        <file>QmlFiles/QmlRoot.qml</file>
-        <file>QmlFiles/QmlTitleSlide.qml</file>
+        <file>QmlFiles/rootQml.qml</file>
+        <file>QmlFiles/QmlMain.qml</file>
+        <file>QmlFiles/QmlSlideTitle.qml</file>
         <file>QmlFiles/Components/QmlComponentButtonImage.qml</file>
         <file>QmlFiles/Components/QmlComponentButtonSingle.qml</file>
+        <file>QmlFiles/Components/QmlComponentGridView.qml</file>
+        <file>QmlFiles/QmlSlideGridChapters.qml</file>
+        <file>QmlFiles/QmlSlideGridNumbersVerses.qml</file>
+        <file>QmlFiles/QmlSlideListVerses.qml</file>
+        <file>QmlFiles/Elements/QmlButtonHome.qml</file>
     </qresource>
 </RCC>

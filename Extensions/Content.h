@@ -7,7 +7,7 @@
 #include <QJsonObject>
 
 #include "../Helper.h"
-#include "Book.h"
+#include "../Achitecture/Book.h"
 
 class Content : public QObject
 {

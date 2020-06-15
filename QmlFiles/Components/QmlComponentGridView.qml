@@ -2,11 +2,13 @@ import QtQuick 2.12
 import QtQml 2.12
 import QtGraphicalEffects 1.0
 
+import ModelViewQml 1.0
+
 Item{
     signal clickedMarker(string marker);
     signal movementStartedView();
     signal movementEndedView();
-//    property var listModelObj          : ListModel;
+    property var listModelObj          : ModelView;
     property color colorCell           : "white";
     property color colorCircleIconCell : "white";
     property int maxQuantityCells      : 8;

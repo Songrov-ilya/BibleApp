@@ -6,12 +6,10 @@ Item {
     height: providerQml.isDebug ? 640 : Screen.height
 
 
-    QmlRoot{
+    QmlMain{
         width: parent.width
         height: parent.height
         anchors.centerIn: parent.Center
     }
-
-
 
 }

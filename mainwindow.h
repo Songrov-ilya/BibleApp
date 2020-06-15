@@ -9,20 +9,18 @@
 #include <QImageReader>
 #include <QScreen>
 
-#include "Provider/ProviderQml.h"
-#include "Bible.h"
-#include "Extensions/Data.h"
+#include "Manager.h"
 
 class MainWindow : public QQuickView
 {
     Q_OBJECT
 
-    ProviderQml providerQml;
+    Manager *manager;
 public:
     MainWindow(QWindow *parent = nullptr);
     ~MainWindow();
 
 private:
-    void setQmlSettings();
+    void setGeneralSettings();
 };
 #endif // MAINWINDOW_H

@@ -21,28 +21,34 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    Bible.cpp \
-    Book.cpp \
+    Achitecture/Bible.cpp \
+    Achitecture/Book.cpp \
+    Achitecture/Photo.cpp \
+    Achitecture/Skeleton.cpp \
     Extensions/Content.cpp \
     Extensions/Data.cpp \
     Extensions/Search.cpp \
     Helper.cpp \
-    Photo.cpp \
+    Manager.cpp \
     Provider/ProviderQml.cpp \
-    Skeleton.cpp \
+    View/BibleList.cpp \
+    View/ModelView.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
-    Bible.h \
-    Book.h \
+    Achitecture/Bible.h \
+    Achitecture/Book.h \
+    Achitecture/Photo.h \
+    Achitecture/Skeleton.h \
     Extensions/Content.h \
     Extensions/Data.h \
     Extensions/Search.h \
     Helper.h \
-    Photo.h \
+    Manager.h \
     Provider/ProviderQml.h \
-    Skeleton.h \
+    View/BibleList.h \
+    View/ModelView.h \
     mainwindow.h
 
 
@@ -55,12 +61,13 @@ DISTFILES += \
     QmlFiles/Components/QmlComponentButtonImage.qml \
     QmlFiles/Components/QmlComponentButtonSingle.qml \
     QmlFiles/Components/QmlComponentGridView.qml \
-    QmlFiles/QmlRoot.qml \
+    QmlFiles/Elements/QmlButtonHome.qml \
+    QmlFiles/QmlMain.qml \
     QmlFiles/QmlSlideGridChapters.qml \
     QmlFiles/QmlSlideGridNumbersVerses.qml \
     QmlFiles/QmlSlideListVerses.qml \
-    QmlFiles/QmlTitleSlide.qml \
-    QmlFiles/mainQml.qml
+    QmlFiles/QmlSlideTitle.qml \
+    QmlFiles/rootQml.qml
 
-#RESOURCES += \
-#    ResourceFiles.qrc
+RESOURCES += \
+    ResourceFiles.qrc

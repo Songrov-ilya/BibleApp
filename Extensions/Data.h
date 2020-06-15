@@ -3,7 +3,7 @@
 
 #include <QObject>
 
-namespace BibleSlide
+namespace BibleEnums
 {
    Q_NAMESPACE         // required for meta object creation
    enum Slide {
@@ -14,6 +14,12 @@ namespace BibleSlide
        Error,
    };
    Q_ENUM_NS(Slide)  // register the enum in meta object data
+
+   enum Testament{
+       New_Testament,
+       Old_Testament,
+   };
+   Q_ENUM_NS(Testament)  // register the enum in meta object data
 }
 
 

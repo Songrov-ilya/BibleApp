@@ -105,7 +105,7 @@ Item {
 
                 onReleasedButton: {
                     isNewTestament = (textButton === repeaterButtonsTestamentId.itemAt(1).textButton);
-                    currentSlide = BibleSlide.GridChapters;
+                    currentSlide = BibleEnums.GridChapters;
                     console.log("textButton", textButton, isNewTestament);
                 }
             }

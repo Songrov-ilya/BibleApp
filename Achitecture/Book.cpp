@@ -15,7 +15,7 @@ Book::Book(QObject *parent) : QObject(parent),
 
 }
 
-Book::Book(QJsonObject obj) : Book(nullptr)
+Book::Book(const QJsonObject &obj) : Book(nullptr)
 {
     name_en       = obj.value("name_en").toString();
     name_ru       = obj.value("name_ru").toString();
@@ -34,12 +34,18 @@ Book::Book(QJsonObject obj) : Book(nullptr)
 void Book::operator=(const Book &other)
 {
     this->vecPhotos     = other.vecPhotos;
+    this->vecChapters   = other.vecChapters;
     this->maxChapters   = other.maxChapters;
     this->name_en       = other.name_en;
     this->name_ru       = other.name_ru;
     this->other_info_en = other.other_info_en;
     this->other_info_ru = other.other_info_ru;
     this->path_dir      = other.path_dir;
+}
+
+void Book::appentChapter(const Chapter &chapter)
+{
+    vecChapters.append(chapter);
 }
 
 bool Book::isNull() const
@@ -60,19 +66,34 @@ QString Book::getNameEn() const
     return name_en;
 }
 
+QString Book::getNameRu() const
+{
+    return name_ru;
+}
+
 QString Book::getPathDir() const
 {
     return path_dir;
 }
 
 
-QStringList Book::getListNumberOfChapters() const
+QStringList Book::getListQuantityChapters() const
 {
     QStringList list;
     for (int var = 0; var < maxChapters; ++var) {
         list.append(QString::number(var+1));
     }
     return list;
+}
+
+QStringList Book::getListVerses(const int chapter) const
+{
+    Q_ASSERT(chapter >= vecChapters.size());
+    for (const Chapter &ch: vecChapters) {
+        qDebug() << "Text" << ch.getListVerses() << Qt::endl;
+
+    }
+//    return vecChapters.at(chapter).getListVerses();
 }
 
 Photo Book::getPhoto(const int chapter) const
@@ -82,11 +103,6 @@ Photo Book::getPhoto(const int chapter) const
             return photo;
         }
     }
-
-    if(chapter <= vecPhotos.size()){
-        return vecPhotos.at(chapter - 1);
-    }    /* finish at the end */ // удалить это условие
-
     return Photo();
 }
 

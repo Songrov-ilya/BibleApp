@@ -10,8 +10,6 @@ Item {
     property int currentSlide: BibleEnums.Title
 
 
-    MyElements.QmlButtonHome { id: buttonHomeID }
-
     QmlSlideTitle{
         id: slideTitleID
         anchors.fill: parent
@@ -24,8 +22,8 @@ Item {
         anchors.centerIn: parent.Center
     }
 
-    QmlSlideGridNumbersVerses{
-        id: slideGridNumbersVersesID
+    QmlSlideGridBooks{
+        id: slideGridBooksID
         width: parent.width
         height: parent.height
         anchors.centerIn: parent.Center
@@ -38,15 +36,19 @@ Item {
         anchors.centerIn: parent.Center
     }
 
+    MyElements.QmlButtonHome {
+        id: buttonHomeID
+    }
+
     function reancorTestamentsSlides(slideEmiter){
-        var arrSlides = [slideTitleID, slideGridChaptersID, slideGridNumbersVersesID, slideListVersesID];
+        var arrSlides = [slideTitleID, slideGridBooksID, slideGridChaptersID, slideListVersesID];
         for (var i = 1; i < arrSlides.length; i++) {
             arrSlides[i].anchors.left  = undefined;
             arrSlides[i].anchors.right = undefined;
             arrSlides[i].anchors.left  = isNewTestament ? arrSlides[i-1].right : undefined
             arrSlides[i].anchors.right = isNewTestament ? undefined : arrSlides[i-1].left
         }
-//        buttonHomeID.reancorButtonHome(slideEmiter)
+        buttonHomeID.reancorButtonHome(slideEmiter)
     }
 
 
@@ -56,20 +58,22 @@ Item {
             PropertyChanges { target: main; x: 0 }
         },
         State {
-            when: currentSlide === BibleEnums.GridChapters;
+            when: currentSlide === BibleEnums.GridBooks;
             PropertyChanges { target: main; x: isNewTestament ? -width : +width }
-            StateChangeScript { script: reancorTestamentsSlides(slideGridChaptersID); }
-            StateChangeScript { script: buttonHomeID.reancorButtonHome(slideEmiter); }
+            StateChangeScript { script: reancorTestamentsSlides(slideGridBooksID); }
+            StateChangeScript { script: managerQml.fillListBooks(); }
         },
         State {
-            when: currentSlide === BibleEnums.GridNumbersVerses;
+            when: currentSlide === BibleEnums.GridChapters;
             PropertyChanges { target: main; x: isNewTestament ? -width * 2 : +width * 2 }
-            StateChangeScript { script: reancorTestamentsSlides(slideGridNumbersVersesID); }
+            StateChangeScript { script: reancorTestamentsSlides(slideGridChaptersID); }
+            StateChangeScript { script: managerQml.fillListChapters(); }
         },
         State {
             when: currentSlide === BibleEnums.ListVerses;
             PropertyChanges { target: main; x: isNewTestament ? -width * 3 : +width * 3 }
             StateChangeScript { script: reancorTestamentsSlides(slideListVersesID); }
+            StateChangeScript { script: managerQml.fillListVerses(); }
         }
     ]
     transitions: Transition {

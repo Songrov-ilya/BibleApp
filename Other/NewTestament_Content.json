@@ -151,7 +151,7 @@
         "path_dir": "../BibleApp/Photos/New_Testament/07_1-Петра_1-Peter_(Соборные-послания_Catholic-Epistles)",
         "photos": {
             "IMG_20190604_130751_HDR.jpg": "1",
-            "IMG_20190604_130756_HDR.jpg": "2,3,4,
+            "IMG_20190604_130756_HDR.jpg": "2,3,4",
             "IMG_20190604_130802_HDR.jpg": "5"
         }
     },
@@ -250,7 +250,7 @@
         "path_dir": "../BibleApp/Photos/New_Testament/15_2-Коринфянам_2-Corinthians_(Послания-Павла_Pauline-Epistles)",
         "photos": {
             "IMG_20190604_131009_HDR.jpg": "1",
-            "IMG_20190604_131012_HDR.jpg": 2,3,4",
+            "IMG_20190604_131012_HDR.jpg": "2,3,4",
             "IMG_20190604_131017_HDR.jpg": "5,6,7",
             "IMG_20190604_131023_HDR.jpg": "8,9,10",
             "IMG_20190604_131028_HDR.jpg": "11,12",

@@ -19,6 +19,14 @@ void BibleList::appendList(const QStringList &list)
     emit postSetItems();
 }
 
+void BibleList::setList(const QStringList &list)
+{
+    emit preResetModel();
+    this->list.clear();
+    this->list = list;
+    emit postResetModel();
+}
+
 
 void BibleList::clearListBible()
 {

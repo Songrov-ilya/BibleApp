@@ -1,6 +1,7 @@
 QT       += core gui
 QT       += qml
 QT       += quick
+QT       += quickwidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -23,6 +24,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     Achitecture/Bible.cpp \
     Achitecture/Book.cpp \
+    Achitecture/Chapter.cpp \
     Achitecture/Photo.cpp \
     Achitecture/Skeleton.cpp \
     Extensions/Content.cpp \
@@ -39,6 +41,7 @@ SOURCES += \
 HEADERS += \
     Achitecture/Bible.h \
     Achitecture/Book.h \
+    Achitecture/Chapter.h \
     Achitecture/Photo.h \
     Achitecture/Skeleton.h \
     Extensions/Content.h \
@@ -63,8 +66,8 @@ DISTFILES += \
     QmlFiles/Components/QmlComponentGridView.qml \
     QmlFiles/Elements/QmlButtonHome.qml \
     QmlFiles/QmlMain.qml \
+    QmlFiles/QmlSlideGridBooks.qml \
     QmlFiles/QmlSlideGridChapters.qml \
-    QmlFiles/QmlSlideGridNumbersVerses.qml \
     QmlFiles/QmlSlideListVerses.qml \
     QmlFiles/QmlSlideTitle.qml \
     QmlFiles/rootQml.qml

@@ -13,3 +13,8 @@ bool ProviderQml::getDebug() const
 #endif
     return isDebug;
 }
+
+QColor ProviderQml::getColorBackground()
+{
+    return QColor("#292420");
+}

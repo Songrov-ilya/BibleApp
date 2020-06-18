@@ -5,6 +5,7 @@ Bible::Bible(QObject *parent) : QObject(parent)
     skeleton = new Skeleton;
     currentChapter = 0;
     search = new Search;
+    currentTestament = BibleEnums::New_Testament;
 //    ListOfResult list = search->find("блажен", Search::Chapter);
 //    list.printResult();
 }
@@ -15,9 +16,14 @@ Bible::~Bible()
     delete search;
 }
 
+void Bible::setCurrentTestament(const BibleEnums::Testament &testament)
+{
+    currentTestament = testament;
+}
+
 void Bible::setCurrentBook(const QString &name)
 {
-    currentBook = skeleton->getBook(name);
+    currentBook = skeleton->getBook(name, currentTestament);
     currentChapter = 1;
     currentPhoto = currentBook.getPhoto(currentChapter);
 }
@@ -35,12 +41,17 @@ bool Bible::setCurrentChapter(const int chapter)
 
 QStringList Bible::getListAllBooks() const
 {
-    return skeleton->getListBooks();
+    return skeleton->getListBooks(currentTestament);
 }
 
-QStringList Bible::getListNumberOfChapters() const
+QStringList Bible::getListQuantityChapters() const
 {
-    return currentBook.getListNumberOfChapters();
+    return currentBook.getListQuantityChapters();
+}
+
+QStringList Bible::getListVerses() const
+{
+    return currentBook.getListVerses(currentChapter);
 }
 
 QString Bible::getCurrentPathPhoto() const

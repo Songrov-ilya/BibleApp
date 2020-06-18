@@ -15,14 +15,14 @@ Search::~Search()
 void Search::generateAllBooksJson()
 {
     QJsonDocument doc;
-    Helper::readFileJson(File::bibleTextJson, doc);
+    Helper::readFileJson(&doc, File::bibleTextJson);
     QJsonArray arrMain = doc.array();
 
     int count = 0;
     for (const QJsonValue &book: arrMain) {
         QJsonObject objBook = book.toObject();
-        Helper::writeFileJson("../BibleApp/TextBible/Bible_XML_and_JSON/bible-master/Chapters/" + QString::number(++count) + "__" +
-                              objBook.value("name").toString() + "_ru_synodal.json", QJsonDocument(objBook));
+        Helper::writeFileJson(QJsonDocument(objBook), "../BibleApp/TextBible/Bible_XML_and_JSON/bible-master/Chapters/" + QString::number(++count) + "__" +
+                              objBook.value("name").toString() + "_ru_synodal.json");
     }
 }
 
@@ -38,7 +38,10 @@ ListOfResult Search::find(const QString &textQuery, RangeSearch range)
     //                ["Verse 1", "Verse 2", "Verse 3", "..."],
     //                ["Verse 1", "Verse 2", "Verse 3", "..."]
     //            ]
-    //        }
+    //        },
+    //        {
+    //        ...
+    //        },
     //    ]
     ListOfResult list { textQuery };
     if(range == RangeSearch::Verse){
@@ -171,7 +174,7 @@ QString Search::fillTextRangeVerses(const QJsonArray &arrOneChapter, const int v
 void Search::readBibleTextJson()
 {
     QJsonDocument doc;
-    Helper::readFileJson(File::bibleTextJson, doc);
+    Helper::readFileJson(&doc, File::bibleTextJson);
     *arrBooks = doc.array();
 }
 

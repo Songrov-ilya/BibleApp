@@ -18,15 +18,18 @@ class Manager : public QObject
     QQmlContext *rootContext;
     ProviderQml providerQml;
     Bible bible;
+    BibleList listBooks;
     BibleList listChapters;
-    BibleList listNumberVerses;
     BibleList listVerses;
 public:
     explicit Manager(QQmlContext *rootContext, QObject *parent = nullptr);
 
-    Q_INVOKABLE void fillListChapters(const BibleEnums::Testament testament);
-    Q_INVOKABLE void fillListNumberVerses(const BibleEnums::Testament testament);
-    Q_INVOKABLE void fillListVerses(const BibleEnums::Testament testament);
+    Q_INVOKABLE void setCurrentTestament(const BibleEnums::Testament &testament);
+    Q_INVOKABLE void setCurrentBook(const QString &book);
+    Q_INVOKABLE void setCurrentChapter(const int &chapter);
+    Q_INVOKABLE void fillListBooks();
+    Q_INVOKABLE void fillListChapters();
+    Q_INVOKABLE void fillListVerses();
 private:
     void setQmlSettings();
 };

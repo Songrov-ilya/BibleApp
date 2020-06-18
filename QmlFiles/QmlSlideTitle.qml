@@ -13,7 +13,7 @@ Item {
     property int widthColumns: horizontalWidth / 2.3
     property int heightColumns: columnButtonsTestamentId.y * 0.38
     property real spacingColumns: columnOneId.height * 0.03
-    property color colorButtons: "#292420"
+    property color colorButtons: providerQml.colorBackground
 
     Text {
         id: textBibleId
@@ -105,7 +105,8 @@ Item {
 
                 onReleasedButton: {
                     isNewTestament = (textButton === repeaterButtonsTestamentId.itemAt(1).textButton);
-                    currentSlide = BibleEnums.GridChapters;
+                    managerQml.setCurrentTestament(isNewTestament ? BibleEnums.New_Testament : BibleEnums.Old_Testament)
+                    currentSlide = BibleEnums.GridBooks;
                     console.log("textButton", textButton, isNewTestament);
                 }
             }

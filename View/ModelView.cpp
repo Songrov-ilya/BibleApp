@@ -22,9 +22,8 @@ QVariant ModelView::data(const QModelIndex &index, int role) const
     if (!index.isValid() || !mList)
         return QVariant();
 
-
     switch (role) {
-    case Text:
+    case TextModel:
         return QVariant(mList->getText(index.row()));
     }
 
@@ -52,7 +51,7 @@ Qt::ItemFlags ModelView::flags(const QModelIndex &index) const
 QHash<int, QByteArray> ModelView::roleNames() const
 {
     QHash<int, QByteArray> names;
-    names[Text] = "text";
+    names[TextModel] = "textModel";
     return names;
 }
 

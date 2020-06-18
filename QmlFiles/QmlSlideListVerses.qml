@@ -1,17 +1,23 @@
 import QtQuick 2.0
 
+import "Components" as MyComonents
+import ModelViewQml 1.0
 import bible.namespace 1.0
 
 Item {
 
-    Rectangle{
+    MyComonents.QmlComponentGridView{
         anchors.fill: parent
-        color: "yellow"
-        opacity: 0.5
+        listModelObj: ModelView {
+            list: listVersesQml
+        }
+        colorCell      : providerQml.colorBackground;
+        colorTextCell  : "white";
+        onClickedCell  : {
+            console.log("valueCell", valueCell);
+//            managerQml.setCurrentChapter(valueCell)
+//            currentSlide = BibleEnums.ListVerses
+        }
     }
-    MouseArea{
-        anchors.fill: parent
-        anchors.margins: parent.width / 5
-        onClicked: currentSlide = BibleEnums.Title;
-    }
+
 }

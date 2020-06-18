@@ -12,6 +12,7 @@ public:
 
     void appendElement(const QString &text);
     void appendList(const QStringList &list);
+    void setList(const QStringList &list);
     void clearListBible();
     QString getText(const int index);
     int getSize() const;

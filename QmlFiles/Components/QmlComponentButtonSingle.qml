@@ -6,6 +6,7 @@ Item {
     id: componentButtonSingleId
 
     signal          releasedButton();
+    signal          clickedButton();
     property string textButton              : ""
     property bool   enabledButton           : true
     property color  colorBackgroundButton   : "#524E4A"
@@ -61,5 +62,6 @@ Item {
         ]
 
         onReleased: releasedButton();
+        onClicked:  clickedButton();
     }
 }

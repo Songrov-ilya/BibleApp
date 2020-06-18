@@ -30,7 +30,7 @@ void Content::generateContentJson(const QString pathDir)
             objBook.insert("other_info_ru", otherInfoRu);
             objBook.insert("path_dir", pathDir + "/" + nameDir);
             QJsonObject objChapters;
-            fillChapters(objChapters, pathDir + "/" + nameDir);
+            fillChapters(&objChapters, pathDir + "/" + nameDir);
             objBook.insert("photos", objChapters);
 
         }
@@ -38,7 +38,7 @@ void Content::generateContentJson(const QString pathDir)
     }
 
     QJsonDocument doc(objMain);
-    Helper::writeFileJson("../BibleApp/Other/" + QFileInfo(pathDir).fileName().replace("_","") + "_Content.json", doc);
+    Helper::writeFileJson(doc, "../BibleApp/Other/" + QFileInfo(pathDir).fileName().replace("_","") + "_Content.json");
     //    {
     //    "book_08": {
     //        "name_en": "Ruth",
@@ -55,21 +55,44 @@ void Content::generateContentJson(const QString pathDir)
     //    }
 }
 
-void Content::loadContentJson(QVector<Book> &vecBooks)
+void Content::loadContentJson(QVector<Book> *vecBooks, const BibleEnums::Testament &testament)
 {
     QJsonDocument doc;
-    Helper::readFileJson(File::oldTestament_Content, doc);
+    const QString nameFile { testament == BibleEnums::New_Testament ? File::newTestament_Content : File::oldTestament_Content};
+    Helper::readFileJson(&doc, nameFile);
+
     QJsonObject obj = doc.object();
     for (const QString &key : obj.keys()) {
-        vecBooks.push_back(Book(obj.value(key).toObject()));
+        vecBooks->push_back(Book(obj.value(key).toObject()));
+    }
+}
+
+void Content::loadTextVersesJson(QVector<Book> *vecBooks, const BibleEnums::Testament &testament)
+{
+    QJsonDocument doc;
+    Helper::readFileJson(&doc, File::bibleTextJson);
+    QJsonArray arrBooks = doc.array();
+
+    for (const QJsonValue &book: arrBooks) {
+        QJsonObject objBook = book.toObject();
+        QString bookName = objBook.value("name").toString();
+        for (Book &book: *vecBooks) {
+            if(book.getNameEn() == bookName){
+                QJsonArray arrChapters = objBook.value("chapters").toArray();
+                for(const QJsonValue &chapter : arrChapters){
+                    book.appentChapter(Chapter(chapter.toArray()));
+                }
+                break;
+            }
+        }
     }
 }
 
 
-QStringList Content::getListDirectoryContents(const QString dir)
+QStringList Content::getListDirectoryContents(const QString &dir)
 {
     QStringList list;
-    QDir directory(dir);
+    const QDir directory(dir);
 
     for(const QFileInfo &info: directory.entryInfoList(QDir::Files | QDir::Dirs | QDir::NoDotAndDotDot)) {
         //        if(!info.isDir()){
@@ -79,11 +102,11 @@ QStringList Content::getListDirectoryContents(const QString dir)
     return list;
 }
 
-void Content::fillChapters(QJsonObject &objChapters, const QString pathDir)
+void Content::fillChapters(QJsonObject *objChapters, const QString &pathDir)
 {
     QStringList list = getListDirectoryContents(pathDir);
     for (const QString &str: list) {
         //        objChapters.insert(str, 0);
-        objChapters.insert(QFileInfo(str).fileName(), "0");
+        objChapters->insert(QFileInfo(str).fileName(), "0");
     }
 }

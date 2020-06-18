@@ -23,10 +23,10 @@ MainWindow::~MainWindow()
 void MainWindow::setGeneralSettings()
 {
 //    setColor("#00000000");
-    setColor("#292420");
+    setColor(ProviderQml::getColorBackground());
 
 
-//    rootContext()->setContextProperty("providerQml", &providerQml);
+    rootContext()->setContextProperty("managerQml", manager);
 //    setSource(QUrl::fromLocalFile("../BibleApp/QmlFiles/mainQml.qml"));
     setSource(QUrl("qrc:/QmlFiles/QmlFiles/rootQml.qml"));
     connect(this->engine(), &QQmlEngine::quit, this, &QCoreApplication::quit);

@@ -38,6 +38,7 @@ public:
     ~Search();
 
     void generateAllBooksJson();
+    QStringList getListVerses();
     ListOfResult find(const QString &textQuery, RangeSearch range = RangeSearch::Verse);
 
 private:

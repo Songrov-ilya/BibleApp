@@ -2,6 +2,7 @@
 #define MODELVIEW_H
 
 #include <QObject>
+#include <QDebug>
 #include <QAbstractListModel>
 
 #include "View/BibleList.h"
@@ -21,7 +22,7 @@ public:
     void operator=(ModelView const &) = delete;
 
     enum {
-        Text = Qt::UserRole + 1,
+        TextModel = Qt::UserRole + 1,
     };
 
     // Basic functionality:

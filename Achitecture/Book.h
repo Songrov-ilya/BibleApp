@@ -6,12 +6,14 @@
 #include <QDebug>
 
 #include "Photo.h"
+#include "Chapter.h"
 
 class Book : public QObject
 {
     Q_OBJECT
 
     QVector<Photo> vecPhotos;
+    QVector<Chapter> vecChapters;
     int maxChapters;
     QString name_en;
     QString name_ru;
@@ -21,15 +23,19 @@ class Book : public QObject
 public:
     Book(const Book &other);
     explicit Book(QObject *parent = nullptr);
-    explicit Book(QJsonObject obj);
+    explicit Book(const QJsonObject &obj);
 
     void operator=(const Book &other);
+
+    void appentChapter(const Chapter &chapter);
 
     bool isNull() const;
     int getMaxChapters() const;
     QString getNameEn() const;
+    QString getNameRu() const;
     QString getPathDir() const;
-    QStringList getListNumberOfChapters() const;
+    QStringList getListQuantityChapters() const;
+    QStringList getListVerses(const int chapter) const;
     Photo getPhoto(const int chapter) const;
 
 private:

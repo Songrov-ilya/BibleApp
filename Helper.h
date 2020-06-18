@@ -22,9 +22,9 @@ class Helper : public QObject
 public:
     explicit Helper(QObject *parent = nullptr);
 
-    static void readFileJson(const QString path, QJsonDocument &doc);
-    static QJsonDocument readFileJson(const QString path);
-    static void writeFileJson(const QString path, const QJsonDocument &doc);
+    static void readFileJson(QJsonDocument *doc, const QString &path);
+    static QJsonDocument readFileJson(const QString &path);
+    static void writeFileJson(const QJsonDocument &doc, const QString &path);
 };
 
 #endif // HELPER_H

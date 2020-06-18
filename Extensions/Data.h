@@ -8,8 +8,8 @@ namespace BibleEnums
    Q_NAMESPACE         // required for meta object creation
    enum Slide {
        Title = 0,
+       GridBooks,
        GridChapters,
-       GridNumbersVerses,
        ListVerses,
        Error,
    };

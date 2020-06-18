@@ -7,28 +7,43 @@ Manager::Manager(QQmlContext *rootContext, QObject *parent) :
     setQmlSettings();
 }
 
-void Manager::fillListChapters(const BibleEnums::Testament testament)
+void Manager::setCurrentTestament(const BibleEnums::Testament &testament)
 {
-
-    listChapters.appendList(bible.getListAllBooks());
+    bible.setCurrentTestament(testament);
 }
 
-void Manager::fillListNumberVerses(const BibleEnums::Testament testament)
+void Manager::setCurrentBook(const QString &book)
 {
-
+    bible.setCurrentBook(book);
 }
 
-void Manager::fillListVerses(const BibleEnums::Testament testament)
+void Manager::setCurrentChapter(const int &chapter)
 {
+    qDebug() << "chapter" << chapter << Qt::endl;
+    bible.setCurrentChapter(chapter);
+}
 
+void Manager::fillListBooks()
+{
+    listBooks.setList(bible.getListAllBooks());
+}
+
+void Manager::fillListChapters()
+{
+    listChapters.setList(bible.getListQuantityChapters());
+}
+
+void Manager::fillListVerses()
+{
+    listVerses.setList(bible.getListVerses());
 }
 
 void Manager::setQmlSettings()
 {
     qmlRegisterType<ModelView>("ModelViewQml", 1, 0, "ModelView");
+    rootContext->setContextProperty("listBooksQml", &listBooks);
     rootContext->setContextProperty("listChaptersQml", &listChapters);
-    rootContext->setContextProperty("listChaptersQml", &listNumberVerses);
-    rootContext->setContextProperty("listChaptersQml", &listVerses);
+    rootContext->setContextProperty("listVersesQml", &listVerses);
     qmlRegisterUncreatableMetaObject(
                 BibleEnums::staticMetaObject, // static meta object
                 "bible.namespace",                // import statement (can be any string)
@@ -40,4 +55,5 @@ void Manager::setQmlSettings()
     qRegisterMetaType<BibleEnums::Testament>("BibleEnums::Testament"); // not qmlRegister but qRegister
 
     rootContext->setContextProperty("providerQml", &providerQml);
+
 }

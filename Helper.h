@@ -11,9 +11,15 @@
 #include <QDebug>
 
 namespace File {
+#ifdef QT_DEBUG
     const QString newTestament_Content = "../BibleApp/Other/NewTestament_Content.json";
     const QString oldTestament_Content = "../BibleApp/Other/OldTestament_Content.json";
     const QString bibleTextJson = "../BibleApp/TextBible/Bible_XML_and_JSON/bible-master/json/ru_synodal.json";
+#else
+    const QString newTestament_Content = ":/Skeleton/Resource/Skeleton/NewTestament_Content.json";
+    const QString oldTestament_Content = ":/Skeleton/Resource/Skeleton/OldTestament_Content.json";
+    const QString bibleTextJson = ":/Skeleton/Resource/Skeleton/ru_synodal.json";
+#endif
 }
 
 class Helper : public QObject

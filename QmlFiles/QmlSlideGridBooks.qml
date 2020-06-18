@@ -14,6 +14,7 @@ Item {
         colorCell      : providerQml.colorBackground;
         colorTextCell  : "white";
         onClickedCell  : {
+            console.log("valueCell", valueCell);
             managerQml.setCurrentBook(valueCell)
             currentSlide = BibleEnums.GridChapters
         }

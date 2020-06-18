@@ -88,12 +88,9 @@ QStringList Book::getListQuantityChapters() const
 
 QStringList Book::getListVerses(const int chapter) const
 {
-    Q_ASSERT(chapter >= vecChapters.size());
-    for (const Chapter &ch: vecChapters) {
-        qDebug() << "Text" << ch.getListVerses() << Qt::endl;
-
-    }
-//    return vecChapters.at(chapter).getListVerses();
+    qDebug() << "chapter" << chapter << "vecChapters.size()" << vecChapters.size() << Qt::endl;
+    Q_ASSERT(chapter <= vecChapters.size());
+    return vecChapters.at(chapter - 1).getListVerses();
 }
 
 Photo Book::getPhoto(const int chapter) const

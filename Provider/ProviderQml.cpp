@@ -11,7 +11,7 @@ bool ProviderQml::getDebug() const
 #ifdef QT_DEBUG
     isDebug = true;
 #endif
-    return isDebug;
+    return true;
 }
 
 QColor ProviderQml::getColorBackground()

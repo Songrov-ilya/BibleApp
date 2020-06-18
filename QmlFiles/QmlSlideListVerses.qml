@@ -6,7 +6,7 @@ import bible.namespace 1.0
 
 Item {
 
-    MyComonents.QmlComponentGridView{
+    MyComonents.QmlComponentGridViewVerses{
         anchors.fill: parent
         listModelObj: ModelView {
             list: listVersesQml

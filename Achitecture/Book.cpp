@@ -6,41 +6,45 @@ Book::Book(const Book &other) : QObject(nullptr)
 }
 
 Book::Book(QObject *parent) : QObject(parent),
-    maxChapters(0),
+    quantityChapters(0),
     name_ru(""),
-    other_info_en(""),
-    other_info_ru(""),
-    path_dir("")
+    family_books_en(""),
+    family_books_ru(""),
+    path_dir_photos("")
 {
 
 }
 
 Book::Book(const QJsonObject &obj) : Book(nullptr)
 {
-    name_en       = obj.value("name_en").toString();
-    name_ru       = obj.value("name_ru").toString();
-    other_info_en = obj.value("other_info_en").toString();
-    other_info_ru = obj.value("other_info_ru").toString();
-    path_dir      = obj.value("path_dir").toString();
-    QJsonObject objPhotos = obj.value("photos").toObject();
+    name_en                 = obj.value("name_en").toString();
+    name_ru                 = obj.value("name_ru").toString();
+    family_books_en           = obj.value("family_books_en").toString();
+    family_books_ru           = obj.value("family_books_ru").toString();
+    path_dir_photos         = obj.value("path_dir_photos").toString();
+    QJsonObject objPhotos   = obj.value("photos").toObject();
     for (const QString &key : objPhotos.keys()) {
-        Photo photo(path_dir + "/" + key, objPhotos.value(key).toString());
+        Photo photo(path_dir_photos + "/" + key, objPhotos.value(key).toString());
+#ifdef BIBLE_HARD
         vecPhotos.push_back(photo);
+#endif
     }
-    maxChapters = countNumberOfChapters();
+    quantityChapters = countNumberOfChapters();
 }
 
 
 void Book::operator=(const Book &other)
 {
+#ifdef BIBLE_HARD
     this->vecPhotos     = other.vecPhotos;
+#endif
     this->vecChapters   = other.vecChapters;
-    this->maxChapters   = other.maxChapters;
+    this->quantityChapters   = other.quantityChapters;
     this->name_en       = other.name_en;
     this->name_ru       = other.name_ru;
-    this->other_info_en = other.other_info_en;
-    this->other_info_ru = other.other_info_ru;
-    this->path_dir      = other.path_dir;
+    this->family_books_en = other.family_books_en;
+    this->family_books_ru = other.family_books_ru;
+    this->path_dir_photos      = other.path_dir_photos;
 }
 
 void Book::appentChapter(const Chapter &chapter)
@@ -48,9 +52,17 @@ void Book::appentChapter(const Chapter &chapter)
     vecChapters.append(chapter);
 }
 
+void Book::setCurrentChapter(const int chapter)
+{
+    currentChapter = chapter;
+#ifdef BIBLE_HARD
+    currentPhoto   = getPhoto(chapter);
+#endif
+}
+
 bool Book::isNull() const
 {
-    if(maxChapters <= 0){
+    if(quantityChapters <= 0){
         return true;
     }
     return false;
@@ -58,7 +70,7 @@ bool Book::isNull() const
 
 int Book::getMaxChapters() const
 {
-    return maxChapters;
+    return quantityChapters;
 }
 
 QString Book::getNameEn() const
@@ -73,41 +85,46 @@ QString Book::getNameRu() const
 
 QString Book::getPathDir() const
 {
-    return path_dir;
+    return path_dir_photos;
 }
 
 
 QStringList Book::getListQuantityChapters() const
 {
     QStringList list;
-    for (int var = 0; var < maxChapters; ++var) {
+    for (int var = 0; var < quantityChapters; ++var) {
         list.append(QString::number(var+1));
     }
     return list;
 }
 
-QStringList Book::getListVerses(const int chapter) const
+QStringList Book::getListVerses() const
 {
-    qDebug() << "chapter" << chapter << "vecChapters.size()" << vecChapters.size() << Qt::endl;
-    Q_ASSERT(chapter <= vecChapters.size());
-    return vecChapters.at(chapter - 1).getListVerses();
+    qDebug() << "chapter" << currentChapter << "vecChapters.size()" << vecChapters.size() << Qt::endl;
+    Q_ASSERT(currentChapter <= vecChapters.size() || currentChapter < 1);
+    return vecChapters.at(currentChapter - 1).getListVerses();
 }
 
-Photo Book::getPhoto(const int chapter) const
+#ifdef BIBLE_HARD
+int Book::getPhoto(const int chapter) const
 {
-    for (const Photo &photo: vecPhotos) {
-        if(photo.containsChapter(chapter)){
-            return photo;
+    Q_ASSERT(chapter <= vecPhotos.size() || chapter < 1);
+    for (int var = 0; var < vecPhotos.size(); ++var) {
+        if(vecPhotos.at(var).containsChapter(chapter)){
+            return var;
         }
     }
-    return Photo();
+    return 0;
 }
+#endif
 
 int Book::countNumberOfChapters() const
 {
     int count {0};
+#ifdef BIBLE_HARD
     for (const Photo &photo: vecPhotos) {
         count += photo.getNumberOfChapters();
     }
+#endif
     return count;
 }

@@ -2,9 +2,9 @@
     "book_01": {
         "name_en": "Genesis",
         "name_ru": "Бытие",
-        "other_info_en": "Pentateuch",
-        "other_info_ru": "Пятикнижие",
-        "path_dir": "../BibleApp/Photos/Old_Testament/01_Бытие_Genesis_(Пятикнижие_Pentateuch)",
+        "family_books_en": "Pentateuch",
+        "family_books_ru": "Пятикнижие",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/01_Бытие_Genesis_(Пятикнижие_Pentateuch)",
         "photos": {
             "IMG_20190604_105344_HDR.jpg": "1",
             "IMG_20190604_105356_HDR.jpg": "2,3",
@@ -40,9 +40,9 @@
     "book_02": {
         "name_en": "Exodus",
         "name_ru": "Исход",
-        "other_info_en": "Pentateuch",
-        "other_info_ru": "Пятикнижие",
-        "path_dir": "../BibleApp/Photos/Old_Testament/02_Исход_Exodus_(Пятикнижие_Pentateuch)",
+        "family_books_en": "Pentateuch",
+        "family_books_ru": "Пятикнижие",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/02_Исход_Exodus_(Пятикнижие_Pentateuch)",
         "photos": {
             "IMG_20190604_105919_HDR.jpg": "1",
             "IMG_20190604_112428_HDR.jpg": "2,3",
@@ -74,9 +74,9 @@
     "book_03": {
         "name_en": "Leviticus",
         "name_ru": "Левит",
-        "other_info_en": "Pentateuch",
-        "other_info_ru": "Пятикнижие",
-        "path_dir": "../BibleApp/Photos/Old_Testament/03_Левит_Leviticus_(Пятикнижие_Pentateuch)",
+        "family_books_en": "Pentateuch",
+        "family_books_ru": "Пятикнижие",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/03_Левит_Leviticus_(Пятикнижие_Pentateuch)",
         "photos": {
             "IMG_20190604_112811_HDR.jpg": "1",
             "IMG_20190604_112817_HDR.jpg": "2,3,4",
@@ -101,9 +101,9 @@
     "book_04": {
         "name_en": "Numbers",
         "name_ru": "Числа",
-        "other_info_en": "Pentateuch",
-        "other_info_ru": "Пятикнижие",
-        "path_dir": "../BibleApp/Photos/Old_Testament/04_Числа_Numbers_(Пятикнижие_Pentateuch)",
+        "family_books_en": "Pentateuch",
+        "family_books_ru": "Пятикнижие",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/04_Числа_Numbers_(Пятикнижие_Pentateuch)",
         "photos": {
             "IMG_20190604_112953_HDR.jpg": "1,2",
             "IMG_20190604_112958_HDR.jpg": "3",
@@ -136,9 +136,9 @@
     "book_05": {
         "name_en": "Deuteronomy",
         "name_ru": "Второзаконие",
-        "other_info_en": "Pentateuch",
-        "other_info_ru": "Пятикнижие",
-        "path_dir": "../BibleApp/Photos/Old_Testament/05_Второзаконие_Deuteronomy_(Пятикнижие_Pentateuch)",
+        "family_books_en": "Pentateuch",
+        "family_books_ru": "Пятикнижие",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/05_Второзаконие_Deuteronomy_(Пятикнижие_Pentateuch)",
         "photos": {
             "IMG_20190604_113224_HDR.jpg": "1",
             "IMG_20190604_113229_HDR.jpg": "2,3",
@@ -166,9 +166,9 @@
     "book_06": {
         "name_en": "Joshua",
         "name_ru": "Иисус Навин",
-        "other_info_en": "Historical Books",
-        "other_info_ru": "Исторические",
-        "path_dir": "../BibleApp/Photos/Old_Testament/06_Иисус-Навин_Joshua_(Исторические_Historical-Books)",
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/06_Иисус-Навин_Joshua_(Исторические_Historical-Books)",
         "photos": {
             "IMG_20190604_113608_HDR.jpg": "1,2",
             "IMG_20190604_113616_HDR.jpg": "3,4,5",
@@ -189,9 +189,9 @@
     "book_07": {
         "name_en": "Judges",
         "name_ru": "Судьи",
-        "other_info_en": "Historical Books",
-        "other_info_ru": "Исторические",
-        "path_dir": "../BibleApp/Photos/Old_Testament/07_Судьи_Judges_(Исторические_Historical-Books)",
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/07_Судьи_Judges_(Исторические_Historical-Books)",
         "photos": {
             "IMG_20190604_113928_HDR.jpg": "1,2",
             "IMG_20190604_113933_HDR.jpg": "3,4",
@@ -212,9 +212,9 @@
     "book_08": {
         "name_en": "Ruth",
         "name_ru": "Руфь",
-        "other_info_en": "Historical Books",
-        "other_info_ru": "Исторические",
-        "path_dir": "../BibleApp/Photos/Old_Testament/08_Руфь_Ruth_(Исторические_Historical-Books)",
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/08_Руфь_Ruth_(Исторические_Historical-Books)",
         "photos": {
             "IMG_20190604_114108_HDR.jpg": "1",
             "IMG_20190604_114115_HDR.jpg": "2,3",
@@ -224,9 +224,9 @@
     "book_09": {
         "name_en": "1 Samuel",
         "name_ru": "1 Царств",
-        "other_info_en": "Historical Books",
-        "other_info_ru": "Исторические",
-        "path_dir": "../BibleApp/Photos/Old_Testament/09_1-Царств_1-Samuel_(Исторические_Historical-Books)",
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/09_1-Царств_1-Samuel_(Исторические_Historical-Books)",
         "photos": {
             "IMG_20190604_114121_HDR.jpg": "1",
             "IMG_20190604_114127_HDR.jpg": "2",
@@ -253,9 +253,9 @@
     "book_10": {
         "name_en": "2 Samuel",
         "name_ru": "2 Царств",
-        "other_info_en": "Historical Books",
-        "other_info_ru": "Исторические",
-        "path_dir": "../BibleApp/Photos/Old_Testament/10_2-Царств_2-Samuel_(Исторические_Historical-Books)",
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/10_2-Царств_2-Samuel_(Исторические_Historical-Books)",
         "photos": {
             "IMG_20190604_114313_HDR.jpg": "1,2",
             "IMG_20190604_114318_HDR.jpg": "3",
@@ -278,9 +278,9 @@
     "book_11": {
         "name_en": "1 Kings",
         "name_ru": "3 Царств",
-        "other_info_en": "Historical Books",
-        "other_info_ru": "Исторические",
-        "path_dir": "../BibleApp/Photos/Old_Testament/11_3-Царств_1-Kings_(Исторические_Historical-Books)",
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/11_3-Царств_1-Kings_(Исторические_Historical-Books)",
         "photos": {
             "IMG_20190604_114453_HDR.jpg": "1",
 	    "IMG_20190604_114458_HDR.jpg": "2",
@@ -306,9 +306,9 @@
     "book_12": {
         "name_en": "2 Kings",
         "name_ru": "4 Царств",
-        "other_info_en": "Historical Books",
-        "other_info_ru": "Исторические",
-        "path_dir": "../BibleApp/Photos/Old_Testament/12_4-Царств_2-Kings_(Исторические_Historical-Books)",
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/12_4-Царств_2-Kings_(Исторические_Historical-Books)",
         "photos": {
             "IMG_20190604_114642_HDR.jpg": "1",
             "IMG_20190604_114647_HDR.jpg": "2,3",
@@ -334,9 +334,9 @@
     "book_13": {
         "name_en": "1 Chronicles",
         "name_ru": "1 Паралипоменон",
-        "other_info_en": "Historical Books",
-        "other_info_ru": "Исторические",
-        "path_dir": "../BibleApp/Photos/Old_Testament/13_1-Паралипоменон_1-Chronicles_(Исторические_Historical-Books)",
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/13_1-Паралипоменон_1-Chronicles_(Исторические_Historical-Books)",
         "photos": {
             "IMG_20190604_114824_HDR.jpg": "1,2",
             "IMG_20190604_120831_HDR.jpg": "3,4",
@@ -360,9 +360,9 @@
     "book_14": {
         "name_en": "2 Chronicles",
         "name_ru": "2 Паралипоменон",
-        "other_info_en": "Historical Books",
-        "other_info_ru": "Исторические",
-        "path_dir": "../BibleApp/Photos/Old_Testament/14_2-Паралипоменон_2-Chronicles_(Исторические_Historical-Books)",
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/14_2-Паралипоменон_2-Chronicles_(Исторические_Historical-Books)",
         "photos": {
             "IMG_20190604_120950_HDR.jpg": "1",
             "IMG_20190604_120958_HDR.jpg": "2,3,4",
@@ -390,9 +390,9 @@
     "book_15": {
         "name_en": "Ezra",
         "name_ru": "Ездра",
-        "other_info_en": "Historical Books",
-        "other_info_ru": "Исторические",
-        "path_dir": "../BibleApp/Photos/Old_Testament/15_Ездра_Ezra_(Исторические_Historical-Books)",
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/15_Ездра_Ezra_(Исторические_Historical-Books)",
         "photos": {
             "IMG_20190604_121150_HDR.jpg": "1,2",
             "IMG_20190604_121154_HDR.jpg": "3,4",
@@ -406,9 +406,9 @@
     "book_16": {
         "name_en": "Nehemiah",
         "name_ru": "Неемия",
-        "other_info_en": "Historical Books",
-        "other_info_ru": "Исторические",
-        "path_dir": "../BibleApp/Photos/Old_Testament/16_Неемия_Nehemiah_(Исторические_Historical-Books)",
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/16_Неемия_Nehemiah_(Исторические_Historical-Books)",
         "photos": {
             "IMG_20190604_121223_HDR.jpg": "1,2",
             "IMG_20190604_121229_HDR.jpg": "3,4",
@@ -424,9 +424,9 @@
     "book_17": {
         "name_en": "Esther",
         "name_ru": "Есфирь",
-        "other_info_en": "Historical Books",
-        "other_info_ru": "Исторические",
-        "path_dir": "../BibleApp/Photos/Old_Testament/17_Есфирь_Esther_(Исторические_Historical-Books)",
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/17_Есфирь_Esther_(Исторические_Historical-Books)",
         "photos": {
             "IMG_20190604_121305_HDR.jpg": "1",
             "IMG_20190604_121312_HDR.jpg": "2,3",
@@ -439,9 +439,9 @@
     "book_18": {
         "name_en": "Job",
         "name_ru": "Иов",
-        "other_info_en": "Wisdom",
-        "other_info_ru": "Учительные",
-        "path_dir": "../BibleApp/Photos/Old_Testament/18_Иов_Job_(Учительные_Wisdom)",
+        "family_books_en": "Wisdom",
+        "family_books_ru": "Учительные",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/18_Иов_Job_(Учительные_Wisdom)",
         "photos": {
             "IMG_20190604_121330_HDR.jpg": "1,2,3",
             "IMG_20190604_121335_HDR.jpg": "4,5,6",
@@ -464,9 +464,9 @@
     "book_19": {
         "name_en": "Psalms",
         "name_ru": "Псалтирь",
-        "other_info_en": "Wisdom",
-        "other_info_ru": "Учительные",
-        "path_dir": "../BibleApp/Photos/Old_Testament/19_Псалтирь_Psalms_(Учительные_Wisdom)",
+        "family_books_en": "Wisdom",
+        "family_books_ru": "Учительные",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/19_Псалтирь_Psalms_(Учительные_Wisdom)",
         "photos": {
             "IMG_20190604_121454_HDR.jpg": "1,2,3,4",
             "IMG_20190604_121459_HDR.jpg": "5,6,7,8,9",
@@ -509,9 +509,9 @@
     "book_20": {
         "name_en": "Proverbs",
         "name_ru": "Притчи",
-        "other_info_en": "Wisdom",
-        "other_info_ru": "Учительные",
-        "path_dir": "../BibleApp/Photos/Old_Testament/20_Притчи_Proverbs_(Учительные_Wisdom)",
+        "family_books_en": "Wisdom",
+        "family_books_ru": "Учительные",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/20_Притчи_Proverbs_(Учительные_Wisdom)",
         "photos": {
             "IMG_20190604_121840_HDR.jpg": "1,2,3",
             "IMG_20190604_121845_HDR.jpg": "4,5",
@@ -531,9 +531,9 @@
     "book_21": {
         "name_en": "Ecclesiastes",
         "name_ru": "Екклеcиаст",
-        "other_info_en": "Wisdom",
-        "other_info_ru": "Учительные",
-        "path_dir": "../BibleApp/Photos/Old_Testament/21_Екклеcиаст_Ecclesiastes_(Учительные_Wisdom)",
+        "family_books_en": "Wisdom",
+        "family_books_ru": "Учительные",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/21_Екклеcиаст_Ecclesiastes_(Учительные_Wisdom)",
         "photos": {
             "IMG_20190604_121953_HDR.jpg": "1,2,3",
             "IMG_20190604_122955_HDR.jpg": "4,5",
@@ -545,9 +545,9 @@
     "book_22": {
         "name_en": "Song of Songs",
         "name_ru": "Песня песней",
-        "other_info_en": "Wisdom",
-        "other_info_ru": "Учительные",
-        "path_dir": "../BibleApp/Photos/Old_Testament/22_Песня-песней_Song-of-Songs_(Учительные_Wisdom)",
+        "family_books_en": "Wisdom",
+        "family_books_ru": "Учительные",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/22_Песня-песней_Song-of-Songs_(Учительные_Wisdom)",
         "photos": {
             "IMG_20190604_123011_HDR.jpg": "1,2",
             "IMG_20190604_123018_HDR.jpg": "3,4,5",
@@ -557,9 +557,9 @@
     "book_23": {
         "name_en": "Isaiah",
         "name_ru": "Исаия",
-        "other_info_en": "Major Prophets",
-        "other_info_ru": "Большие пророки",
-        "path_dir": "../BibleApp/Photos/Old_Testament/23_Исаия_Isaiah_(Большие-пророки_Major-Prophets)",
+        "family_books_en": "Major Prophets",
+        "family_books_ru": "Большие пророки",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/23_Исаия_Isaiah_(Большие-пророки_Major-Prophets)",
         "photos": {
             "IMG_20190604_123027_HDR.jpg": "1,2",
             "IMG_20190604_123031_HDR.jpg": "3,4,5",
@@ -594,9 +594,9 @@
     "book_24": {
         "name_en": "Jeremiah",
         "name_ru": "Иеремия",
-        "other_info_en": "Major Prophets",
-        "other_info_ru": "Большие пророки",
-        "path_dir": "../BibleApp/Photos/Old_Testament/24_Иеремия_Jeremiah_(Большие-пророки_Major-Prophets)",
+        "family_books_en": "Major Prophets",
+        "family_books_ru": "Большие пророки",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/24_Иеремия_Jeremiah_(Большие-пророки_Major-Prophets)",
         "photos": {
             "IMG_20190604_123248_HDR.jpg": "1",
             "IMG_20190604_123253_HDR.jpg": "2",
@@ -636,9 +636,9 @@
     "book_25": {
         "name_en": "Lamentations",
         "name_ru": "Плач Иеремии",
-        "other_info_en": "Major Prophets",
-        "other_info_ru": "Большие пророки",
-        "path_dir": "../BibleApp/Photos/Old_Testament/25_Плач-Иеремии_Lamentations_(Большие-пророки_Major-Prophets)",
+        "family_books_en": "Major Prophets",
+        "family_books_ru": "Большие пророки",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/25_Плач-Иеремии_Lamentations_(Большие-пророки_Major-Prophets)",
         "photos": {
             "IMG_20190604_123550_HDR.jpg": "1,2",
             "IMG_20190604_123556_HDR.jpg": "3",
@@ -648,9 +648,9 @@
     "book_26": {
         "name_en": "Ezekiel",
         "name_ru": "Иезекииль",
-        "other_info_en": "Major Prophets",
-        "other_info_ru": "Большие пророки",
-        "path_dir": "../BibleApp/Photos/Old_Testament/26_Иезекииль_Ezekiel_(Большие-пророки_Major-Prophets)",
+        "family_books_en": "Major Prophets",
+        "family_books_ru": "Большие пророки",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/26_Иезекииль_Ezekiel_(Большие-пророки_Major-Prophets)",
         "photos": {
             "IMG_20190604_123601_HDR.jpg": "1",
             "IMG_20190604_123606_HDR.jpg": "2,3",
@@ -687,9 +687,9 @@
     "book_27": {
         "name_en": "Daniel",
         "name_ru": "Даниил",
-        "other_info_en": "Major Prophets",
-        "other_info_ru": "Большие пророки",
-        "path_dir": "../BibleApp/Photos/Old_Testament/27_Даниил_Daniel_(Большие-пророки_Major-Prophets)",
+        "family_books_en": "Major Prophets",
+        "family_books_ru": "Большие пророки",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/27_Даниил_Daniel_(Большие-пророки_Major-Prophets)",
         "photos": {
             "IMG_20190604_123854_HDR.jpg": "1",
             "IMG_20190604_123858_HDR.jpg": "2",
@@ -706,9 +706,9 @@
     "book_28": {
         "name_en": "Hosea",
         "name_ru": "Осия",
-        "other_info_en": "Minor Prophets",
-        "other_info_ru": "Малые пророки",
-        "path_dir": "../BibleApp/Photos/Old_Testament/28_Осия_Hosea_(Малые-пророки_Minor-Prophets)",
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/28_Осия_Hosea_(Малые-пророки_Minor-Prophets)",
         "photos": {
             "IMG_20190604_123939_HDR.jpg": "1,2",
             "IMG_20190604_123945_HDR.jpg": "2,3,4,5,6",
@@ -720,9 +720,9 @@
     "book_29": {
         "name_en": "Joel",
         "name_ru": "Иоиль",
-        "other_info_en": "Minor Prophets",
-        "other_info_ru": "Малые пророки",
-        "path_dir": "../BibleApp/Photos/Old_Testament/29_Иоиль_Joel_(Малые-пророки_Minor-Prophets)",
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/29_Иоиль_Joel_(Малые-пророки_Minor-Prophets)",
         "photos": {
             "IMG_20190604_124004_HDR.jpg": "1,2",
             "IMG_20190604_124011_HDR.jpg": "3"
@@ -731,9 +731,9 @@
     "book_30": {
         "name_en": "Amos",
         "name_ru": "Амос",
-        "other_info_en": "Minor Prophets",
-        "other_info_ru": "Малые пророки",
-        "path_dir": "../BibleApp/Photos/Old_Testament/30_Амос_Amos_(Малые-пророки_Minor-Prophets)",
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/30_Амос_Amos_(Малые-пророки_Minor-Prophets)",
         "photos": {
             "IMG_20190604_124011_HDR.jpg": "1",
             "IMG_20190604_124017_HDR.jpg": "2,3,4",
@@ -745,9 +745,9 @@
     "book_31": {
         "name_en": "Obadiah",
         "name_ru": "Авдий",
-        "other_info_en": "Minor Prophets",
-        "other_info_ru": "Малые пророки",
-        "path_dir": "../BibleApp/Photos/Old_Testament/31_Авдий_Obadiah_(Малые-пророки_Minor-Prophets)",
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/31_Авдий_Obadiah_(Малые-пророки_Minor-Prophets)",
         "photos": {
             "IMG_20190604_124035_HDR.jpg": "1"
         }
@@ -755,9 +755,9 @@
     "book_32": {
         "name_en": "Jonah",
         "name_ru": "Иона",
-        "other_info_en": "Minor Prophets",
-        "other_info_ru": "Малые пророки",
-        "path_dir": "../BibleApp/Photos/Old_Testament/32_Иона_Jonah_(Малые-пророки_Minor-Prophets)",
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/32_Иона_Jonah_(Малые-пророки_Minor-Prophets)",
         "photos": {
             "IMG_20190604_124035_HDR.jpg": "1",
             "IMG_20190604_124040_HDR.jpg": "2,3,4"
@@ -766,9 +766,9 @@
     "book_33": {
         "name_en": "Micah",
         "name_ru": "Михей",
-        "other_info_en": "Minor Prophets",
-        "other_info_ru": "Малые пророки",
-        "path_dir": "../BibleApp/Photos/Old_Testament/33_Михей_Micah_(Малые-пророки_Minor-Prophets)",
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/33_Михей_Micah_(Малые-пророки_Minor-Prophets)",
         "photos": {
             "IMG_20190604_124040_HDR.jpg": "1",
             "IMG_20190604_124750_HDR.jpg": "2,3,4",
@@ -779,9 +779,9 @@
     "book_34": {
         "name_en": "Nahum",
         "name_ru": "Наум",
-        "other_info_en": "Minor Prophets",
-        "other_info_ru": "Малые пророки",
-        "path_dir": "../BibleApp/Photos/Old_Testament/34_Наум_Nahum_(Малые-пророки_Minor-Prophets)",
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/34_Наум_Nahum_(Малые-пророки_Minor-Prophets)",
         "photos": {
             "IMG_20190604_124801_HDR.jpg": "1,2,3",
             "IMG_20190604_124807_HDR.jpg": "3"
@@ -790,9 +790,9 @@
     "book_35": {
         "name_en": "Habakkuk",
         "name_ru": "Аввакум",
-        "other_info_en": "Minor Prophets",
-        "other_info_ru": "Малые пророки",
-        "path_dir": "../BibleApp/Photos/Old_Testament/35_Аввакум_Habakkuk_(Малые-пророки_Minor-Prophets)",
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/35_Аввакум_Habakkuk_(Малые-пророки_Minor-Prophets)",
         "photos": {
             "IMG_20190604_124807_HDR.jpg": "1,2",
             "IMG_20190604_124816_HDR.jpg": "3"
@@ -801,9 +801,9 @@
     "book_36": {
         "name_en": "Zephaniah",
         "name_ru": "Софония",
-        "other_info_en": "Minor Prophets",
-        "other_info_ru": "Малые пророки",
-        "path_dir": "../BibleApp/Photos/Old_Testament/36_Софония_Zephaniah_(Малые-пророки_Minor-Prophets)",
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/36_Софония_Zephaniah_(Малые-пророки_Minor-Prophets)",
         "photos": {
             "IMG_20190604_124816_HDR.jpg": "1,2",
             "IMG_20190604_124821_HDR.jpg": "3"
@@ -812,9 +812,9 @@
     "book_37": {
         "name_en": "Haggai",
         "name_ru": "Аггей",
-        "other_info_en": "Minor Prophets",
-        "other_info_ru": "Малые пророки",
-        "path_dir": "../BibleApp/Photos/Old_Testament/37_Аггей_Haggai_(Малые-пророки_Minor-Prophets)",
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/37_Аггей_Haggai_(Малые-пророки_Minor-Prophets)",
         "photos": {
             "IMG_20190604_124821_HDR.jpg": "1",
             "IMG_20190604_124827_HDR.jpg": "2"
@@ -823,9 +823,9 @@
     "book_38": {
         "name_en": "Zechariah",
         "name_ru": "Захария",
-        "other_info_en": "Minor Prophets",
-        "other_info_ru": "Малые пророки",
-        "path_dir": "../BibleApp/Photos/Old_Testament/38_Захария_Zechariah_(Малые-пророки_Minor-Prophets)",
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/38_Захария_Zechariah_(Малые-пророки_Minor-Prophets)",
         "photos": {
             "IMG_20190604_124827_HDR.jpg": "1",
             "IMG_20190604_124835_HDR.jpg": "2,3,4",
@@ -838,9 +838,9 @@
     "book_39": {
         "name_en": "Malachi",
         "name_ru": "Малахия",
-        "other_info_en": "Minor Prophets",
-        "other_info_ru": "Малые пророки",
-        "path_dir": "../BibleApp/Photos/Old_Testament/39_Малахия_Malachi_(Малые-пророки_Minor-Prophets)",
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "path_dir_photos": "../BibleApp/Photos/Old_Testament/39_Малахия_Malachi_(Малые-пророки_Minor-Prophets)",
         "photos": {
             "IMG_20190604_124901_HDR.jpg": "1,2",
             "IMG_20190604_124908_HDR.jpg": "3,4"

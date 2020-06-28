@@ -15,9 +15,4 @@
     <qresource prefix="/Icons">
         <file>Resource/Icons/iconfinder_20-blue_address-home-house_4488794.svg</file>
     </qresource>
-    <qresource prefix="/Skeleton">
-        <file>Resource/Skeleton/NewTestament_Content.json</file>
-        <file>Resource/Skeleton/OldTestament_Content.json</file>
-        <file>Resource/Skeleton/ru_synodal.json</file>
-    </qresource>
 </RCC>

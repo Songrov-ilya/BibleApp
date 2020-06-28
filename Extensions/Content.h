@@ -16,13 +16,14 @@ class Content : public QObject
 public:
     explicit Content(QObject *parent = nullptr);
 
-    static void generateContentJson(const QString pathDir);
+    static void generateContenet_JsonText();
+    static void generateContent_Photos();
     static void loadContentJson(QVector<Book> *vecBooks, const BibleEnums::Testament &testament);
     static void loadTextVersesJson(QVector<Book> *vecBooks, const BibleEnums::Testament &testament);
 
 private:
-    static QStringList getListDirectoryContents(const QString &dir);
-    static void fillChapters(QJsonObject *objChapters, const QString &pathDir);
+    static QStringList getListFileInDirectory(const QString &dir);
+    static void fillPhotos(QJsonObject *objBook, const QString &pathDir);
 signals:
 
 };

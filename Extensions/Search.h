@@ -3,6 +3,7 @@
 
 #include <QObject>
 
+#include "Data.h"
 #include "../Helper.h"
 
 struct Result {
@@ -28,7 +29,7 @@ struct ListOfResult {
 class Search : public QObject
 {
     Q_OBJECT
-    QJsonArray *arrBooks;
+    QJsonDocument doc;
 public:
     enum RangeSearch {
         Verse,
@@ -37,7 +38,6 @@ public:
     explicit Search(QObject *parent = nullptr);
     ~Search();
 
-    void generateAllBooksJson();
     QStringList getListVerses();
     ListOfResult find(const QString &textQuery, RangeSearch range = RangeSearch::Verse);
 

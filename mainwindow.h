@@ -20,6 +20,7 @@ public:
     MainWindow(QWindow *parent = nullptr);
     ~MainWindow();
 
+    void setElapsed(const int elapsed);
 private:
     void setGeneralSettings();
 };

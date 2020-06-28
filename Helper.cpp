@@ -1,6 +1,6 @@
 #include "Helper.h"
 
-Helper::Helper(QObject *parent) : QObject(parent)
+Helper::Helper()
 {
 
 }
@@ -33,4 +33,9 @@ void Helper::writeFileJson(const QJsonDocument &doc, const QString &path)
     }
     file.write(doc.toJson());
     file.close();
+}
+
+QString Helper::getNumberStr(const int num)
+{
+    return QString::number(num, 'g', 2);
 }

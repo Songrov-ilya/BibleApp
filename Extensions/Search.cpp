@@ -1,30 +1,15 @@
 #include "Search.h"
 
 Search::Search(QObject *parent) :
-    QObject(parent),
-    arrBooks(new QJsonArray)
+    QObject(parent)
 {
     readBibleTextJson();
 }
 
 Search::~Search()
 {
-    delete arrBooks;
 }
 
-void Search::generateAllBooksJson()
-{
-    QJsonDocument doc;
-    Helper::readFileJson(&doc, File::bibleTextJson);
-    QJsonArray arrMain = doc.array();
-
-    int count = 0;
-    for (const QJsonValue &book: arrMain) {
-        QJsonObject objBook = book.toObject();
-        Helper::writeFileJson(QJsonDocument(objBook), "../BibleApp/TextBible/Bible_XML_and_JSON/bible-master/Chapters/" + QString::number(++count) + "__" +
-                              objBook.value("name").toString() + "_ru_synodal.json");
-    }
-}
 
 ListOfResult Search::find(const QString &textQuery, RangeSearch range)
 {
@@ -55,7 +40,7 @@ ListOfResult Search::find(const QString &textQuery, RangeSearch range)
 
 void Search::searhVerse(ListOfResult &list, const QString &textQuery)
 {
-    for (const QJsonValue &book: *arrBooks) {
+    for (const QJsonValue &book: doc.array()) {
         QJsonObject objBook = book.toObject();
         int chapterInt = 0;
         for(const QJsonValue &chapters : objBook.value("chapters").toArray()){
@@ -77,7 +62,7 @@ void Search::searhVerse(ListOfResult &list, const QString &textQuery)
 
 void Search::searhVerse(ListOfResult &list, const QString &nameBook, const QString &textQuery)
 {
-    for (const QJsonValue &book: *arrBooks) {
+    for (const QJsonValue &book: doc.array()) {
         QJsonObject objBook = book.toObject();
         if(objBook.value("name").toString() != nameBook){
             continue;
@@ -104,7 +89,7 @@ void Search::searhVerse(ListOfResult &list, const QString &nameBook, const QStri
 void Search::searhChapter(ListOfResult &list, const QString &textQuery)
 {
     Result resutl;
-    for (const QJsonValue &book: *arrBooks) {
+    for (const QJsonValue &book: doc.array()) {
         QJsonObject objBook = book.toObject();
         resutl.book = objBook.value("name").toString();
         int chapterInt = 0;
@@ -174,8 +159,17 @@ QString Search::fillTextRangeVerses(const QJsonArray &arrOneChapter, const int v
 void Search::readBibleTextJson()
 {
     QJsonDocument doc;
-    Helper::readFileJson(&doc, File::bibleTextJson);
-    *arrBooks = doc.array();
+    Helper::readFileJson(&doc, Path::allBibleTextJson);
+    qDebug() << "doc" << __LINE__ << doc[0]["chapters"][0][0] << Qt::endl;
+    qDebug() << "doc" << __LINE__ << doc[1]["chapters"][1][1] << Qt::endl;
+    qDebug() << "doc" << __LINE__ << doc[2]["chapters"][2][2] << Qt::endl;
+    qDebug() << "doc" << __LINE__ << doc[3]["chapters"][3][3] << Qt::endl;
+    qDebug() << "doc" << __LINE__ << doc[4]["chapters"][4][4] << Qt::endl;
+    qDebug() << "doc" << __LINE__ << doc[5]["chapters"][5][5] << Qt::endl;
+    qDebug() << "doc" << __LINE__ << doc[6]["chapters"][6][6] << Qt::endl;
+    qDebug() << "doc" << __LINE__ << doc[7]["chapters"][7][7] << Qt::endl;
+    qDebug() << "doc" << __LINE__ << doc[7]["chapters"][7][7].toString("ilya") << Qt::endl;
+//    *arrBooks = doc.array();
 }
 
 ListOfResult::ListOfResult(const QString &textQuery)

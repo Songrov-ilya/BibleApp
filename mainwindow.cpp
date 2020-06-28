@@ -20,6 +20,11 @@ MainWindow::~MainWindow()
 
 }
 
+void MainWindow::setElapsed(const int elapsed)
+{
+    manager->setElapsed(elapsed);
+}
+
 void MainWindow::setGeneralSettings()
 {
 //    setColor("#00000000");

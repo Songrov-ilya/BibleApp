@@ -21,6 +21,7 @@ class Manager : public QObject
     BibleList listBooks;
     BibleList listChapters;
     BibleList listVerses;
+    int m_elapsed;
 public:
     explicit Manager(QQmlContext *rootContext, QObject *parent = nullptr);
 
@@ -30,6 +31,9 @@ public:
     Q_INVOKABLE void fillListBooks();
     Q_INVOKABLE void fillListChapters();
     Q_INVOKABLE void fillListVerses();
+
+    void setElapsed(const int elapsed);
+    Q_INVOKABLE int getElapsed();
 private:
     void setQmlSettings();
 };

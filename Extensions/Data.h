@@ -3,6 +3,10 @@
 
 #include <QObject>
 
+
+//#define BIBLE_SIMPLE
+#define BIBLE_HARD
+
 namespace BibleEnums
 {
    Q_NAMESPACE         // required for meta object creation
@@ -16,10 +20,29 @@ namespace BibleEnums
    Q_ENUM_NS(Slide)  // register the enum in meta object data
 
    enum Testament{
-       New_Testament,
-       Old_Testament,
+       Old_Testament = 39,
+       New_Testament = 27,
    };
    Q_ENUM_NS(Testament)  // register the enum in meta object data
+}
+
+
+namespace Path {
+#ifdef QT_DEBUG
+    const QString content_New_Testament_Photos      = "../BibleApp/Resource/Content/22Content_New_Testament_Photos.json";
+    const QString content_Old_Testament_Photos      = "../BibleApp/Resource/Content/22Content_Old_Testament_Photos.json";
+    const QString content_New_Testament_JsonText    = "../BibleApp/Resource/Content/22Content_New_Testament_JsonText.json";
+    const QString content_Old_Testament_JsonText    = "../BibleApp/Resource/Content/22Content_Old_Testament_JsonText.json";
+    const QString allBibleTextJson                  = "../BibleApp/Resource/Content/ru_synodal.json";
+    const QString dirContenet_Old_Testament_Photos       = "../BibleApp/Resource/Content/Old_Testament_Photos/";
+    const QString dirContenet_New_Testament_Photos       = "../BibleApp/Resource/Content/New_Testament_Photos/";
+    const QString dirContenet_Old_Testament_JsonText     = "../BibleApp/Resource/Content/Old_Testament_JsonText/";
+    const QString dirContenet_New_Testament_JsonText     = "../BibleApp/Resource/Content/New_Testament_JsonText/";
+#else
+    const QString newTestament_Content = ":/Skeleton/Resource/Skeleton/Content_New_Testament_Photos.json";
+    const QString oldTestament_Content = ":/Skeleton/Resource/Skeleton/Content_Old_Testament_Photos.json";
+    const QString bibleTextJson = ":/Skeleton/Resource/Skeleton/ru_synodal.json";
+#endif
 }
 
 

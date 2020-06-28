@@ -10,12 +10,12 @@ Photo::Photo(const Photo &other) : QObject(other.parent())
     *this = other;
 }
 
-Photo::Photo(const QString pathPhoto, const QString strOnePhoto) : QObject(nullptr)
+Photo::Photo(const QString &pathPhoto, const QString &strOnePhoto) : QObject(nullptr)
 {
     setPhoto(pathPhoto, strOnePhoto);
 }
 
-void Photo::setPhoto(const QString pathPhoto, const QString strOnePhoto)
+void Photo::setPhoto(const QString &pathPhoto, const QString &strOnePhoto)
 {
     vecChapter.clear();
     if(strOnePhoto.isEmpty()){

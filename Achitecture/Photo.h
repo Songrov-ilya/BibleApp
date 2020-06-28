@@ -13,8 +13,8 @@ class Photo : public QObject
 public:
     Photo(const Photo &other);
     explicit Photo(QObject *parent = nullptr);
-    explicit Photo(const QString pathPhoto, const QString strOnePhoto);
-    void setPhoto(const QString pathPhoto, const QString strOnePhoto);
+    explicit Photo(const QString &pathPhoto, const QString &strOnePhoto);
+    void setPhoto(const QString &pathPhoto, const QString &strOnePhoto);
 
     bool containsChapter(const int chapter) const;
     QString getPathPhoto() const;

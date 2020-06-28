@@ -27,7 +27,6 @@ SOURCES += \
     Achitecture/Book.cpp \
     Achitecture/Chapter.cpp \
     Achitecture/Photo.cpp \
-    Achitecture/Skeleton.cpp \
     Extensions/Content.cpp \
     Extensions/Data.cpp \
     Extensions/Search.cpp \
@@ -44,7 +43,6 @@ HEADERS += \
     Achitecture/Book.h \
     Achitecture/Chapter.h \
     Achitecture/Photo.h \
-    Achitecture/Skeleton.h \
     Extensions/Content.h \
     Extensions/Data.h \
     Extensions/Search.h \

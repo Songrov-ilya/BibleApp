@@ -2,7 +2,8 @@
 
 Manager::Manager(QQmlContext *rootContext, QObject *parent) :
     QObject(parent),
-    rootContext(rootContext)
+    rootContext(rootContext),
+    m_elapsed(0)
 {
     setQmlSettings();
 }
@@ -25,7 +26,7 @@ void Manager::setCurrentChapter(const int &chapter)
 
 void Manager::fillListBooks()
 {
-    listBooks.setList(bible.getListAllBooks());
+    listBooks.setList(bible.getListBooks());
 }
 
 void Manager::fillListChapters()
@@ -36,6 +37,16 @@ void Manager::fillListChapters()
 void Manager::fillListVerses()
 {
     listVerses.setList(bible.getListVerses());
+}
+
+void Manager::setElapsed(const int elapsed)
+{
+    m_elapsed = elapsed;
+}
+
+int Manager::getElapsed()
+{
+    return m_elapsed;
 }
 
 void Manager::setQmlSettings()

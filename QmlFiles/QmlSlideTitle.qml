@@ -78,6 +78,11 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
                 textButton: modelData
                 colorBackgroundButton: colorButtons
+
+                onClickedButton: {
+                    textButton = String(managerQml.getElapsed());
+                    console.log("textButton", textButton);
+                }
             }
         }
     }

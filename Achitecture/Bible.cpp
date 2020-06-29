@@ -10,7 +10,8 @@ Bible::Bible(QObject *parent) : QObject(parent)
     //    Content::loadTextVersesJson(&vecOldTestamentBooks, BibleEnums::Old_Testament);
     //    Content::loadTextVersesJson(&vecNewTestamentBooks, BibleEnums::New_Testament);
 
-//        Content::generateContenet_Info();
+    Content::generateContenet_JsonText();
+    Content::generateContenet_Info();
 
     createAllBooks();
 }
@@ -81,10 +82,10 @@ QStringList Bible::getListVerses() const
 void Bible::createAllBooks()
 {
     for (int var = 0; var < BibleEnums::Old_Testament; ++var) {
-        vecOldTestamentBooks.append(Book(var + 1));
+        vecOldTestamentBooks.append(Book(var));
     }
     for (int var = 0; var < BibleEnums::New_Testament; ++var) {
-        vecNewTestamentBooks.append(Book(var + 1));
+        vecNewTestamentBooks.append(Book(var));
     }
 }
 

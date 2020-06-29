@@ -31,8 +31,8 @@ namespace Path {
 #ifdef QT_DEBUG
     const QString fileContent_New_Testament_Photos      = "../BibleApp/Resource/Content/Content_New_Testament_Photos.json";
     const QString fileContent_Old_Testament_Photos      = "../BibleApp/Resource/Content/Content_Old_Testament_Photos.json";
-    const QString fileContent_New_Testament_Info        = "../BibleApp/Resource/Content/Content_New_Testament_Info.json";
-    const QString fileContent_Old_Testament_Info        = "../BibleApp/Resource/Content/Content_Old_Testament_Info.json";
+    const QString fileContent_New_Testament_Info        = "../BibleApp/Resource/Content/22Content_New_Testament_Info.json";
+    const QString fileContent_Old_Testament_Info        = "../BibleApp/Resource/Content/22Content_Old_Testament_Info.json";
     const QString fileContent_Old_Testament_ArrayBooks  = "../BibleApp/Resource/Content/Content_Old_Testament_ArrayBooks.json";
     const QString fileContent_New_Testament_ArrayBooks  = "../BibleApp/Resource/Content/Content_New_Testament_ArrayBooks.json";
     const QString dirContent_Old_Testament_Photos       = "../BibleApp/Resource/Content/Old_Testament_Photos/";

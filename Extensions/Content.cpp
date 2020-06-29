@@ -11,7 +11,7 @@ void Content::generateContent_Photos()
         QJsonObject objMain;
         QStringList listDir = getListFileInDirectory(QFileInfo(dirContent).absolutePath());
         for (int var = 0; var < listDir.size(); ++var) {
-            const QString bookNumber = Helper::getBookNumberStr(var + 1);
+            const QString bookNumber = Helper::getBookNumberStr(var);
             QJsonObject objBook;
             fillPhotos(&objBook, dirContent + bookNumber);
             objMain.insert(bookNumber, objBook);
@@ -49,8 +49,8 @@ void Content::generateNewNameFolder_Photos()
 
         QStringList listDir = getListFileInDirectory(QFileInfo(dirContent).absolutePath());
         for (int var = 0; var < listDir.size(); ++var) {
-            const QString bookNumber = Helper::getBookNumberStr(var + 1);
-            QFile::rename(dirContent + Helper::getBookNumberStr(var + 1), dirContent + bookNumber);
+            const QString bookNumber = Helper::getBookNumberStr(var);
+            QFile::rename(dirContent + Helper::getBookNumberStr(var), dirContent + bookNumber);
         }
     }
 }
@@ -120,7 +120,7 @@ void Content::generateContenet_Info()
                 family_books_ru = "Малые пророки";
                 nextFamily = FamilyBooks::MajorProphets;
             }
-            bookNumber = Helper::getBookNumberStr(var + 1);
+            bookNumber = Helper::getBookNumberStr(var);
         }
         else{
             if (var < FamilyBooks::GospelsAndActs) {
@@ -148,7 +148,7 @@ void Content::generateContenet_Info()
                 family_books_ru = "Пророческие";
                 nextFamily = FamilyBooks::PaulineEpistles;
             }
-            bookNumber = Helper::getBookNumberStr(var + 1 - BibleEnums::Old_Testament);
+            bookNumber = Helper::getBookNumberStr(var - BibleEnums::Old_Testament);
             refObjTestament = &objNewTestament;
         }
         objBook.insert("name_ru", vecFamilyBooks.at(var - nextFamily));
@@ -156,6 +156,7 @@ void Content::generateContenet_Info()
         objBook.insert("family_books_ru", family_books_ru);
 
         refObjTestament->insert(bookNumber, objBook);
+        qDebug() << "name3" << objBook.value("name_ru").toString() << bookNumber << Qt::endl;
     }
     Helper::writeFileJson(QJsonDocument(objOldTestament), Path::fileContent_Old_Testament_Info);
     Helper::writeFileJson(QJsonDocument(objNewTestament), Path::fileContent_New_Testament_Info);
@@ -188,13 +189,15 @@ void Content::generateContenet_JsonText()
         QJsonObject objBook = arrMain.at(var).toObject();
         QJsonArray arrChapters = objBook.value("chapters").toArray();
         if (var < BibleEnums::Old_Testament) {
-            const QString bookNumber = Helper::getBookNumberStr(var + 1);
+            const QString bookNumber = Helper::getBookNumberStr(var);
             Helper::writeFileJson(QJsonDocument(arrChapters), dirContent + bookNumber + ".json");
+            qDebug() << "name1" << objBook.value("name").toString() << bookNumber << Qt::endl;
         }
         else{
             dirContent = Path::dirContent_New_Testament_JsonText;
-            const QString bookNumber = Helper::getBookNumberStr(var + 1 - BibleEnums::Old_Testament);
+            const QString bookNumber = Helper::getBookNumberStr(var - BibleEnums::Old_Testament);
             Helper::writeFileJson(QJsonDocument(arrChapters), dirContent + bookNumber + ".json");
+            qDebug() << var << "name2" << objBook.value("name").toString() << bookNumber << Qt::endl;
         }
     }
 
@@ -264,8 +267,9 @@ void Content::loadContenet_OneBook(Book *book, const BibleEnums::Testament testa
 {
     Q_ASSERT(book);
     const QString dirContent = testament == BibleEnums::Old_Testament ? Path::dirContent_Old_Testament_JsonText : Path::dirContent_New_Testament_JsonText;
+    const QString pathBook = dirContent + Helper::getBookNumberStr(book->getIndexBook()) + ".json";
     QJsonDocument doc;
-    Helper::readFileJson(&doc, dirContent + Helper::getBookNumberStr(book->getIndexBook()) + ".json");
+    Helper::readFileJson(&doc, pathBook);
     book->loadContentChapterText(doc.array());
 }
 

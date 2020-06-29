@@ -47,11 +47,13 @@ int Book::getPhoto(const int chapter) const
 
 void Book::loadContentChapterText(const QJsonArray &arrChapters)
 {
+    Q_ASSERT(!arrChapters.isEmpty());
     for (const QJsonValue &chapter : arrChapters) {
         ChapterText chapterText(chapter.toArray());
         vecChapters.append(chapterText);
     }
     wasLoadedChapters = true;
+    qDebug() << "vecChapters" << vecChapters.size() << Qt::endl;
 }
 
 void Book::loadContentInfo(const QJsonObject &obj)

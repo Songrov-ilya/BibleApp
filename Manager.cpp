@@ -32,7 +32,6 @@ void Manager::fillListBooks()
 void Manager::fillListChapters()
 {
     listChapters.setList(bible.getListQuantityChapters());
-    qDebug() << "listChapters" << listChapters.getSize() << Qt::endl;
 }
 
 void Manager::fillListVerses()

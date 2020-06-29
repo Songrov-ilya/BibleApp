@@ -5,7 +5,7 @@ import QtGraphicalEffects 1.0
 import ModelViewQml 1.0
 
 Item{
-    signal clickedCell(string valueCell);
+    signal clickedCell(var indexButton);
     signal movementStartedView();
     signal movementEndedView();
     property var listModelObj                   ;
@@ -77,7 +77,7 @@ Item{
                 anchors.horizontalCenter: parent.horizontalCenter
                 textButton: model.textModel
                 colorBackgroundButton: colorCell
-                onClickedButton: clickedCell(model.textModel)
+                onClickedButton: clickedCell(model.index)
             }
 //            Component.onCompleted: console.log("gridViewId.horizontalSpacing", gridViewId.horizontalSpacing);
         }

@@ -5,7 +5,7 @@ import QtGraphicalEffects 1.0
 import ModelViewQml 1.0
 
 Item{
-    signal clickedCell(string valueCell);
+    signal clickedCell(var indexButton);
     signal movementStartedView();
     signal movementEndedView();
     property var listModelObj                   ;

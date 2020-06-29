@@ -247,7 +247,7 @@ void Content::loadContent_Photos(QVector<Book> *vecBooks, const BibleEnums::Test
     Q_ASSERT(listKeys.isEmpty() != vecBooks->size());
 
     for (int var = 0; var < testament; ++var) {
-        (*vecBooks)[var].setContentPhotos(obj.value(listKeys.at(var)).toObject(), dirContent);
+        (*vecBooks)[var].loadContentPhotos(obj.value(listKeys.at(var)).toObject(), dirContent);
     }
 }
 
@@ -260,16 +260,20 @@ void Content::loadContenet_ArrayBooks(QStringList *list, const BibleEnums::Testa
     std::for_each(arr.begin(), arr.end(), [list](const QJsonValue &value){ list->append(value.toString()); });
 }
 
-void Content::loadContenet_OneBook(QVector<Book> *vecBooks, const int numBook, const BibleEnums::Testament testament)
+void Content::loadContenet_OneBook(Book *book, const BibleEnums::Testament testament)
 {
-
+    Q_ASSERT(book);
+    const QString dirContent = testament == BibleEnums::Old_Testament ? Path::dirContent_Old_Testament_JsonText : Path::dirContent_New_Testament_JsonText;
+    QJsonDocument doc;
+    Helper::readFileJson(&doc, dirContent + Helper::getBookNumberStr(book->getIndexBook()) + ".json");
+    book->loadContentChapterText(doc.array());
 }
 
 void Content::loadTextVersesJson(QVector<Book> *vecBooks, const BibleEnums::Testament testament)
 {
-    const QString nameFile = testament == BibleEnums::Old_Testament ? Path::fileContent_Old_Testament_Info : Path::fileContent_New_Testament_Info;
+    const QString fileContent = testament == BibleEnums::Old_Testament ? Path::fileContent_Old_Testament_Info : Path::fileContent_New_Testament_Info;
     QJsonDocument doc;
-    Helper::readFileJson(&doc, nameFile);
+    Helper::readFileJson(&doc, fileContent);
 
 
 //    Helper::readFileJson(&doc, Path::allBibleJsonText);

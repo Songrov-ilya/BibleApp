@@ -23,24 +23,26 @@ class Book
     QVector<Photo> vecPhotos;
     QString path_dir_photos;
     int currentPhoto;
+    bool wasLoadedPhotos;
 #endif
     QVector<ChapterText> vecChapters;
-    int numberBook;
+    bool wasLoadedChapters;
+    int indexBook;
     int currentChapter;
-    int quantityChapters;
     InfoBook infoBook;
 public:
-    explicit Book(const int numberBook);
+    explicit Book(const int indexBook);
 
+    void setCurrentChapter(const int chapter);
 #ifdef BIBLE_HARD
-    void setContentPhotos(const QJsonObject &objPhotos, const QString &path_dir_photos);
+    void loadContentPhotos(const QJsonObject &objPhotos, const QString &path_dir_photos);
     int getPhoto(const int chapter) const;
 #endif
-    void setContentChapterText(const QJsonArray &arr);
-    void setContentInfo(const QJsonObject &obj);
-    void setCurrentChapter(const int chapter);
+    void loadContentChapterText(const QJsonArray &arrChapters);
+    void loadContentInfo(const QJsonObject &obj);
 
-    int getNumberBook() const;
+    bool wasLoaded();
+    int getIndexBook() const;
     QStringList getListQuantityChapters() const;
     QStringList getListVerses() const;
 };

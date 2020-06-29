@@ -15,11 +15,15 @@ Bible::Bible(QObject *parent) : QObject(parent)
     createAllBooks();
 }
 
-QVector<Book>::iterator Bible::getBook(const int number, const BibleEnums::Testament testament)
+QVector<Book>::iterator Bible::getBook(const int indexBook, const BibleEnums::Testament testament)
 {
     QVector<Book> *vecBooks = testament == BibleEnums::New_Testament ? &vecNewTestamentBooks : &vecOldTestamentBooks;
-    Q_ASSERT(vecBooks->size() >= number);
-    return vecBooks->begin() + number;
+    Q_ASSERT(vecBooks->size() < indexBook || indexBook >= 0);
+    auto itBook = vecBooks->begin() + indexBook;
+    if (!itBook->wasLoaded()) {
+        Content::loadContenet_OneBook(itBook, testament);
+    }
+    return itBook;
 }
 
 //Book Bible::getNextBook(const QString &nameCurrentBook) const
@@ -52,9 +56,11 @@ void Bible::setCurrentTestament(const BibleEnums::Testament testament)
     currentTestament = testament;
 }
 
-void Bible::setCurrentBook(const int number)
+void Bible::setCurrentBook(const int indexBook)
 {
-    currentBook = getBook(number, currentTestament);
+    qDebug() << "setCurrentBook" << indexBook << Qt::endl;
+    currentBook = getBook(indexBook, currentTestament);
+    qDebug() << "currentBook" << currentBook->getIndexBook() << Qt::endl;
 }
 
 void Bible::setCurrentChapter(const int chapter)
@@ -75,7 +81,7 @@ QStringList Bible::getListVerses() const
 void Bible::createAllBooks()
 {
     for (int var = 0; var < BibleEnums::Old_Testament; ++var) {
-        vecNewTestamentBooks.append(Book(var + 1));
+        vecOldTestamentBooks.append(Book(var + 1));
     }
     for (int var = 0; var < BibleEnums::New_Testament; ++var) {
         vecNewTestamentBooks.append(Book(var + 1));

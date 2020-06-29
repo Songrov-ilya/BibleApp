@@ -14,8 +14,8 @@ Item {
         colorCell      : providerQml.colorBackground;
         colorTextCell  : "white";
         onClickedCell  : {
-            console.log("valueCell", valueCell);
-//            managerQml.setCurrentChapter(valueCell)
+            console.log("indexButton", indexButton);
+//            managerQml.setCurrentChapter(indexButton)
 //            currentSlide = BibleEnums.ListVerses
         }
     }

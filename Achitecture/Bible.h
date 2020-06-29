@@ -19,10 +19,10 @@ public:
     explicit Bible(QObject *parent = nullptr);
 
     void setCurrentTestament(const BibleEnums::Testament testament);
-    void setCurrentBook(const int number);
+    void setCurrentBook(const int indexBook);
     void setCurrentChapter(const int chapter);
 
-    QVector<Book>::iterator getBook(const int number, const BibleEnums::Testament testament);
+    QVector<Book>::iterator getBook(const int indexBook, const BibleEnums::Testament testament);
 //    Book getNextBook(const QString &nameCurrentBook) const;
 //    Book getPreviousBook(const QString nameCurrentBook) const;
     QStringList getListBooks() const;

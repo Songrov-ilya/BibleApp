@@ -21,7 +21,7 @@ public:
 
     static void loadContent_Photos(QVector<Book> *vecBooks, const BibleEnums::Testament testament);
     static void loadContenet_ArrayBooks(QStringList *list, const BibleEnums::Testament testament);
-    static void loadContenet_OneBook(QVector<Book> *vecBooks, const int numBook, const BibleEnums::Testament testament);
+    static void loadContenet_OneBook(Book *book, const BibleEnums::Testament testament);
 
     static void loadTextVersesJson(QVector<Book> *vecBooks, const BibleEnums::Testament testament);
 

@@ -34,7 +34,7 @@ void Helper::writeFileJson(const QJsonDocument &doc, const QString &path)
     file.close();
 }
 
-QString Helper::getBookNumberStr(const int num)
+QString Helper::getBookNumberStr(const int indexBook)
 {
-    return "book_" + QString::number(num).rightJustified(2, '0');
+    return "book_" + QString::number(indexBook).rightJustified(2, '0');
 }

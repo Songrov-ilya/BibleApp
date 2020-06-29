@@ -1,28 +1,36 @@
 #include "Book.h"
 
 
-Book::Book(const int numberBook) :
+Book::Book(const int indexBook) :
 #ifdef BIBLE_HARD
     path_dir_photos(""),
     currentPhoto(0),
+    wasLoadedPhotos(false),
 #endif
-    numberBook(1),
+    wasLoadedChapters(false),
+    indexBook(0),
     currentChapter(1),
-    quantityChapters(0),
     infoBook()
 {
-    this->numberBook = numberBook;
+    this->indexBook = indexBook;
+}
+
+void Book::setCurrentChapter(const int chapter)
+{
+    currentChapter = chapter;
+#ifdef BIBLE_HARD
+    currentPhoto   = getPhoto(chapter);
+#endif
 }
 
 #ifdef BIBLE_HARD
-void Book::setContentPhotos(const QJsonObject &objPhotos, const QString &path_dir_photos)
+void Book::loadContentPhotos(const QJsonObject &objPhotos, const QString &path_dir_photos)
 {
     for (const QString &key : objPhotos.keys()) {
         Photo photo(path_dir_photos + key, objPhotos.value(key).toString());
         vecPhotos.append(photo);
     }
     Q_ASSERT(vecPhotos.isEmpty());
-    quantityChapters = vecPhotos.back().getQuantityChapters();
 }
 
 int Book::getPhoto(const int chapter) const
@@ -37,14 +45,16 @@ int Book::getPhoto(const int chapter) const
 }
 #endif
 
-void Book::setContentChapterText(const QJsonArray &arr)
+void Book::loadContentChapterText(const QJsonArray &arrChapters)
 {
-    ChapterText chapterText(arr);
-    vecChapters.append(chapterText);
-    quantityChapters = arr.size();
+    for (const QJsonValue &chapter : arrChapters) {
+        ChapterText chapterText(chapter.toArray());
+        vecChapters.append(chapterText);
+    }
+    wasLoadedChapters = true;
 }
 
-void Book::setContentInfo(const QJsonObject &obj)
+void Book::loadContentInfo(const QJsonObject &obj)
 {
     infoBook.abbrev             = obj.value("abbrev").toString();
     infoBook.name_en            = obj.value("name_en").toString();
@@ -53,24 +63,20 @@ void Book::setContentInfo(const QJsonObject &obj)
     infoBook.family_books_ru    = obj.value("family_books_ru").toString();
 }
 
-
-void Book::setCurrentChapter(const int chapter)
+bool Book::wasLoaded()
 {
-    currentChapter = chapter;
-#ifdef BIBLE_HARD
-    currentPhoto   = getPhoto(chapter);
-#endif
+    return wasLoadedChapters;
 }
 
-int Book::getNumberBook() const
+int Book::getIndexBook() const
 {
-    return this->numberBook;
+    return this->indexBook;
 }
 
 QStringList Book::getListQuantityChapters() const
 {
     QStringList list;
-    for (int var = 0; var < quantityChapters; ++var) {
+    for (int var = 0; var < vecChapters.size(); ++var) {
         list.append(QString::number(var+1));
     }
     return list;

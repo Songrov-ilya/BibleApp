@@ -1,16 +1,11 @@
 #include "Photo.h"
 
-Photo::Photo(QObject *parent) : QObject(parent)
+Photo::Photo()
 {
 
 }
 
-Photo::Photo(const Photo &other) : QObject(other.parent())
-{
-    *this = other;
-}
-
-Photo::Photo(const QString &pathPhoto, const QString &strOnePhoto) : QObject(nullptr)
+Photo::Photo(const QString &pathPhoto, const QString &strOnePhoto)
 {
     setPhoto(pathPhoto, strOnePhoto);
 }
@@ -37,7 +32,7 @@ QString Photo::getPathPhoto() const
     return pathPhoto;
 }
 
-int Photo::getNumberOfChapters() const
+int Photo::getQuantityChapters() const
 {
     return vecChapter.size();
 }

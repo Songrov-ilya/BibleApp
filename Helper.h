@@ -19,7 +19,7 @@ public:
     static QJsonDocument readFileJson(const QString &path);
     static void writeFileJson(const QJsonDocument &doc, const QString &path);
 
-    static QString getNumberStr(const int num);
+    static QString getBookNumberStr(const int num);
 };
 
 #endif // HELPER_H

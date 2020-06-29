@@ -159,7 +159,7 @@ QString Search::fillTextRangeVerses(const QJsonArray &arrOneChapter, const int v
 void Search::readBibleTextJson()
 {
     QJsonDocument doc;
-    Helper::readFileJson(&doc, Path::allBibleTextJson);
+    Helper::readFileJson(&doc, Path::allBibleJsonText);
     qDebug() << "doc" << __LINE__ << doc[0]["chapters"][0][0] << Qt::endl;
     qDebug() << "doc" << __LINE__ << doc[1]["chapters"][1][1] << Qt::endl;
     qDebug() << "doc" << __LINE__ << doc[2]["chapters"][2][2] << Qt::endl;

@@ -25,8 +25,8 @@ class Manager : public QObject
 public:
     explicit Manager(QQmlContext *rootContext, QObject *parent = nullptr);
 
-    Q_INVOKABLE void setCurrentTestament(const BibleEnums::Testament &testament);
-    Q_INVOKABLE void setCurrentBook(const QString &book);
+    Q_INVOKABLE void setCurrentTestament(const BibleEnums::Testament testament);
+    Q_INVOKABLE void setCurrentBook(const int numberBook);
     Q_INVOKABLE void setCurrentChapter(const int &chapter);
     Q_INVOKABLE void fillListBooks();
     Q_INVOKABLE void fillListChapters();
@@ -36,6 +36,7 @@ public:
     Q_INVOKABLE int getElapsed();
 private:
     void setQmlSettings();
+    void loadListBooks();
 };
 
 #endif // MANAGER_H

@@ -8,14 +8,14 @@ Manager::Manager(QQmlContext *rootContext, QObject *parent) :
     setQmlSettings();
 }
 
-void Manager::setCurrentTestament(const BibleEnums::Testament &testament)
+void Manager::setCurrentTestament(const BibleEnums::Testament testament)
 {
     bible.setCurrentTestament(testament);
 }
 
-void Manager::setCurrentBook(const QString &book)
+void Manager::setCurrentBook(const int numberBook)
 {
-    bible.setCurrentBook(book);
+    bible.setCurrentBook(numberBook);
 }
 
 void Manager::setCurrentChapter(const int &chapter)

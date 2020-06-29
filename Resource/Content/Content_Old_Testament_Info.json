@@ -1,0 +1,275 @@
+{
+    "book_01": {
+        "abbrev": "gn",
+        "family_books_en": "Pentateuch",
+        "family_books_ru": "Пятикнижие",
+        "name_en": "Genesis",
+        "name_ru": "Бытие"
+    },
+    "book_02": {
+        "abbrev": "ex",
+        "family_books_en": "Pentateuch",
+        "family_books_ru": "Пятикнижие",
+        "name_en": "Exodus",
+        "name_ru": "Исход"
+    },
+    "book_03": {
+        "abbrev": "lv",
+        "family_books_en": "Pentateuch",
+        "family_books_ru": "Пятикнижие",
+        "name_en": "Leviticus",
+        "name_ru": "Левит"
+    },
+    "book_04": {
+        "abbrev": "nm",
+        "family_books_en": "Pentateuch",
+        "family_books_ru": "Пятикнижие",
+        "name_en": "Numbers",
+        "name_ru": "Числа"
+    },
+    "book_05": {
+        "abbrev": "dt",
+        "family_books_en": "Pentateuch",
+        "family_books_ru": "Пятикнижие",
+        "name_en": "Deuteronomy",
+        "name_ru": "Второзаконие"
+    },
+    "book_06": {
+        "abbrev": "js",
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "name_en": "Joshua",
+        "name_ru": "Иисус Навин"
+    },
+    "book_07": {
+        "abbrev": "jud",
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "name_en": "Judges",
+        "name_ru": "Судьи"
+    },
+    "book_08": {
+        "abbrev": "rt",
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "name_en": "Ruth",
+        "name_ru": "Руфь"
+    },
+    "book_09": {
+        "abbrev": "1sm",
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "name_en": "1 Samuel",
+        "name_ru": "1 Царств"
+    },
+    "book_10": {
+        "abbrev": "2sm",
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "name_en": "2 Samuel",
+        "name_ru": "2 Царств"
+    },
+    "book_11": {
+        "abbrev": "1kgs",
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "name_en": "1 Kings",
+        "name_ru": "3 Царств"
+    },
+    "book_12": {
+        "abbrev": "2kgs",
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "name_en": "2 Kings",
+        "name_ru": "4 Царств"
+    },
+    "book_13": {
+        "abbrev": "1ch",
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "name_en": "1 Chronicles",
+        "name_ru": "1 Паралипомен"
+    },
+    "book_14": {
+        "abbrev": "2ch",
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "name_en": "2 Chronicles",
+        "name_ru": "2 Паралипомен"
+    },
+    "book_15": {
+        "abbrev": "ezr",
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "name_en": "Ezra",
+        "name_ru": "Ездра"
+    },
+    "book_16": {
+        "abbrev": "ne",
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "name_en": "Nehemiah",
+        "name_ru": "Неемия"
+    },
+    "book_17": {
+        "abbrev": "et",
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "name_en": "Esther",
+        "name_ru": "Есфирь"
+    },
+    "book_18": {
+        "abbrev": "job",
+        "family_books_en": "Wisdom",
+        "family_books_ru": "Учительные",
+        "name_en": "Job",
+        "name_ru": "Иов"
+    },
+    "book_19": {
+        "abbrev": "ps",
+        "family_books_en": "Wisdom",
+        "family_books_ru": "Учительные",
+        "name_en": "Psalms",
+        "name_ru": "Псалтирь"
+    },
+    "book_20": {
+        "abbrev": "prv",
+        "family_books_en": "Wisdom",
+        "family_books_ru": "Учительные",
+        "name_en": "Proverbs",
+        "name_ru": "Притчи"
+    },
+    "book_21": {
+        "abbrev": "ec",
+        "family_books_en": "Wisdom",
+        "family_books_ru": "Учительные",
+        "name_en": "Ecclesiastes",
+        "name_ru": "Екклеcиаст"
+    },
+    "book_22": {
+        "abbrev": "so",
+        "family_books_en": "Wisdom",
+        "family_books_ru": "Учительные",
+        "name_en": "Song of Solomon",
+        "name_ru": "Песня песней"
+    },
+    "book_23": {
+        "abbrev": "is",
+        "family_books_en": "Major Prophets",
+        "family_books_ru": "Большие пророки",
+        "name_en": "Isaiah",
+        "name_ru": "Исаия"
+    },
+    "book_24": {
+        "abbrev": "jr",
+        "family_books_en": "Major Prophets",
+        "family_books_ru": "Большие пророки",
+        "name_en": "Jeremiah",
+        "name_ru": "Иеремия"
+    },
+    "book_25": {
+        "abbrev": "lm",
+        "family_books_en": "Major Prophets",
+        "family_books_ru": "Большие пророки",
+        "name_en": "Lamentations",
+        "name_ru": "Плач Иеремии"
+    },
+    "book_26": {
+        "abbrev": "ez",
+        "family_books_en": "Major Prophets",
+        "family_books_ru": "Большие пророки",
+        "name_en": "Ezekiel",
+        "name_ru": "Иезекииль"
+    },
+    "book_27": {
+        "abbrev": "dn",
+        "family_books_en": "Major Prophets",
+        "family_books_ru": "Большие пророки",
+        "name_en": "Daniel",
+        "name_ru": "Даниил"
+    },
+    "book_28": {
+        "abbrev": "ho",
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "name_en": "Hosea",
+        "name_ru": "Осия"
+    },
+    "book_29": {
+        "abbrev": "jl",
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "name_en": "Joel",
+        "name_ru": "Иоиль"
+    },
+    "book_30": {
+        "abbrev": "am",
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "name_en": "Amos",
+        "name_ru": "Амос"
+    },
+    "book_31": {
+        "abbrev": "ob",
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "name_en": "Obadiah",
+        "name_ru": "Авдий"
+    },
+    "book_32": {
+        "abbrev": "jn",
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "name_en": "Jonah",
+        "name_ru": "Иона"
+    },
+    "book_33": {
+        "abbrev": "mi",
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "name_en": "Micah",
+        "name_ru": "Михей"
+    },
+    "book_34": {
+        "abbrev": "na",
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "name_en": "Nahum",
+        "name_ru": "Наум"
+    },
+    "book_35": {
+        "abbrev": "hk",
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "name_en": "Habakkuk",
+        "name_ru": "Аввакум"
+    },
+    "book_36": {
+        "abbrev": "zp",
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "name_en": "Zephaniah",
+        "name_ru": "Софония"
+    },
+    "book_37": {
+        "abbrev": "hg",
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "name_en": "Haggai",
+        "name_ru": "Аггей"
+    },
+    "book_38": {
+        "abbrev": "zc",
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "name_en": "Zechariah",
+        "name_ru": "Захария"
+    },
+    "book_39": {
+        "abbrev": "ml",
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "name_en": "Malachi",
+        "name_ru": "Малахия"
+    }
+}

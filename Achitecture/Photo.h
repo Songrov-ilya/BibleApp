@@ -5,20 +5,18 @@
 #include <QVector>
 #include <QJsonObject>
 
-class Photo : public QObject
+class Photo
 {
-    Q_OBJECT
     QVector<int> vecChapter;
     QString pathPhoto;
 public:
-    Photo(const Photo &other);
-    explicit Photo(QObject *parent = nullptr);
+    explicit Photo();
     explicit Photo(const QString &pathPhoto, const QString &strOnePhoto);
-    void setPhoto(const QString &pathPhoto, const QString &strOnePhoto);
+    inline void setPhoto(const QString &pathPhoto, const QString &strOnePhoto);
 
     bool containsChapter(const int chapter) const;
     QString getPathPhoto() const;
-    int getNumberOfChapters() const;
+    int getQuantityChapters() const;
 
     void operator=(const Photo &other);
 };

@@ -25,17 +25,16 @@ QJsonDocument Helper::readFileJson(const QString &path)
 
 void Helper::writeFileJson(const QJsonDocument &doc, const QString &path)
 {
-    QFile file;
-    file.setFileName(path);
+    QFile file(path);
     if (!file.open(QFile::WriteOnly | QFile::Truncate)){
-        qDebug() << "Error read file" << path << Qt::endl;
+        qDebug() << "Error WriteOnly file" << path << Qt::endl;
         return;
     }
     file.write(doc.toJson());
     file.close();
 }
 
-QString Helper::getNumberStr(const int num)
+QString Helper::getBookNumberStr(const int num)
 {
-    return QString::number(num, 'g', 2);
+    return "book_" + QString::number(num).rightJustified(2, '0');
 }

@@ -25,7 +25,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     Achitecture/Bible.cpp \
     Achitecture/Book.cpp \
-    Achitecture/Chapter.cpp \
+    Achitecture/ChapterText.cpp \
     Achitecture/Photo.cpp \
     Extensions/Content.cpp \
     Extensions/Data.cpp \
@@ -41,7 +41,7 @@ SOURCES += \
 HEADERS += \
     Achitecture/Bible.h \
     Achitecture/Book.h \
-    Achitecture/Chapter.h \
+    Achitecture/ChapterText.h \
     Achitecture/Photo.h \
     Extensions/Content.h \
     Extensions/Data.h \

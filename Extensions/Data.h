@@ -29,15 +29,17 @@ namespace BibleEnums
 
 namespace Path {
 #ifdef QT_DEBUG
-    const QString content_New_Testament_Photos      = "../BibleApp/Resource/Content/22Content_New_Testament_Photos.json";
-    const QString content_Old_Testament_Photos      = "../BibleApp/Resource/Content/22Content_Old_Testament_Photos.json";
-    const QString content_New_Testament_JsonText    = "../BibleApp/Resource/Content/22Content_New_Testament_JsonText.json";
-    const QString content_Old_Testament_JsonText    = "../BibleApp/Resource/Content/22Content_Old_Testament_JsonText.json";
-    const QString allBibleTextJson                  = "../BibleApp/Resource/Content/ru_synodal.json";
-    const QString dirContenet_Old_Testament_Photos       = "../BibleApp/Resource/Content/Old_Testament_Photos/";
-    const QString dirContenet_New_Testament_Photos       = "../BibleApp/Resource/Content/New_Testament_Photos/";
-    const QString dirContenet_Old_Testament_JsonText     = "../BibleApp/Resource/Content/Old_Testament_JsonText/";
-    const QString dirContenet_New_Testament_JsonText     = "../BibleApp/Resource/Content/New_Testament_JsonText/";
+    const QString fileContent_New_Testament_Photos      = "../BibleApp/Resource/Content/Content_New_Testament_Photos.json";
+    const QString fileContent_Old_Testament_Photos      = "../BibleApp/Resource/Content/Content_Old_Testament_Photos.json";
+    const QString fileContent_New_Testament_Info        = "../BibleApp/Resource/Content/Content_New_Testament_Info.json";
+    const QString fileContent_Old_Testament_Info        = "../BibleApp/Resource/Content/Content_Old_Testament_Info.json";
+    const QString fileContent_Old_Testament_ArrayBooks  = "../BibleApp/Resource/Content/Content_Old_Testament_ArrayBooks.json";
+    const QString fileContent_New_Testament_ArrayBooks  = "../BibleApp/Resource/Content/Content_New_Testament_ArrayBooks.json";
+    const QString dirContent_Old_Testament_Photos       = "../BibleApp/Resource/Content/Old_Testament_Photos/";
+    const QString dirContent_New_Testament_Photos       = "../BibleApp/Resource/Content/New_Testament_Photos/";
+    const QString dirContent_Old_Testament_JsonText     = "../BibleApp/Resource/Content/Old_Testament_JsonText/";
+    const QString dirContent_New_Testament_JsonText     = "../BibleApp/Resource/Content/New_Testament_JsonText/";
+    const QString allBibleJsonText                  = "../BibleApp/Resource/Content/ru_synodal.json";
 #else
     const QString newTestament_Content = ":/Skeleton/Resource/Skeleton/Content_New_Testament_Photos.json";
     const QString oldTestament_Content = ":/Skeleton/Resource/Skeleton/Content_Old_Testament_Photos.json";

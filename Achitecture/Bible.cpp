@@ -2,75 +2,84 @@
 
 Bible::Bible(QObject *parent) : QObject(parent)
 {
-//    Content::loadContentJson(&vecOldTestamentBooks, BibleEnums::Old_Testament);
-//    Content::loadContentJson(&vecNewTestamentBooks, BibleEnums::New_Testament);
-//    Content::loadTextVersesJson(&vecOldTestamentBooks, BibleEnums::Old_Testament);
-//    Content::loadTextVersesJson(&vecNewTestamentBooks, BibleEnums::New_Testament);
+    Content::loadContenet_ArrayBooks(&listOldTestamentBooks, BibleEnums::Old_Testament);
+    Content::loadContenet_ArrayBooks(&listNewTestamentBooks, BibleEnums::New_Testament);
 
-    Content::generateContent_Photos();
+    //    Content::loadContentJson(&vecOldTestamentBooks, BibleEnums::Old_Testament);
+    //    Content::loadContentJson(&vecNewTestamentBooks, BibleEnums::New_Testament);
+    //    Content::loadTextVersesJson(&vecOldTestamentBooks, BibleEnums::Old_Testament);
+    //    Content::loadTextVersesJson(&vecNewTestamentBooks, BibleEnums::New_Testament);
+
+//        Content::generateContenet_Info();
+
+    createAllBooks();
 }
 
-Book Bible::getBook(const QString &name, const BibleEnums::Testament &testament)
+QVector<Book>::iterator Bible::getBook(const int number, const BibleEnums::Testament testament)
 {
-    const QVector<Book> *vecBooks { testament == BibleEnums::New_Testament ? &vecNewTestamentBooks : &vecOldTestamentBooks };
-    auto it = std::find_if(vecBooks->begin(), vecBooks->end(),
-                 [name](const Book &book){ return book.getNameRu() == name; });
-    return it == vecBooks->end() ? Book() : *it;
+    QVector<Book> *vecBooks = testament == BibleEnums::New_Testament ? &vecNewTestamentBooks : &vecOldTestamentBooks;
+    Q_ASSERT(vecBooks->size() >= number);
+    return vecBooks->begin() + number;
 }
 
-Book Bible::getNextBook(const QString nameCurrentBook) const
-{
-//    for (int var = 0; var < vecBooks.size(); ++var) {
-//        if(vecBooks.at(var).getNameEn() == nameCurrentBook && var < vecBooks.size() - 1){
-//            return vecBooks.at(var + 1);
-//        }
-//    }
-    return Book{};
-}
+//Book Bible::getNextBook(const QString &nameCurrentBook) const
+//{
+//    //    for (int var = 0; var < vecBooks.size(); ++var) {
+//    //        if(vecBooks.at(var).getNameEn() == nameCurrentBook && var < vecBooks.size() - 1){
+//    //            return vecBooks.at(var + 1);
+//    //        }
+//    //    }
+//    return Book(currentBook->getNumberBook() + 1);
+//}
 
-Book Bible::getPreviousBook(const QString nameCurrentBook) const
-{
-//    for (int var = 0; var < vecBooks.size(); ++var) {
-//        if(vecBooks.at(var).getNameEn() == nameCurrentBook && var > 0){
-//            return vecBooks.at(var - 1);
-//        }
-//    }
-    return Book();
-}
+//Book Bible::getPreviousBook(const QString nameCurrentBook) const
+//{
+//    //    for (int var = 0; var < vecBooks.size(); ++var) {
+//    //        if(vecBooks.at(var).getNameEn() == nameCurrentBook && var > 0){
+//    //            return vecBooks.at(var - 1);
+//    //        }
+//    //    }
+//    return Book(currentBook->getNumberBook() - 1);
+//}
 
 QStringList Bible::getListBooks() const
 {
-    const QVector<Book> *vecBooks { currentTestament == BibleEnums::New_Testament ? &vecNewTestamentBooks : &vecOldTestamentBooks };
-    QStringList list;
-    for (const Book &book: *vecBooks) {
-        list.append(book.getNameRu());
-    }
-    return list;
+    return currentTestament == BibleEnums::Old_Testament ? listOldTestamentBooks: listNewTestamentBooks;
 }
 
-void Bible::setCurrentTestament(const BibleEnums::Testament &testament)
+void Bible::setCurrentTestament(const BibleEnums::Testament testament)
 {
     currentTestament = testament;
 }
 
-void Bible::setCurrentBook(const QString &name)
+void Bible::setCurrentBook(const int number)
 {
-    currentBook = getBook(name, currentTestament);
+    currentBook = getBook(number, currentTestament);
 }
 
 void Bible::setCurrentChapter(const int chapter)
 {
-    currentBook.setCurrentChapter(chapter);
+    currentBook->setCurrentChapter(chapter);
 }
 
 QStringList Bible::getListQuantityChapters() const
 {
-    return currentBook.getListQuantityChapters();
+    return currentBook->getListQuantityChapters();
 }
 
 QStringList Bible::getListVerses() const
 {
-    return currentBook.getListVerses();
+    return currentBook->getListVerses();
+}
+
+void Bible::createAllBooks()
+{
+    for (int var = 0; var < BibleEnums::Old_Testament; ++var) {
+        vecNewTestamentBooks.append(Book(var + 1));
+    }
+    for (int var = 0; var < BibleEnums::New_Testament; ++var) {
+        vecNewTestamentBooks.append(Book(var + 1));
+    }
 }
 
 

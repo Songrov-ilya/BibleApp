@@ -1,6 +1,23 @@
 #include "Content.h"
 
 
+void Content::generateContentStandart(const Content::Standard standart)
+{
+    //    generateContent_Photos();
+    generateContent_Folders();
+    generateContent_Info(standart);
+    generateContent_JsonText(standart);
+    generateContent_TwoArraysBooks();
+}
+
+void Content::generateContent_Folders()
+{
+    QDir().mkdir(Path::dirContent_Old_Testament_Photos);
+    QDir().mkdir(Path::dirContent_New_Testament_Photos);
+    QDir().mkdir(Path::dirContent_Old_Testament_JsonText);
+    QDir().mkdir(Path::dirContent_New_Testament_JsonText);
+}
+
 void Content::generateContent_Photos()
 {
     const int Old_New_Testament { 2 };
@@ -11,32 +28,32 @@ void Content::generateContent_Photos()
         QJsonObject objMain;
         QStringList listDir = getListFileInDirectory(QFileInfo(dirContent).absolutePath());
         for (int var = 0; var < listDir.size(); ++var) {
-            const QString bookNumber = Helper::getBookNumberStr(var);
+            const QString bookIndex = getIndexBookStr(var);
             QJsonObject objBook;
-            fillPhotos(&objBook, dirContent + bookNumber);
-            objMain.insert(bookNumber, objBook);
+            fillPhotos(&objBook, dirContent + bookIndex);
+            objMain.insert(bookIndex, objBook);
         }
         Helper::writeFileJson(QJsonDocument(objMain), fileContent);
     }
 
 
-//    {
-//        "book_36": {
-//            "IMG_20190604_124816_HDR.jpg": "0",
-//            "IMG_20190604_124821_HDR.jpg": "0"
-//        },
-//        "book_37": {
-//            "IMG_20190604_124821_HDR.jpg": "0",
-//            "IMG_20190604_124827_HDR.jpg": "0"
-//        },
-//        "book_38": {
-//            "IMG_20190604_124827_HDR.jpg": "0",
-//            "IMG_20190604_124835_HDR.jpg": "0",
-//            "IMG_20190604_124841_HDR.jpg": "0",
-//            "IMG_20190604_124848_HDR.jpg": "0",
-//            "IMG_20190604_124854_HDR.jpg": "0",
-//            "IMG_20190604_124901_HDR.jpg": "0"
-//        },
+    //    {
+    //        "book_36": {
+    //            "IMG_20190604_124816_HDR.jpg": "0",
+    //            "IMG_20190604_124821_HDR.jpg": "0"
+    //        },
+    //        "book_37": {
+    //            "IMG_20190604_124821_HDR.jpg": "0",
+    //            "IMG_20190604_124827_HDR.jpg": "0"
+    //        },
+    //        "book_38": {
+    //            "IMG_20190604_124827_HDR.jpg": "0",
+    //            "IMG_20190604_124835_HDR.jpg": "0",
+    //            "IMG_20190604_124841_HDR.jpg": "0",
+    //            "IMG_20190604_124848_HDR.jpg": "0",
+    //            "IMG_20190604_124854_HDR.jpg": "0",
+    //            "IMG_20190604_124901_HDR.jpg": "0"
+    //        },
     //    }
 }
 
@@ -49,28 +66,16 @@ void Content::generateNewNameFolder_Photos()
 
         QStringList listDir = getListFileInDirectory(QFileInfo(dirContent).absolutePath());
         for (int var = 0; var < listDir.size(); ++var) {
-            const QString bookNumber = Helper::getBookNumberStr(var);
-            QFile::rename(dirContent + Helper::getBookNumberStr(var), dirContent + bookNumber);
+            const QString bookIndex = getIndexBookStr(var);
+            QFile::rename(dirContent + getIndexBookStr(var), dirContent + bookIndex);
         }
     }
 }
 
-void Content::generateContenet_Info()
+void Content::generateContent_Info(const Content::Standard standart)
 {
-    enum FamilyBooks{
-        Pentateuch = 5,
-        HistoricalBooks = 17,
-        Wisdom = 22,
-        MajorProphets = 27,
-        MinorProphets = 39,
-
-        GospelsAndActs = 44,
-        CatholicEpistles = 51,
-        PaulineEpistles = 65,
-        Apocalypse = 66,
-    };
-
     QJsonDocument doc;
+    // Path::allBibleJsonText has the Standard::Western standart.
     Helper::readFileJson(&doc, Path::allBibleJsonText);
     QJsonArray arrMain = doc.array();
 
@@ -85,7 +90,7 @@ void Content::generateContenet_Info()
         QVector<QString> vecFamilyBooks;
         QString family_books_en;
         QString family_books_ru;
-        QString bookNumber;
+        QString bookIndex;
         int nextFamily { 0 };
         QJsonObject *refObjTestament = &objOldTestament;
         if (var < BibleEnums::Old_Testament) {
@@ -96,7 +101,7 @@ void Content::generateContenet_Info()
             }
             else if (var < FamilyBooks::HistoricalBooks) {
                 vecFamilyBooks = { "Иисус Навин", "Судьи", "Руфь", "1 Царств", "2 Царств", "3 Царств", "4 Царств",
-                                                "1 Паралипомен", "2 Паралипомен", "Ездра", "Неемия", "Есфирь" };
+                                   "1 Паралипомен", "2 Паралипомен", "Ездра", "Неемия", "Есфирь" };
                 family_books_en = "Historical Books";
                 family_books_ru = "Исторические";
                 nextFamily = FamilyBooks::Pentateuch;
@@ -120,7 +125,7 @@ void Content::generateContenet_Info()
                 family_books_ru = "Малые пророки";
                 nextFamily = FamilyBooks::MajorProphets;
             }
-            bookNumber = Helper::getBookNumberStr(var);
+            bookIndex = getIndexBookStr(var);
         }
         else{
             if (var < FamilyBooks::GospelsAndActs) {
@@ -129,34 +134,33 @@ void Content::generateContenet_Info()
                 family_books_ru = "Евангелия и Деяния";
                 nextFamily = FamilyBooks::MinorProphets;
             }
+            else if (var < FamilyBooks::PaulineEpistles) {
+                vecFamilyBooks = { "Римлянам", "1 Коринфянам", "2 Коринфянам", "Галатам", "Ефесянам", "Филиппийцам", "Колоссянам",
+                                   "1 Фессалоникийцам", "2 Фессалоникийцам", "1 Тимофею", "2 Тимофею", "Титу", "Филимону", "Евреям"};
+                family_books_en = "Pauline Epistles";
+                family_books_ru = "Послания Павла";
+                nextFamily = FamilyBooks::GospelsAndActs;
+            }
             else if (var < FamilyBooks::CatholicEpistles) {
                 vecFamilyBooks = { "Иакова", "1 Петра", "2 Петра", "1 Иоанна", "2 Иоанна", "3 Иоанна", "Иуда" };
                 family_books_en = "Catholic Epistles";
                 family_books_ru = "Соборные послания";
-                nextFamily = FamilyBooks::GospelsAndActs;
-            }
-            else if (var < FamilyBooks::PaulineEpistles) {
-                vecFamilyBooks = { "Римлянам", "1 Коринфянам", "2 Коринфянам", "Галатам", "Ефесянам", "Филиппийцам", "Колоссянам",
-                                 "1 Фессалоникийцам", "2 Фессалоникийцам", "1 Тимофею", "2 Тимофею", "Титу", "Филимону", "Евреям"};
-                family_books_en = "Pauline Epistles";
-                family_books_ru = "Послания Павла";
-                nextFamily = FamilyBooks::CatholicEpistles;
+                nextFamily = FamilyBooks::PaulineEpistles;
             }
             else if (var < FamilyBooks::Apocalypse) {
                 vecFamilyBooks = { "Откровение" };
                 family_books_en = "Apocalypse";
                 family_books_ru = "Пророческие";
-                nextFamily = FamilyBooks::PaulineEpistles;
+                nextFamily = FamilyBooks::CatholicEpistles;
             }
-            bookNumber = Helper::getBookNumberStr(var - BibleEnums::Old_Testament);
+            bookIndex = getIndexBookStr(var, BibleEnums::New_Testament, standart);
             refObjTestament = &objNewTestament;
         }
         objBook.insert("name_ru", vecFamilyBooks.at(var - nextFamily));
         objBook.insert("family_books_en", family_books_en);
         objBook.insert("family_books_ru", family_books_ru);
 
-        refObjTestament->insert(bookNumber, objBook);
-        qDebug() << "name3" << objBook.value("name_ru").toString() << bookNumber << Qt::endl;
+        refObjTestament->insert(bookIndex, objBook);
     }
     Helper::writeFileJson(QJsonDocument(objOldTestament), Path::fileContent_Old_Testament_Info);
     Helper::writeFileJson(QJsonDocument(objNewTestament), Path::fileContent_New_Testament_Info);
@@ -178,9 +182,10 @@ void Content::generateContenet_Info()
     //    ]
 }
 
-void Content::generateContenet_JsonText()
+void Content::generateContent_JsonText(const Standard standart)
 {
     QJsonDocument doc;
+    // Path::allBibleJsonText has the Standard::Western standart.
     Helper::readFileJson(&doc, Path::allBibleJsonText);
     QJsonArray arrMain = doc.array();
 
@@ -189,15 +194,13 @@ void Content::generateContenet_JsonText()
         QJsonObject objBook = arrMain.at(var).toObject();
         QJsonArray arrChapters = objBook.value("chapters").toArray();
         if (var < BibleEnums::Old_Testament) {
-            const QString bookNumber = Helper::getBookNumberStr(var);
-            Helper::writeFileJson(QJsonDocument(arrChapters), dirContent + bookNumber + ".json");
-            qDebug() << "name1" << objBook.value("name").toString() << bookNumber << Qt::endl;
+            const QString bookIndex = getIndexBookStr(var);
+            Helper::writeFileJson(QJsonDocument(arrChapters), dirContent + bookIndex + ".json");
         }
         else{
             dirContent = Path::dirContent_New_Testament_JsonText;
-            const QString bookNumber = Helper::getBookNumberStr(var - BibleEnums::Old_Testament);
-            Helper::writeFileJson(QJsonDocument(arrChapters), dirContent + bookNumber + ".json");
-            qDebug() << var << "name2" << objBook.value("name").toString() << bookNumber << Qt::endl;
+            const QString bookIndex = getIndexBookStr(var, BibleEnums::New_Testament, standart);
+            Helper::writeFileJson(QJsonDocument(arrChapters), dirContent + bookIndex + ".json");
         }
     }
 
@@ -218,7 +221,7 @@ void Content::generateContenet_JsonText()
     //    ]
 }
 
-void Content::generateContenet_TwoArraysBooks()
+void Content::generateContent_TwoArraysBooks()
 {
     const int Old_New_Testament { 2 };
     for (int var = 0; var < Old_New_Testament; ++var) {
@@ -267,7 +270,7 @@ void Content::loadContenet_OneBook(Book *book, const BibleEnums::Testament testa
 {
     Q_ASSERT(book);
     const QString dirContent = testament == BibleEnums::Old_Testament ? Path::dirContent_Old_Testament_JsonText : Path::dirContent_New_Testament_JsonText;
-    const QString pathBook = dirContent + Helper::getBookNumberStr(book->getIndexBook()) + ".json";
+    const QString pathBook = dirContent + getIndexBookStr(book->getIndexBook()) + ".json";
     QJsonDocument doc;
     Helper::readFileJson(&doc, pathBook);
     book->loadContentChapterText(doc.array());
@@ -280,22 +283,22 @@ void Content::loadTextVersesJson(QVector<Book> *vecBooks, const BibleEnums::Test
     Helper::readFileJson(&doc, fileContent);
 
 
-//    Helper::readFileJson(&doc, Path::allBibleJsonText);
-//    QJsonArray arrBooks = doc.array();
+    //    Helper::readFileJson(&doc, Path::allBibleJsonText);
+    //    QJsonArray arrBooks = doc.array();
 
-//    for (const QJsonValue &book: arrBooks) {
-//        QJsonObject objBook = book.toObject();
-//        QString bookName = objBook.value("name").toString();
-//        for (Book &book: *vecBooks) {
-//            if(book.getNameEn() == bookName){
-//                QJsonArray arrChapters = objBook.value("chapters").toArray();
-//                for(const QJsonValue &chapter : arrChapters){
-//                    book.appentChapter(Chapter(chapter.toArray()));
-//                }
-//                break;
-//            }
-//        }
-//    }
+    //    for (const QJsonValue &book: arrBooks) {
+    //        QJsonObject objBook = book.toObject();
+    //        QString bookName = objBook.value("name").toString();
+    //        for (Book &book: *vecBooks) {
+    //            if(book.getNameEn() == bookName){
+    //                QJsonArray arrChapters = objBook.value("chapters").toArray();
+    //                for(const QJsonValue &chapter : arrChapters){
+    //                    book.appentChapter(Chapter(chapter.toArray()));
+    //                }
+    //                break;
+    //            }
+    //        }
+    //    }
 }
 
 
@@ -320,3 +323,27 @@ void Content::fillPhotos(QJsonObject *objBook, const QString &pathDir)
         objBook->insert(QFileInfo(str).fileName(), "0");
     }
 }
+
+QString Content::getIndexBookStr(const int indexBook)
+{
+    return "book_" + QString::number(indexBook).rightJustified(2, '0');
+}
+
+QString Content::getIndexBookStr(int indexBook, const BibleEnums::Testament testament, const Content::Standard standart)
+{
+    if (standart == Standard::EasternSynodal) {
+        const int quantityCatholicEpistles { 7 };
+        const int quantityPaulineEpistles { 14 };
+        if (indexBook >= FamilyBooks::GospelsAndActs && indexBook < FamilyBooks::GospelsAndActs + quantityPaulineEpistles) {
+            indexBook += quantityCatholicEpistles;
+        }
+        else if(indexBook >= FamilyBooks::PaulineEpistles && indexBook < FamilyBooks::PaulineEpistles + quantityCatholicEpistles) {
+            indexBook -= quantityPaulineEpistles;
+        }
+    }
+    if (testament == BibleEnums::New_Testament) {
+        indexBook -= BibleEnums::Old_Testament;
+    }
+    return getIndexBookStr(indexBook);
+}
+

@@ -28,15 +28,15 @@ class Book
     QVector<ChapterText> vecChapters;
     bool wasLoadedChapters;
     int indexBook;
-    int currentChapter;
+    int currentChapterIndex;
     InfoBook infoBook;
 public:
     explicit Book(const int indexBook);
 
-    void setCurrentChapter(const int chapter);
+    void setCurrentChapter(const int chapterIndex);
 #ifdef BIBLE_HARD
     void loadContentPhotos(const QJsonObject &objPhotos, const QString &path_dir_photos);
-    int getPhoto(const int chapter) const;
+    int getPhoto(const int chapterIndex) const;
 #endif
     void loadContentChapterText(const QJsonArray &arrChapters);
     void loadContentInfo(const QJsonObject &obj);

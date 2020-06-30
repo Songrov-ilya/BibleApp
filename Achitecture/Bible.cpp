@@ -2,16 +2,12 @@
 
 Bible::Bible(QObject *parent) : QObject(parent)
 {
+#ifdef QT_DEBUG
+//    Content::generateContentStandart(Content::EasternSynodal);
+#endif
+
     Content::loadContenet_ArrayBooks(&listOldTestamentBooks, BibleEnums::Old_Testament);
     Content::loadContenet_ArrayBooks(&listNewTestamentBooks, BibleEnums::New_Testament);
-
-    //    Content::loadContentJson(&vecOldTestamentBooks, BibleEnums::Old_Testament);
-    //    Content::loadContentJson(&vecNewTestamentBooks, BibleEnums::New_Testament);
-    //    Content::loadTextVersesJson(&vecOldTestamentBooks, BibleEnums::Old_Testament);
-    //    Content::loadTextVersesJson(&vecNewTestamentBooks, BibleEnums::New_Testament);
-
-    Content::generateContenet_JsonText();
-    Content::generateContenet_Info();
 
     createAllBooks();
 }
@@ -59,9 +55,7 @@ void Bible::setCurrentTestament(const BibleEnums::Testament testament)
 
 void Bible::setCurrentBook(const int indexBook)
 {
-    qDebug() << "setCurrentBook" << indexBook << Qt::endl;
     currentBook = getBook(indexBook, currentTestament);
-    qDebug() << "currentBook" << currentBook->getIndexBook() << Qt::endl;
 }
 
 void Bible::setCurrentChapter(const int chapter)

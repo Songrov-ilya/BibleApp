@@ -9,17 +9,17 @@ Book::Book(const int indexBook) :
 #endif
     wasLoadedChapters(false),
     indexBook(0),
-    currentChapter(1),
+    currentChapterIndex(0),
     infoBook()
 {
     this->indexBook = indexBook;
 }
 
-void Book::setCurrentChapter(const int chapter)
+void Book::setCurrentChapter(const int chapterIndex)
 {
-    currentChapter = chapter;
+    currentChapterIndex = chapterIndex;
 #ifdef BIBLE_HARD
-    currentPhoto   = getPhoto(chapter);
+    currentPhoto   = getPhoto(chapterIndex);
 #endif
 }
 
@@ -30,14 +30,14 @@ void Book::loadContentPhotos(const QJsonObject &objPhotos, const QString &path_d
         Photo photo(path_dir_photos + key, objPhotos.value(key).toString());
         vecPhotos.append(photo);
     }
-    Q_ASSERT(vecPhotos.isEmpty());
+    Q_ASSERT(!vecPhotos.isEmpty());
 }
 
-int Book::getPhoto(const int chapter) const
+int Book::getPhoto(const int chapterIndex) const
 {
-    Q_ASSERT(chapter <= vecPhotos.size() || chapter < 1);
+//    Q_ASSERT(chapterIndex < vecPhotos.size() && chapterIndex >= 0);
     for (int var = 0; var < vecPhotos.size(); ++var) {
-        if(vecPhotos.at(var).containsChapter(chapter)){
+        if(vecPhotos.at(var).containsChapter(chapterIndex)){
             return var;
         }
     }
@@ -53,7 +53,6 @@ void Book::loadContentChapterText(const QJsonArray &arrChapters)
         vecChapters.append(chapterText);
     }
     wasLoadedChapters = true;
-    qDebug() << "vecChapters" << vecChapters.size() << Qt::endl;
 }
 
 void Book::loadContentInfo(const QJsonObject &obj)
@@ -86,8 +85,8 @@ QStringList Book::getListQuantityChapters() const
 
 QStringList Book::getListVerses() const
 {
-    qDebug() << "chapter" << currentChapter << "vecChapters.size()" << vecChapters.size() << Qt::endl;
-    Q_ASSERT(currentChapter <= vecChapters.size() || currentChapter < 1);
-    return vecChapters.at(currentChapter - 1).getListVerses();
+    qDebug() << "chapter" << currentChapterIndex << "vecChapters.size()" << vecChapters.size() << Qt::endl;
+    Q_ASSERT(currentChapterIndex < vecChapters.size() && currentChapterIndex >= 0);
+    return vecChapters.at(currentChapterIndex).getListVerses();
 }
 

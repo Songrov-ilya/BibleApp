@@ -18,8 +18,6 @@ public:
     static void readFileJson(QJsonDocument *doc, const QString &path);
     static QJsonDocument readFileJson(const QString &path);
     static void writeFileJson(const QJsonDocument &doc, const QString &path);
-
-    static QString getBookNumberStr(const int indexBook);
 };
 
 #endif // HELPER_H

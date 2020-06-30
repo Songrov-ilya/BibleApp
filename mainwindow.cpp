@@ -32,8 +32,11 @@ void MainWindow::setGeneralSettings()
 
 
     rootContext()->setContextProperty("managerQml", manager);
-//    setSource(QUrl::fromLocalFile("../BibleApp/QmlFiles/mainQml.qml"));
+#ifdef QT_DEBUG
+    setSource(QUrl::fromLocalFile("../BibleApp/QmlFiles/rootQml.qml"));
+#else
     setSource(QUrl("qrc:/QmlFiles/QmlFiles/rootQml.qml"));
+#endif
     connect(this->engine(), &QQmlEngine::quit, this, &QCoreApplication::quit);
 }
 

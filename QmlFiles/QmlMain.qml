@@ -8,6 +8,8 @@ Item {
 
     property bool isNewTestament: true
     property int currentSlide: BibleEnums.Title
+//    property int currentSlide: BibleEnums.ListVerses
+
 
 
     QmlSlideTitle{
@@ -73,6 +75,8 @@ Item {
             when: currentSlide === BibleEnums.ListVerses;
             PropertyChanges { target: main; x: isNewTestament ? -width * 3 : +width * 3 }
             StateChangeScript { script: reancorTestamentsSlides(slideListVersesID); }
+//            StateChangeScript { script: managerQml.setCurrentBook(0); }
+//            StateChangeScript { script: managerQml.setCurrentChapter(7); }
             StateChangeScript { script: managerQml.fillListVerses(); }
         }
     ]

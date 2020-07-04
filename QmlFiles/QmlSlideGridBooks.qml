@@ -19,9 +19,4 @@ Item {
             currentSlide = BibleEnums.GridChapters
         }
     }
-//    MouseArea{
-//        anchors.fill: parent
-//        anchors.margins: parent.width / 5
-//        onClicked: currentSlide = BibleEnums.GridChapters;
-//    }
 }

@@ -5,11 +5,21 @@ Item {
     width: providerQml.isDebug ? 360 : Screen.width
     height: providerQml.isDebug ? 640 : Screen.height
 
+    property real screenWidth: providerQml.isDebug ? 360 : Screen.width
+    property real screenHeight: providerQml.isDebug ? 640 : Screen.height
 
     QmlMain{
         width: parent.width
         height: parent.height
         anchors.centerIn: parent.Center
     }
+
+    MouseArea{
+        anchors.fill: parent
+        propagateComposedEvents: true
+        onPressed: mouse.accepted = false
+        onDoubleClicked: Qt.quit()
+    }
+
 
 }

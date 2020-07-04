@@ -10,7 +10,7 @@
         <file>QmlFiles/QmlSlideGridBooks.qml</file>
         <file>QmlFiles/QmlSlideListVerses.qml</file>
         <file>QmlFiles/Elements/QmlButtonHome.qml</file>
-        <file>QmlFiles/Components/QmlComponentGridViewVerses.qml</file>
+        <file>QmlFiles/Components/QmlComponentListViewVerses.qml</file>
     </qresource>
     <qresource prefix="/Icons">
         <file>Resource/Icons/iconfinder_20-blue_address-home-house_4488794.svg</file>

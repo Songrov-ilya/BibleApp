@@ -63,7 +63,7 @@ DISTFILES += \
     QmlFiles/Components/QmlComponentButtonImage.qml \
     QmlFiles/Components/QmlComponentButtonSingle.qml \
     QmlFiles/Components/QmlComponentGridView.qml \
-    QmlFiles/Components/QmlComponentGridViewVerses.qml \
+    QmlFiles/Components/QmlComponentListViewVerses.qml \
     QmlFiles/Elements/QmlButtonHome.qml \
     QmlFiles/QmlMain.qml \
     QmlFiles/QmlSlideGridBooks.qml \
@@ -73,4 +73,4 @@ DISTFILES += \
     QmlFiles/rootQml.qml
 
 RESOURCES += \
-    ResourceFiles.qrc
+#    ResourceFiles.qrc

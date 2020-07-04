@@ -6,18 +6,18 @@ import bible.namespace 1.0
 
 Item {
 
-    MyComonents.QmlComponentGridViewVerses{
+    MyComonents.QmlComponentListViewVerses{
         anchors.fill: parent
         listModelObj: ModelView {
             list: listVersesQml
         }
-        colorCell      : providerQml.colorBackground;
-        colorTextCell  : "white";
-        onClickedCell  : {
-            console.log("indexButton", indexButton);
+//        colorCell      : providerQml.colorBackground;
+//        colorTextCell  : "white";
+//        onClickedCell  : {
+//            console.log("indexButton", indexButton);
 //            managerQml.setCurrentChapter(indexButton)
 //            currentSlide = BibleEnums.ListVerses
-        }
+//        }
     }
 
 }

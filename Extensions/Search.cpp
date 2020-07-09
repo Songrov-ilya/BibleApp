@@ -1,15 +1,11 @@
 #include "Search.h"
 
-Search::Search(QObject *parent) :
-    QObject(parent)
+Search::Search(const Bible *bible, QObject *parent) :
+    QObject(parent),
+    bible(bible)
 {
-    readBibleTextJson();
-}
 
-Search::~Search()
-{
 }
-
 
 ListOfResult Search::find(const QString &textQuery, RangeSearch range)
 {
@@ -30,15 +26,15 @@ ListOfResult Search::find(const QString &textQuery, RangeSearch range)
     //    ]
     ListOfResult list { textQuery };
     if(range == RangeSearch::Verse){
-        searhVerse(list, textQuery);
+        searhVerseRange(list, textQuery);
     }
     else if(range == RangeSearch::Chapter){
-        searhChapter(list, textQuery);
+        searhChapterRange(list, textQuery);
     }
     return list;
 }
 
-void Search::searhVerse(ListOfResult &list, const QString &textQuery)
+void Search::searhVerseRange(ListOfResult &list, const QString &textQuery)
 {
     for (const QJsonValue &book: doc.array()) {
         QJsonObject objBook = book.toObject();
@@ -60,7 +56,7 @@ void Search::searhVerse(ListOfResult &list, const QString &textQuery)
     }
 }
 
-void Search::searhVerse(ListOfResult &list, const QString &nameBook, const QString &textQuery)
+void Search::searhVerseRange(ListOfResult &list, const QString &nameBook, const QString &textQuery)
 {
     for (const QJsonValue &book: doc.array()) {
         QJsonObject objBook = book.toObject();
@@ -86,7 +82,7 @@ void Search::searhVerse(ListOfResult &list, const QString &nameBook, const QStri
     }
 }
 
-void Search::searhChapter(ListOfResult &list, const QString &textQuery)
+void Search::searhChapterRange(ListOfResult &list, const QString &textQuery)
 {
     Result resutl;
     for (const QJsonValue &book: doc.array()) {
@@ -155,23 +151,6 @@ QString Search::fillTextRangeVerses(const QJsonArray &arrOneChapter, const int v
     return text;
 }
 
-
-void Search::readBibleTextJson()
-{
-    QJsonDocument doc;
-    Helper::readFileJson(&doc, Path::allBibleJsonText);
-    qDebug() << "doc" << __LINE__ << doc[0]["chapters"][0][0] << Qt::endl;
-    qDebug() << "doc" << __LINE__ << doc[1]["chapters"][1][1] << Qt::endl;
-    qDebug() << "doc" << __LINE__ << doc[2]["chapters"][2][2] << Qt::endl;
-    qDebug() << "doc" << __LINE__ << doc[3]["chapters"][3][3] << Qt::endl;
-    qDebug() << "doc" << __LINE__ << doc[4]["chapters"][4][4] << Qt::endl;
-    qDebug() << "doc" << __LINE__ << doc[5]["chapters"][5][5] << Qt::endl;
-    qDebug() << "doc" << __LINE__ << doc[6]["chapters"][6][6] << Qt::endl;
-    qDebug() << "doc" << __LINE__ << doc[7]["chapters"][7][7] << Qt::endl;
-    qDebug() << "doc" << __LINE__ << doc[7]["chapters"][7][7].toString("ilya") << Qt::endl;
-//    *arrBooks = doc.array();
-}
-
 ListOfResult::ListOfResult(const QString &textQuery)
 {
     this->textQuery = textQuery;
@@ -182,7 +161,7 @@ void ListOfResult::addResult(const Result &result)
     vectResult.append(result);
 }
 
-void ListOfResult::addResult(const QString book, const int chapter, const int verseBegin, const int verseEnd,
+void ListOfResult::addResult(const QString &book, const int chapter, const int verseBegin, const int verseEnd,
                              const QString &textRangeVerses)
 {
     Result result;
@@ -202,8 +181,7 @@ void ListOfResult::printResult(bool showTextQuery)
         if(result.verseBegin != result.verseEnd){
             rangeVerses += "-" + QString::number(result.verseEnd + 1);
         }
-        qDebug() << ++count << result.book + " (" + QString::number(result.chapter) + ":" +
-                    rangeVerses + ")";
+        qDebug() << ++count << result.book + " (" + QString::number(result.chapter) + ":" + rangeVerses + ")";
         if (showTextQuery) {
             qDebug() << textQuery;
         }

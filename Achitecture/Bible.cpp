@@ -23,6 +23,21 @@ QVector<Book>::iterator Bible::getBook(const int indexBook, const BibleEnums::Te
     return itBook;
 }
 
+BibleEnums::Testament Bible::getCurrentTestament() const
+{
+    return currentTestament;
+}
+
+QVector<Book>::iterator Bible::getCurrentBook() const
+{
+    return currentBook;
+}
+
+int Bible::getCurrentIndexBook() const
+{
+    return currentBook->getIndexBook();
+}
+
 //Book Bible::getNextBook(const QString &nameCurrentBook) const
 //{
 //    //    for (int var = 0; var < vecBooks.size(); ++var) {

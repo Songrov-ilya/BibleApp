@@ -1,6 +1,12 @@
 #include "Content.h"
 
 
+void Content::generateOnlineContent()
+{
+    static Server server;
+    server.getOnlineBookList();
+}
+
 void Content::generateContentStandart(const Content::Standard standart)
 {
     //    generateContent_Photos();
@@ -33,7 +39,7 @@ void Content::generateContent_Photos()
             fillPhotos(&objBook, dirContent + bookIndex);
             objMain.insert(bookIndex, objBook);
         }
-        Helper::writeFileJson(QJsonDocument(objMain), fileContent);
+        FileWorker::writeFileJson(QJsonDocument(objMain), fileContent);
     }
 
 
@@ -76,7 +82,7 @@ void Content::generateContent_Info(const Content::Standard standart)
 {
     QJsonDocument doc;
     // Path::allBibleJsonText has the Standard::Western standart.
-    Helper::readFileJson(&doc, Path::allBibleJsonText);
+    FileWorker::readFileJson(&doc, Path::allBibleJsonText);
     QJsonArray arrMain = doc.array();
 
     QJsonObject objOldTestament;
@@ -162,8 +168,8 @@ void Content::generateContent_Info(const Content::Standard standart)
 
         refObjTestament->insert(bookIndex, objBook);
     }
-    Helper::writeFileJson(QJsonDocument(objOldTestament), Path::fileContent_Old_Testament_Info);
-    Helper::writeFileJson(QJsonDocument(objNewTestament), Path::fileContent_New_Testament_Info);
+    FileWorker::writeFileJson(QJsonDocument(objOldTestament), Path::fileContent_Old_Testament_Info);
+    FileWorker::writeFileJson(QJsonDocument(objNewTestament), Path::fileContent_New_Testament_Info);
 
     //    [
     //        {
@@ -186,7 +192,7 @@ void Content::generateContent_JsonText(const Standard standart)
 {
     QJsonDocument doc;
     // Path::allBibleJsonText has the Standard::Western standart.
-    Helper::readFileJson(&doc, Path::allBibleJsonText);
+    FileWorker::readFileJson(&doc, Path::allBibleJsonText);
     QJsonArray arrMain = doc.array();
 
     QString dirContent { Path::dirContent_Old_Testament_JsonText };
@@ -195,12 +201,12 @@ void Content::generateContent_JsonText(const Standard standart)
         QJsonArray arrChapters = objBook.value("chapters").toArray();
         if (var < BibleEnums::Old_Testament) {
             const QString bookIndex = getIndexBookStr(var);
-            Helper::writeFileJson(QJsonDocument(arrChapters), dirContent + bookIndex + ".json");
+            FileWorker::writeFileJson(QJsonDocument(arrChapters), dirContent + bookIndex + ".json");
         }
         else{
             dirContent = Path::dirContent_New_Testament_JsonText;
             const QString bookIndex = getIndexBookStr(var, BibleEnums::New_Testament, standart);
-            Helper::writeFileJson(QJsonDocument(arrChapters), dirContent + bookIndex + ".json");
+            FileWorker::writeFileJson(QJsonDocument(arrChapters), dirContent + bookIndex + ".json");
         }
     }
 
@@ -230,14 +236,14 @@ void Content::generateContent_TwoArraysBooks()
 
         QJsonDocument doc;
         QJsonArray arrBooks;
-        Helper::readFileJson(&doc, fileContentJsonText);
+        FileWorker::readFileJson(&doc, fileContentJsonText);
         QJsonObject objMain = doc.object();
         QStringList listKeys { objMain.keys() };
         for (const QString &bookKey : listKeys) {
             QJsonObject objBook = objMain.value(bookKey).toObject();
             arrBooks.append(objBook.value("name_ru"));
         }
-        Helper::writeFileJson(QJsonDocument(arrBooks), fileContentArrayBooks);
+        FileWorker::writeFileJson(QJsonDocument(arrBooks), fileContentArrayBooks);
     }
 }
 
@@ -246,7 +252,7 @@ void Content::loadContent_Photos(QVector<Book> *vecBooks, const BibleEnums::Test
     const QString dirContent = testament == BibleEnums::Old_Testament ? Path::dirContent_Old_Testament_Photos : Path::dirContent_New_Testament_Photos;
     const QString fileContent = testament == BibleEnums::Old_Testament ? Path::fileContent_Old_Testament_Photos : Path::fileContent_New_Testament_Photos;
     QJsonDocument doc;
-    Helper::readFileJson(&doc, fileContent);
+    FileWorker::readFileJson(&doc, fileContent);
 
     QJsonObject obj = doc.object();
     QStringList listKeys = obj.keys();
@@ -261,7 +267,7 @@ void Content::loadContenet_ArrayBooks(QStringList *list, const BibleEnums::Testa
 {
     const QString nameFile = testament == BibleEnums::Old_Testament ? Path::fileContent_Old_Testament_ArrayBooks : Path::fileContent_New_Testament_ArrayBooks;
     QJsonDocument doc;
-    Helper::readFileJson(&doc, nameFile);
+    FileWorker::readFileJson(&doc, nameFile);
     QJsonArray arr = doc.array();
     std::for_each(arr.begin(), arr.end(), [list](const QJsonValue &value){ list->append(value.toString()); });
 }
@@ -272,7 +278,7 @@ void Content::loadContenet_OneBook(Book *book, const BibleEnums::Testament testa
     const QString dirContent = testament == BibleEnums::Old_Testament ? Path::dirContent_Old_Testament_JsonText : Path::dirContent_New_Testament_JsonText;
     const QString pathBook = dirContent + getIndexBookStr(book->getIndexBook()) + ".json";
     QJsonDocument doc;
-    Helper::readFileJson(&doc, pathBook);
+    FileWorker::readFileJson(&doc, pathBook);
     book->loadContentChapterText(doc.array());
 }
 
@@ -280,7 +286,7 @@ void Content::loadTextVersesJson(QVector<Book> *vecBooks, const BibleEnums::Test
 {
     const QString fileContent = testament == BibleEnums::Old_Testament ? Path::fileContent_Old_Testament_Info : Path::fileContent_New_Testament_Info;
     QJsonDocument doc;
-    Helper::readFileJson(&doc, fileContent);
+    FileWorker::readFileJson(&doc, fileContent);
 
 
     //    Helper::readFileJson(&doc, Path::allBibleJsonText);

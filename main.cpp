@@ -12,7 +12,9 @@ int main(int argc, char *argv[])
 
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QApplication a(argc, argv);
+#ifdef QT_NO_DEBUG
     Q_INIT_RESOURCE(ResourceFiles);
+#endif
     MainWindow w;
     w.show();
 

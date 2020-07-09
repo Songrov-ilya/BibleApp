@@ -17,8 +17,6 @@ public:
     bool containsChapter(const int chapter) const;
     QString getPathPhoto() const;
     int getQuantityChapters() const;
-
-    void operator=(const Photo &other);
 };
 
 #endif // PHOTO_H

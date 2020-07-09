@@ -8,8 +8,11 @@
 #include <QJsonObject>
 
 #include "Data.h"
-#include "../Helper.h"
-#include "../Achitecture/Book.h"
+#include "FileWorker.h"
+#include "Book.h"
+#ifdef QT_DEBUG
+#include "Server.h"
+#endif
 
 class Content
 {
@@ -30,6 +33,9 @@ public:
         Western,
         EasternSynodal,
     };
+#ifdef QT_DEBUG
+    static void generateOnlineContent();
+#endif
     static void generateContentStandart(const Content::Standard standart);
     static void generateContent_Folders();
     static void generateContent_Photos();
@@ -49,7 +55,6 @@ private:
     static void fillPhotos(QJsonObject *objBook, const QString &pathDir);
     static QString getIndexBookStr(const int indexBook);
     static QString getIndexBookStr(int indexBook, const BibleEnums::Testament testament, const Content::Standard standart);
-
 };
 
 #endif // CONTENT_H

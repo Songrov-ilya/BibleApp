@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QTextCodec>
 
-#include "Extensions/Content.h"
+#include "Content.h"
 
 class Bible : public QObject
 {
@@ -23,6 +23,9 @@ public:
     void setCurrentChapter(const int chapter);
 
     QVector<Book>::iterator getBook(const int indexBook, const BibleEnums::Testament testament);
+    BibleEnums::Testament getCurrentTestament() const;
+    QVector<Book>::iterator getCurrentBook() const;
+    int getCurrentIndexBook() const;
 //    Book getNextBook(const QString &nameCurrentBook) const;
 //    Book getPreviousBook(const QString nameCurrentBook) const;
     QStringList getListBooks() const;

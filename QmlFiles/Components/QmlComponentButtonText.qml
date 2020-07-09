@@ -3,7 +3,7 @@ import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 
 Item {
-    id: componentButtonSingleId
+    id: componentButtonTextId
 
     signal          releasedButton();
     signal          clickedButton();
@@ -12,12 +12,12 @@ Item {
     property color  colorBackgroundButton   : "#524E4A"
     property color  colorTextButton         : "white"
     property color  colorBorderButton       : "white"
-    property int    fontPixelSize           : componentButtonSingleId.width * 0.12
+    property int    fontPixelSize           : componentButtonTextId.width * 0.12
     property bool   boldText                : false
 
 
     Button{
-        id: buttonSingleId
+        id: buttonTextId
         anchors.fill: parent
         opacity: 1.0
         enabled: enabledButton;
@@ -40,24 +40,24 @@ Item {
 
         states: [
             State {
-                name: "PRESSED"; when: buttonSingleId.pressed
-                PropertyChanges { target: buttonSingleId; opacity: 0.5 }
+                name: "PRESSED"; when: buttonTextId.pressed
+                PropertyChanges { target: buttonTextId; opacity: 0.5 }
             },
             State {
-                name: "RELEASED"; when: !buttonSingleId.pressed
-                PropertyChanges {  target: buttonSingleId; opacity: 1.0 }
+                name: "RELEASED"; when: !buttonTextId.pressed
+                PropertyChanges {  target: buttonTextId; opacity: 1.0 }
             }
         ]
         transitions: [
             Transition {
                 from: "PRESSED"
                 to: "RELEASED"
-                PropertyAnimation { target: buttonSingleId; property: "scale"; easing.type: Easing.OutExpo; duration: 500}
+                PropertyAnimation { target: buttonTextId; property: "scale"; easing.type: Easing.OutExpo; duration: 500}
             },
             Transition {
                 from: "RELEASED"
                 to: "PRESSED"
-                PropertyAnimation { target: buttonSingleId; property: "scale"; easing.type: Easing.OutExpo; duration: 500}
+                PropertyAnimation { target: buttonTextId; property: "scale"; easing.type: Easing.OutExpo; duration: 500}
             }
         ]
 

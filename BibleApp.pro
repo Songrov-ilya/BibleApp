@@ -6,7 +6,15 @@ QT       += svg
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = Bible
+CONFIG(debug, debug | release) {
+    TARGET = BibleApp
+    QT       += network
+}
+CONFIG(release, debug | release) {
+    TARGET = Bible
+    RESOURCES += \
+        ResourceFiles.qrc
+}
 
 CONFIG += c++11
 QMAKE_LFLAGS += -Wall -fPIC -no-pie
@@ -27,10 +35,11 @@ SOURCES += \
     Achitecture/Book.cpp \
     Achitecture/ChapterText.cpp \
     Achitecture/Photo.cpp \
-    Extensions/Content.cpp \
-    Extensions/Data.cpp \
+    Adjutants/Content.cpp \
+    Adjutants/Data.cpp \
+    Adjutants/FileWorker.cpp \
+    Adjutants/Server.cpp \
     Extensions/Search.cpp \
-    Helper.cpp \
     Manager.cpp \
     Provider/ProviderQml.cpp \
     View/BibleList.cpp \
@@ -43,10 +52,11 @@ HEADERS += \
     Achitecture/Book.h \
     Achitecture/ChapterText.h \
     Achitecture/Photo.h \
-    Extensions/Content.h \
-    Extensions/Data.h \
+    Adjutants/Content.h \
+    Adjutants/Data.h \
+    Adjutants/FileWorker.h \
+    Adjutants/Server.h \
     Extensions/Search.h \
-    Helper.h \
     Manager.h \
     Provider/ProviderQml.h \
     View/BibleList.h \
@@ -61,7 +71,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 DISTFILES += \
     QmlFiles/Components/QmlComponentButtonImage.qml \
-    QmlFiles/Components/QmlComponentButtonSingle.qml \
+    QmlFiles/Components/QmlComponentButtonText.qml \
     QmlFiles/Components/QmlComponentGridView.qml \
     QmlFiles/Components/QmlComponentListViewVerses.qml \
     QmlFiles/Elements/QmlButtonHome.qml \
@@ -69,8 +79,15 @@ DISTFILES += \
     QmlFiles/QmlSlideGridBooks.qml \
     QmlFiles/QmlSlideGridChapters.qml \
     QmlFiles/QmlSlideListVerses.qml \
+    QmlFiles/QmlSlideSearch.qml \
     QmlFiles/QmlSlideTitle.qml \
     QmlFiles/rootQml.qml
 
-RESOURCES += \
-#    ResourceFiles.qrc
+
+INCLUDEPATH += \
+    Achitecture \
+    Adjutants \
+    Extensions \
+    Provider \
+    View
+

@@ -3,9 +3,21 @@
 Manager::Manager(QQmlContext *rootContext, QObject *parent) :
     QObject(parent),
     rootContext(rootContext),
+    providerQml(),
+    bible(),
+    search(&bible),
     m_elapsed(0)
 {
     setQmlSettings();
+}
+
+QString Manager::getCurrentNameBook()
+{
+//    return bible.getCurrentBook()->getNameBook();
+    if (listBooks.getSize() <= 0) {
+        return "nothing";
+    }
+    return listBooks.getText(bible.getCurrentIndexBook());
 }
 
 void Manager::setCurrentTestament(const BibleEnums::Testament testament)
@@ -13,15 +25,15 @@ void Manager::setCurrentTestament(const BibleEnums::Testament testament)
     bible.setCurrentTestament(testament);
 }
 
-void Manager::setCurrentBook(const int numberBook)
+void Manager::setCurrentBook(const int indexBook)
 {
-    bible.setCurrentBook(numberBook);
+    bible.setCurrentBook(indexBook);
 }
 
-void Manager::setCurrentChapter(const int &chapter)
+void Manager::setCurrentChapter(const int indexChapter)
 {
-    qDebug() << "chapter" << chapter << Qt::endl;
-    bible.setCurrentChapter(chapter);
+    qDebug() << "chapter" << indexChapter << Qt::endl;
+    bible.setCurrentChapter(indexChapter);
 }
 
 void Manager::fillListBooks()
@@ -55,6 +67,7 @@ void Manager::setQmlSettings()
     rootContext->setContextProperty("listBooksQml", &listBooks);
     rootContext->setContextProperty("listChaptersQml", &listChapters);
     rootContext->setContextProperty("listVersesQml", &listVerses);
+    rootContext->setContextProperty("listSearchQml", &listSearch);
     qmlRegisterUncreatableMetaObject(
                 BibleEnums::staticMetaObject, // static meta object
                 "bible.namespace",                // import statement (can be any string)

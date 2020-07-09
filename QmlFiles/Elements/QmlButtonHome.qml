@@ -8,9 +8,8 @@ MyComonents.QmlComponentButtonImage{
     height: width
     anchors.bottom: parent.bottom
     anchors.right: parent.right
-    pathImage: "qrc:/Icons/Resource/Icons/iconfinder_20-blue_address-home-house_4488794.svg"
+    pathImage: providerQml.pathIcomButtonHome
     onClickedButton: currentSlide = BibleEnums.Title
-    visible: currentSlide !== BibleEnums.Title
 
     function reancorButtonHome(slideEmiter){
         buttonHomeID.anchors.bottom = undefined

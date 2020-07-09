@@ -6,43 +6,55 @@ import QtQuick.Controls 2.12
 import ModelViewQml 1.0
 
 Item{
+    id: listViewVersesID
 
     signal movementStartedView();
     signal movementEndedView();
+    signal footerClicked();
     property var listModelObj: ListModel;
+    property string headerNameBook: "headerNameBook"
 
 
     ListView {
-        id: itemListId
-        clip: true
+        id: listViewID
         anchors.fill: parent
+        focus: true
+        clip: true
+        spacing: parent.height * 0.014
         model: listModelObj
         delegate: componentDelegate
-        flickableDirection: Flickable.VerticalFlick
-        boundsBehavior: Flickable.DragAndOvershootBounds
-        //        ScrollBar.vertical: ScrollBar {
-        //            id: scrollDelegat
-        //            width: itemListId.contentHeight > itemListId.height ? parent.width * 0.026 : 0
-        //            active: true
-        //            policy: itemListId.contentHeight > itemListId.height ? ScrollBar.AlwaysOn : ScrollBar.AsNeeded
-
-        //        }
-        rebound: Transition {
-            NumberAnimation {
-                properties: "x,y"
-                duration: 1000
-                easing.type: Easing.OutBounce
+        headerPositioning: ListView.InlineHeader
+        header: Item {
+            id: headerItem
+            width: parent.width
+            height: listViewVersesID.height / 10
+            Text {
+                anchors.fill: parent
+                anchors.margins: Math.min(parent.width, parent.height) * 0.2
+                minimumPixelSize: 10
+                font.pixelSize: 222
+                fontSizeMode: Text.Fit
+                wrapMode: Text.WordWrap
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignBottom
+                color: "red"
+                text: headerNameBook
             }
         }
-        spacing: parent.height * 0.005
-        focus: true
-
-        //                onCountChanged: {
-        //                    var newIndex = itemListId.count - 1 // last index
-        //                    itemListId.positionViewAtEnd()
-        //                    itemListId.currentIndex = newIndex
-        //                }
-
+        footer: Item{
+            id: footerItem
+            width: parent.width
+            height: listViewVersesID.height / 10
+            QmlComponentButtonText{
+                anchors.fill: parent
+                anchors.horizontalCenter: parent.horizontalCenter
+                textButton: isNewTestament ? "<<<" : ">>>"
+                colorBackgroundButton: "transparent"
+                colorBorderButton: "transparent"
+                colorTextButton: "red"
+                onClickedButton: footerClicked()
+            }
+        }
 
         onAddChanged: {
             console.log("onAddTransitionChanged");
@@ -64,34 +76,45 @@ Item{
         id: componentDelegate
 
         Item {
-            width: screenWidth * 0.95
+            width: listViewVersesID.width
             height: textVerse.contentHeight
-            anchors.horizontalCenter: parent.horizontalCenter
 
+            //            Text {
+            //                id: textVerse
+            //                width: parent.width * 0.96
+            //                height: parent.height
+            //                anchors.horizontalCenter: parent.horizontalCenter
+            //                minimumPixelSize: 18
+            //                font.pixelSize: 222
+            //                fontSizeMode: Text.Fit
+            //                wrapMode: Text.WordWrap
+            //                color: "white"
+            //                text: model.textModel
+            //            }
             Text {
                 id: textVerse
-                anchors.fill: parent
-//                anchors.margins: 11
-                minimumPixelSize: 18
-                font.pixelSize: 222
-                fontSizeMode: Text.Fit
+                width: parent.width * 0.96
+                anchors.horizontalCenter: parent.horizontalCenter
+                font.pixelSize: 18
                 wrapMode: Text.WordWrap
                 color: "white"
-                //                horizontalAlignment: Text.AlignHCenter
-                //                verticalAlignment: Text.AlignVCenter
-                text: model.textModel
-                Rectangle{
-                    anchors.fill: parent
-    //                anchors.margins: Math.min(width, height) * 0.2
-                    border.color: "black"
-                    border.width: 1
-                    radius: 5
-                    color: "transparent"
-                    //                opacity: 0.5
-
+                text: getNumberVerse(model.index) + model.textModel
+                function getNumberVerse(index){
+                    return "<font color=\"green\">" + Number(index + 1) + ". </font>"
                 }
             }
-
+            Rectangle{
+                width: parent.width
+                height: parent.height + 6
+                anchors.centerIn: textVerse
+                //                border.color: "black"
+                border.color: "white"
+                border.width: 1
+                radius: 5
+                color: mouse.pressed ? "red" : "grey"
+                opacity: 0.15
+                MouseArea{ id: mouse; anchors.fill: parent }
+            }
 
             //            Component.onCompleted: console.log("gridViewId.horizontalSpacing", gridViewId.horizontalSpacing);
         }

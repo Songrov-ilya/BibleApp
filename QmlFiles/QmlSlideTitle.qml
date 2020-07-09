@@ -9,11 +9,11 @@ import bible.namespace 1.0
 Item {
     anchors.fill: parent
 
-    property int horizontalWidth: width * 0.8
-    property int widthColumns: horizontalWidth / 2.3
-    property int heightColumns: columnButtonsTestamentId.y * 0.38
-    property real spacingColumns: columnOneId.height * 0.03
-    property color colorButtons: providerQml.colorBackground
+    property int    horizontalWidth: width * 0.8
+    property int    widthColumns: horizontalWidth / 2.3
+    property int    heightColumns: columnButtonsTestamentId.y * 0.38
+    property real   spacingColumns: columnOneId.height * 0.03
+    property color  colorButtons: providerQml.colorBackground
 
     Text {
         id: textBibleId
@@ -49,12 +49,19 @@ Item {
         Repeater{
             id: repeaterColumnOneId
             model: [ "Друзья", "Планы чтения", "Закладки", "Поиск" ]
-            MyComonents.QmlComponentButtonSingle{
+            MyComonents.QmlComponentButtonText{
                 width: parent.width * 0.9
                 height: parent.height / repeaterColumnOneId.count - columnOneId.spacing
                 anchors.horizontalCenter: parent.horizontalCenter
                 textButton: modelData
                 colorBackgroundButton: colorButtons
+
+                onClickedButton: {
+                    if(modelData === repeaterColumnOneId.model[3]){
+                        console.log("textButton", textButton);
+                        currentSlide = BibleEnums.Search
+                    }
+                }
             }
         }
     }
@@ -72,7 +79,7 @@ Item {
         Repeater{
             id: repeaterColumnTwoId
             model: [ "О приложении", "Текущий план", "Заметки", "Последнее" ]
-            MyComonents.QmlComponentButtonSingle{
+            MyComonents.QmlComponentButtonText{
                 width: parent.width * 0.9
                 height: parent.height / repeaterColumnTwoId.count - columnTwoId.spacing
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -100,7 +107,7 @@ Item {
         Repeater{
             id: repeaterButtonsTestamentId
             model: [ "Старый завет", "Новый завет" ]
-            MyComonents.QmlComponentButtonSingle{
+            MyComonents.QmlComponentButtonText{
                 width: parent.width / 2 - columnButtonsTestamentId.spacing / repeaterButtonsTestamentId.count
                 height: parent.height
                 anchors.top: parent.top
@@ -109,9 +116,10 @@ Item {
                 colorBackgroundButton: colorButtons
 
                 onReleasedButton: {
-                    isNewTestament = (textButton === repeaterButtonsTestamentId.itemAt(1).textButton);
+                    isNewTestament = (modelData === repeaterButtonsTestamentId.model[1]);
+//                    isNewTestament = (textButton === repeaterButtonsTestamentId.itemAt(1).textButton);
                     managerQml.setCurrentTestament(isNewTestament ? BibleEnums.New_Testament : BibleEnums.Old_Testament)
-                    currentSlide = BibleEnums.GridBooks;
+                    currentSlide = BibleEnums.GridBooks
                     console.log("textButton", textButton, isNewTestament);
                 }
             }

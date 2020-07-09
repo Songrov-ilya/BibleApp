@@ -3,13 +3,17 @@
 
 #include <QObject>
 #include <QColor>
+#include <QUrl>
 
 class ProviderQml : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isDebug READ getDebug CONSTANT)
-    Q_PROPERTY(QColor colorBackground READ getColorBackground CONSTANT)
+    QString pathIcomButtonHome;
+
+    Q_PROPERTY(bool isDebug                 READ    getDebug            CONSTANT)
+    Q_PROPERTY(QColor colorBackground       READ    getColorBackground  CONSTANT)
+    Q_PROPERTY(QString pathIcomButtonHome   MEMBER  pathIcomButtonHome  CONSTANT)
 public:
     explicit ProviderQml(QObject *parent = nullptr);
 

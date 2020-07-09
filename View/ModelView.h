@@ -5,7 +5,7 @@
 #include <QDebug>
 #include <QAbstractListModel>
 
-#include "View/BibleList.h"
+#include "BibleList.h"
 
 class ModelView : public QAbstractListModel
 {

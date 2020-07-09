@@ -30,10 +30,10 @@ void MainWindow::setGeneralSettings()
 //    setColor("#00000000");
     setColor(ProviderQml::getColorBackground());
 
-
     rootContext()->setContextProperty("managerQml", manager);
 #ifdef QT_DEBUG
     setSource(QUrl::fromLocalFile("../BibleApp/QmlFiles/rootQml.qml"));
+//    setSource(QUrl::fromLocalFile("/media/songrov/1478E91378E8F500/IlyaFolder/Songrov_Ilya/Programming/QtProjects/BibleApp/BibleApp/QmlFiles/rootQml.qml"));
 #else
     setSource(QUrl("qrc:/QmlFiles/QmlFiles/rootQml.qml"));
 #endif

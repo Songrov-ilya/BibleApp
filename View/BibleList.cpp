@@ -35,7 +35,7 @@ void BibleList::clearListBible()
     emit postResetModel();
 }
 
-QString BibleList::getText(const int index)
+QString BibleList::getText(const int index) const
 {
     return list.at(index);
 }

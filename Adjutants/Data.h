@@ -15,6 +15,7 @@ enum Slide {
     GridBooks,
     GridChapters,
     ListVerses,
+    Search,
     Error,
 };
 Q_ENUM_NS(Slide)  // register the enum in meta object data

@@ -5,6 +5,9 @@ import ModelViewQml 1.0
 import bible.namespace 1.0
 
 Item {
+    width: parent.width
+    height: parent.height
+    anchors.centerIn: parent.Center
 
     MyComonents.QmlComponentGridView{
         anchors.fill: parent

@@ -1,5 +1,4 @@
-#ifndef HELPER_H
-#define HELPER_H
+#pragma once
 
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -9,15 +8,13 @@
 #include <QDir>
 #include <QDebug>
 
-class Helper
+class FileWorker
 {
 
 public:
-    explicit Helper();
+    explicit FileWorker();
 
     static void readFileJson(QJsonDocument *doc, const QString &path);
     static QJsonDocument readFileJson(const QString &path);
     static void writeFileJson(const QJsonDocument &doc, const QString &path);
 };
-
-#endif // HELPER_H

@@ -1,7 +1,7 @@
 #include "Book.h"
 
 
-Book::Book(const int indexBook) :
+Book::Book(const int index) :
 #ifdef BIBLE_HARD
     path_dir_photos(""),
     currentPhoto(0),
@@ -12,7 +12,8 @@ Book::Book(const int indexBook) :
     currentChapterIndex(0),
     infoBook()
 {
-    this->indexBook = indexBook;
+    this->indexBook = index;
+    qDebug() << "this->indexBook" << this->indexBook << Qt::endl;
 }
 
 void Book::setCurrentChapter(const int chapterIndex)
@@ -72,6 +73,11 @@ bool Book::wasLoaded()
 int Book::getIndexBook() const
 {
     return this->indexBook;
+}
+
+QString Book::getNameBook() const
+{
+    return infoBook.name_ru;
 }
 
 QStringList Book::getListQuantityChapters() const

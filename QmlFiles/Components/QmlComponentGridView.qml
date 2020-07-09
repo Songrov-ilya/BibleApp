@@ -72,7 +72,7 @@ Item{
 //                verticalAlignment: Text.AlignVCenter
 //                text: model.textModel
 //            }
-            QmlComponentButtonSingle{
+            QmlComponentButtonText{
                 anchors.fill: parent
                 anchors.horizontalCenter: parent.horizontalCenter
                 textButton: model.textModel

@@ -9,17 +9,16 @@ Item {
     height: parent.height
     anchors.centerIn: parent.Center
 
-    property string headerNameBookString: ""
-
     MyComonents.QmlComponentListViewVerses{
-        id: listVersesID
+        id: listSearch
         anchors.fill: parent
         anchors.leftMargin: Math.min(screenWidth, screenHeight)  * 0.02 /* finish at the end */
         anchors.rightMargin: Math.min(screenWidth, screenHeight)  * 0.02 /* finish at the end */
         listModelObj: ModelView {
-            list: listVersesQml
+            list: listSearchQml
         }
-        headerNameBook: headerNameBookString
-        onFooterClicked: currentSlide = BibleEnums.GridChapters
+        headerNameBook: "Search"
+        onFooterClicked: currentSlide = BibleEnums.Title
     }
+
 }

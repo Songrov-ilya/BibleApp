@@ -37,9 +37,4 @@ int Photo::getQuantityChapters() const
     return vecChapter.size();
 }
 
-void Photo::operator=(const Photo &other)
-{
-    this->vecChapter = other.vecChapter;
-    this->pathPhoto = other.pathPhoto;
-}
 

@@ -7,7 +7,7 @@
 
 #include "Photo.h"
 #include "ChapterText.h"
-#include "../Extensions/Data.h"
+#include "Data.h"
 
 struct InfoBook{
     QString abbrev;
@@ -31,7 +31,7 @@ class Book
     int currentChapterIndex;
     InfoBook infoBook;
 public:
-    explicit Book(const int indexBook);
+    explicit Book(const int index);
 
     void setCurrentChapter(const int chapterIndex);
 #ifdef BIBLE_HARD
@@ -43,6 +43,7 @@ public:
 
     bool wasLoaded();
     int getIndexBook() const;
+    QString getNameBook() const;
     QStringList getListQuantityChapters() const;
     QStringList getListVerses() const;
 };

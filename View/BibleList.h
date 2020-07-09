@@ -14,7 +14,7 @@ public:
     void appendList(const QStringList &list);
     void setList(const QStringList &list);
     void clearListBible();
-    QString getText(const int index);
+    QString getText(const int index) const;
     int getSize() const;
 
 signals:

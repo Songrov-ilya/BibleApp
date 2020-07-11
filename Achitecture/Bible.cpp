@@ -3,7 +3,7 @@
 Bible::Bible(QObject *parent) : QObject(parent)
 {
 #ifdef QT_DEBUG
-//    Content::generateContentStandart(Content::EasternSynodal);
+    Content::generateContentStandart(Content::EasternSynodal, Content::BIBLEONLINE_RU);
 #endif
 
     Content::loadContenet_ArrayBooks(&listOldTestamentBooks, BibleEnums::Old_Testament);

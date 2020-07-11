@@ -38,7 +38,6 @@ SOURCES += \
     Adjutants/Content.cpp \
     Adjutants/Data.cpp \
     Adjutants/FileWorker.cpp \
-    Adjutants/Server.cpp \
     Extensions/Search.cpp \
     Manager.cpp \
     Provider/ProviderQml.cpp \
@@ -55,7 +54,6 @@ HEADERS += \
     Adjutants/Content.h \
     Adjutants/Data.h \
     Adjutants/FileWorker.h \
-    Adjutants/Server.h \
     Extensions/Search.h \
     Manager.h \
     Provider/ProviderQml.h \

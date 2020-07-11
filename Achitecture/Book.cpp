@@ -13,7 +13,6 @@ Book::Book(const int index) :
     infoBook()
 {
     this->indexBook = index;
-    qDebug() << "this->indexBook" << this->indexBook << Qt::endl;
 }
 
 void Book::setCurrentChapter(const int chapterIndex)

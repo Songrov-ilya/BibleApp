@@ -67,32 +67,35 @@ void Content::generateContent_Folders(const Content::TypeContent typeContent)
         dirContent_Old = Path::dirContent_Old_Testament_JsonText_KAZAKOV;
         dirContent_New = Path::dirContent_New_Testament_JsonText_KAZAKOV;
     }
+    QDir(dirContent_Old).removeRecursively();
+    QDir(dirContent_New).removeRecursively();
+    QThread::msleep(2000);
     QDir().mkdir(dirContent_Old);
     QDir().mkdir(dirContent_New);
 }
 
-void Content::generateContentStandart(const Content::Standard standart, const TypeContent typeContent)
+void Content::generateContentStandart(const Content::Standard requiredStandart, const TypeContent typeContent)
 {
     generateContent_Folders(typeContent);
     if (typeContent == GITHUB_BIBLE_XML_AND_JSON_THIAGO_BODRUK) {
-        generateContent_Info_BODRUK(standart);
-        generateContent_JsonText_BODRUK(standart);
+        generateContent_Info_BODRUK(requiredStandart);
+        generateContent_JsonText_BODRUK(requiredStandart);
     }
-    else if(typeContent == BIBLEONLINE_RU){
-        getOnlineBookList();
+    if(typeContent == BIBLEONLINE_RU){
+        //        getOnlineBookList();
         //        generateContent_Info_ONLINE(standart);
         //        getOnlineBible();
         //        generateContent_JsonText_ONLINE(standart);
     }
-    else if(typeContent == GITHUB_BIBLE_USFM2JSON_RUSLAN_KAZAKOV){
+    if(typeContent == GITHUB_BIBLE_USFM2JSON_RUSLAN_KAZAKOV){
         generateValidJson_KAZAKOV();
-        generateContent_Info_KAZAKOV(standart);
-        generateContent_JsonText_KAZAKOV(standart);
+        generateContent_Info_KAZAKOV(requiredStandart);
+        generateContent_JsonText_KAZAKOV(requiredStandart);
     }
     generateContent_TwoArraysBooks(typeContent);
 }
 
-void Content::generateContent_Info_BODRUK(const Content::Standard standart)
+void Content::generateContent_Info_BODRUK(const Content::Standard requiredStandart)
 {
     QJsonDocument doc;
     // Path::allBibleJsonText has the Standard::Western standart.
@@ -170,7 +173,7 @@ void Content::generateContent_Info_BODRUK(const Content::Standard standart)
                 family_books_ru = getNameFamilyBooks(Apocalypse, "ru");
                 nextFamily = FamilyBooks::CatholicEpistles;
             }
-            bookIndex = getIndexBookStr(var, BibleEnums::New_Testament, standart);
+            bookIndex = getIndexBookStr(var, BibleEnums::New_Testament, Standard::Western, requiredStandart);
             refObjTestament = &objNewTestament;
         }
         objBook.insert("name_ru", vecFamilyBooks.at(var - nextFamily));
@@ -199,7 +202,7 @@ void Content::generateContent_Info_BODRUK(const Content::Standard standart)
     //    ]
 }
 
-void Content::generateContent_Info_ONLINE(const Content::Standard standart)
+void Content::generateContent_Info_ONLINE(const Content::Standard requiredStandart)
 {
     QJsonDocument doc;
     FileWorker::readFileJson(&doc, Path::tempJson);
@@ -259,7 +262,7 @@ void Content::generateContent_Info_ONLINE(const Content::Standard standart)
             else if (index < FamilyBooks::Apocalypse) {
                 family_books_en = getNameFamilyBooks(Apocalypse, "en");
             }
-            bookIndex = getIndexBookStr(index, BibleEnums::New_Testament, standart);
+            bookIndex = getIndexBookStr(index, BibleEnums::New_Testament, Standard::Western, requiredStandart);
             refObjTestament = &objNewTestament;
         }
         objBook.insert("family_books_en", family_books_en);
@@ -329,12 +332,14 @@ void Content::generateContent_Info_ONLINE(const Content::Standard standart)
     //    ]
 }
 
-void Content::generateContent_Info_KAZAKOV(const Content::Standard standart)
+void Content::generateContent_Info_KAZAKOV(const Content::Standard requiredStandart)
 {
     QJsonDocument doc;
     // Path::allBibleJsonText has the Standard::Western standart.
     FileWorker::readFileJson(&doc, Path::tempJson);
     QJsonArray arrMain = doc.array();
+
+    Q_ASSERT(!arrMain.isEmpty());
 
     QJsonObject objOldTestament;
     QJsonObject objNewTestament;
@@ -414,7 +419,7 @@ void Content::generateContent_Info_KAZAKOV(const Content::Standard standart)
                 family_books_ru = getNameFamilyBooks(Apocalypse, "ru");
                 nextFamily = FamilyBooks::CatholicEpistles;
             }
-            bookIndex = getIndexBookStr(index, BibleEnums::New_Testament, standart);
+            bookIndex = getIndexBookStr(index, BibleEnums::New_Testament, Standard::Western, requiredStandart);
             refObjTestament = &objNewTestament;
         }
         objBook.insert("name_ru", vecFamilyBooks.at(index - nextFamily));
@@ -422,6 +427,7 @@ void Content::generateContent_Info_KAZAKOV(const Content::Standard standart)
         objBook.insert("family_books_ru", family_books_ru);
 
         refObjTestament->insert(bookIndex, objBook);
+        Q_ASSERT(!objBook.isEmpty());
     }
     FileWorker::writeFileJson(QJsonDocument(objOldTestament), Path::fileContent_Old_Testament_Info_KAZAKOV);
     FileWorker::writeFileJson(QJsonDocument(objNewTestament), Path::fileContent_New_Testament_Info_KAZAKOV);
@@ -441,7 +447,7 @@ void Content::generateContent_Info_KAZAKOV(const Content::Standard standart)
     //    ]
 }
 
-void Content::generateContent_JsonText_BODRUK(const Standard standart)
+void Content::generateContent_JsonText_BODRUK(const Standard requiredStandart)
 {
     QJsonDocument doc;
     // Path::allBibleJsonText has the Standard::Western standart.
@@ -458,7 +464,7 @@ void Content::generateContent_JsonText_BODRUK(const Standard standart)
         }
         else{
             dirContent = Path::dirContent_New_Testament_JsonText_BODRUK;
-            const QString bookIndex = getIndexBookStr(var, BibleEnums::New_Testament, standart);
+            const QString bookIndex = getIndexBookStr(var, BibleEnums::New_Testament, Standard::Western, requiredStandart);
             FileWorker::writeFileJson(QJsonDocument(arrChapters), dirContent + bookIndex + ".json");
         }
     }
@@ -480,55 +486,58 @@ void Content::generateContent_JsonText_BODRUK(const Standard standart)
     //    ]
 }
 
-void Content::generateContent_JsonText_ONLINE(const Content::Standard standart)
+void Content::generateContent_JsonText_ONLINE(const Content::Standard requiredStandart)
 {
 
 }
 
-void Content::generateContent_JsonText_KAZAKOV(const Content::Standard standart)
+void Content::generateContent_JsonText_KAZAKOV(const Content::Standard requiredStandart)
 {
     QJsonDocument doc;
     // Path::allBibleJsonText has the Standard::Western standart.
     FileWorker::readFileJson(&doc, Path::tempJson);
     QJsonArray arrMain = doc.array();
-    if (arrMain.isEmpty()) {
-        return;
-    }
-    arrMain.append({}); // this is for the all books will be writing to file
+    Q_ASSERT(!arrMain.isEmpty());
 
     QString dirContent { Path::dirContent_Old_Testament_JsonText_KAZAKOV };
-    QString currentBookName { arrMain.at(0).toObject().value("book_name").toString() };
-    int currentChapter      { arrMain.at(0).toObject().value("chapter").toInt() };
     int index { 0 };
     QJsonArray arrChapters;
     QJsonArray arrVerses;
     for (int var = 0; var < arrMain.size(); ++var) {
-        QJsonObject objBook = arrMain.at(var).toObject();
-        if (objBook.value("book_name").toString() != currentBookName) {
-            if (index < BibleEnums::Old_Testament) {
-                const QString bookIndex = getIndexBookStr(index);
-                FileWorker::writeFileJson(QJsonDocument(arrChapters), dirContent + bookIndex + ".json");
-            }
-            else{
-                dirContent = Path::dirContent_New_Testament_JsonText_KAZAKOV;
-                const QString bookIndex = getIndexBookStr(index, BibleEnums::New_Testament, standart);
-                FileWorker::writeFileJson(QJsonDocument(arrChapters), dirContent + bookIndex + ".json");
-            }
-            arrChapters = QJsonArray();
-            arrVerses = QJsonArray();
-            currentBookName = objBook.value("book_name").toString();
-            currentChapter = objBook.value("chapter").toInt();
-            ++index;
-        }
-
-        if (objBook.value("chapter").toInt() != currentChapter) {
+        QJsonObject objBookVerse = arrMain.at(var).toObject();
+        QJsonObject nextObjBookVerse = var + 1 < arrMain.size() ? arrMain.at(var + 1).toObject() : QJsonObject();
+        const int currentChapter = objBookVerse.value("chapter").toInt();
+        const QString currentBook = objBookVerse.value("book_name").toString();
+        const int nextChapter = nextObjBookVerse.value("chapter").toInt();
+        const QString nextBook = nextObjBookVerse.value("book_name").toString();
+        arrVerses.append(objBookVerse.value("text"));
+        if (currentChapter != nextChapter || currentBook != nextBook) {
             arrChapters.append(arrVerses);
             arrVerses = QJsonArray();
-            currentChapter = objBook.value("chapter").toInt();
         }
-        arrVerses.append(objBook.value("text"));
+
+        if (currentBook == nextBook && var + 1 < arrMain.size()) {
+            continue;
+        }
+        if (var == arrMain.size() - 1) {
+            arrChapters.append(arrVerses);
+        }
+
+        Q_ASSERT(!arrChapters.isEmpty());
+        if (index < BibleEnums::Old_Testament) {
+            const QString bookIndex = getIndexBookStr(index);
+            FileWorker::writeFileJson(QJsonDocument(arrChapters), dirContent + bookIndex + ".json");
+        }
+        else{
+            dirContent = Path::dirContent_New_Testament_JsonText_KAZAKOV;
+            const QString bookIndex = getIndexBookStr(index, BibleEnums::New_Testament, Standard::Western, requiredStandart);
+            qDebug() << "bookIndex" << bookIndex << currentBook <<
+                        qPrintable(QJsonDocument(arrChapters).toJson(QJsonDocument::Compact)) << Qt::endl;
+            FileWorker::writeFileJson(QJsonDocument(arrChapters), dirContent + bookIndex + ".json");
+        }
+        arrChapters = QJsonArray();
+        ++index;
     }
-    qDebug() << "Kzakov finish" << Qt::endl;
     //    [
     //        {
     //        "chapter" : 1,
@@ -661,16 +670,20 @@ QString Content::getIndexBookStr(const int indexBook)
     return "book_" + QString::number(indexBook).rightJustified(2, '0');
 }
 
-QString Content::getIndexBookStr(int indexBook, const BibleEnums::Testament testament, const Content::Standard standart)
+QString Content::getIndexBookStr(int indexBook, const BibleEnums::Testament testament,
+                                 const Content::Standard currentStandart, const Content::Standard requiredStandart)
 {
-    if (standart == Standard::EasternSynodal) {
+    if (testament == BibleEnums::New_Testament && currentStandart != requiredStandart) {
         const int quantityCatholicEpistles { 7 };
         const int quantityPaulineEpistles { 14 };
-        if (indexBook >= FamilyBooks::GospelsAndActs && indexBook < FamilyBooks::GospelsAndActs + quantityPaulineEpistles) {
-            indexBook += quantityCatholicEpistles;
+        // Western --> EasternSynodal : Western <-- EasternSynodal
+        const int firstFamily = requiredStandart == Standard::EasternSynodal ? quantityCatholicEpistles : quantityPaulineEpistles;
+        const int lastFamily = requiredStandart == Standard::EasternSynodal ? quantityPaulineEpistles : quantityCatholicEpistles;
+        if (indexBook >= FamilyBooks::GospelsAndActs && indexBook < FamilyBooks::GospelsAndActs + lastFamily) {
+            indexBook += firstFamily;
         }
-        else if(indexBook >= FamilyBooks::PaulineEpistles && indexBook < FamilyBooks::PaulineEpistles + quantityCatholicEpistles) {
-            indexBook -= quantityPaulineEpistles;
+        else if(indexBook >= FamilyBooks::GospelsAndActs + lastFamily && indexBook < FamilyBooks::GospelsAndActs + lastFamily + firstFamily) {
+            indexBook -= lastFamily;
         }
     }
     if (testament == BibleEnums::New_Testament) {
@@ -799,7 +812,6 @@ void Content::generateValidJson_KAZAKOV()
         qDebug() << "doc is valid" << Qt::endl;
     }
     FileWorker::writeFile(arr, Path::tempJson);
-    qDebug() << "finish!" << Qt::endl;
 }
 
 void Content::sendGetRequest(const QString &urlStr, const QByteArray &paramJson, std::function<void (QNetworkReply *)> funcSlotReply)

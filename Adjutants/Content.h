@@ -13,6 +13,7 @@
 
 #ifdef QT_DEBUG
 #include <QApplication>
+#include <QThread>
 #include <QNetworkAccessManager>
 #include <QNetworkRequest>
 #include <QNetworkReply>
@@ -22,7 +23,7 @@
 
 class Content
 {
-    enum FamilyBooks{
+    enum FamilyBooks { // Standard::Western
         Pentateuch = 5,
         HistoricalBooks = 17,
         Wisdom = 22,
@@ -35,7 +36,7 @@ class Content
         Apocalypse = 66,
     };
 public:
-    enum TypeContent{
+    enum TypeContent {
         GITHUB_BIBLE_USFM2JSON_RUSLAN_KAZAKOV, // пока самое точное!
         GITHUB_BIBLE_XML_AND_JSON_THIAGO_BODRUK, // здесь много ошибок
         BIBLEONLINE_RU, // здесь вообще не доделанное API
@@ -45,18 +46,19 @@ public:
         EasternSynodal,
     };
 #ifdef QT_DEBUG
-    static void generateContentStandart(const Content::Standard standart, const TypeContent typeContent);
+    static void generateContentStandart(const Content::Standard requiredStandart, const TypeContent typeContent);
 #endif
     static void loadContent_Photos(QVector<Book> *vecBooks, const BibleEnums::Testament testament);
     static void loadContenet_ArrayBooks(QStringList *list, const BibleEnums::Testament testament);
     static void loadContenet_OneBook(Book *book, const BibleEnums::Testament testament);
-
     static void loadTextVersesJson(QVector<Book> *vecBooks, const BibleEnums::Testament testament);
+
 private:
     static QStringList getListFileInDirectory(const QString &dir);
     static void fillPhotos(QJsonObject *objBook, const QString &pathDir);
     static QString getIndexBookStr(const int indexBook);
-    static QString getIndexBookStr(int indexBook, const BibleEnums::Testament testament, const Content::Standard standart);
+    static QString getIndexBookStr(int indexBook, const BibleEnums::Testament testament,
+                                   const Content::Standard currentStandart, const Content::Standard requiredStandart);
 
 #ifdef QT_DEBUG
     static QNetworkAccessManager mngr;
@@ -64,12 +66,12 @@ private:
     static void generateNewNameFolder_Photos();
 
     static void generateContent_Folders(const TypeContent typeContent);
-    static void generateContent_Info_BODRUK(const Content::Standard standart);
-    static void generateContent_Info_ONLINE(const Content::Standard standart);
-    static void generateContent_Info_KAZAKOV(const Content::Standard standart);
-    static void generateContent_JsonText_BODRUK(const Content::Standard standart);
-    static void generateContent_JsonText_ONLINE(const Content::Standard standart);
-    static void generateContent_JsonText_KAZAKOV(const Content::Standard standart);
+    static void generateContent_Info_BODRUK(const Content::Standard requiredStandart);
+    static void generateContent_Info_ONLINE(const Content::Standard requiredStandart);
+    static void generateContent_Info_KAZAKOV(const Content::Standard requiredStandart);
+    static void generateContent_JsonText_BODRUK(const Content::Standard requiredStandart);
+    static void generateContent_JsonText_ONLINE(const Content::Standard requiredStandart);
+    static void generateContent_JsonText_KAZAKOV(const Content::Standard requiredStandart);
     static void generateContent_TwoArraysBooks(const TypeContent typeContent);
 
     static QVector<QString> getVectorFamilyBooks(const FamilyBooks familyBooks);

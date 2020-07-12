@@ -3,6 +3,7 @@
 Bible::Bible(QObject *parent) : QObject(parent)
 {
 #ifdef QT_DEBUG
+//    Content::generateContentStandart(Content::EasternSynodal, Content::GITHUB_BIBLE_XML_AND_JSON_THIAGO_BODRUK);
     Content::generateContentStandart(Content::EasternSynodal, Content::GITHUB_BIBLE_USFM2JSON_RUSLAN_KAZAKOV);
 #endif
 

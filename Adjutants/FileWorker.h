@@ -17,4 +17,7 @@ public:
     static void readFileJson(QJsonDocument *doc, const QString &path);
     static QJsonDocument readFileJson(const QString &path);
     static void writeFileJson(const QJsonDocument &doc, const QString &path);
+
+    static void readFile(QByteArray *arr, const QString &path);
+    static void writeFile(const QByteArray &arr, const QString &path);
 };

@@ -36,48 +36,49 @@ class Content
     };
 public:
     enum TypeContent{
-        GITHUB_BIBLE_XML_AND_JSON,
-        BIBLEONLINE_RU,
+        GITHUB_BIBLE_USFM2JSON_RUSLAN_KAZAKOV, // пока самое точное!
+        GITHUB_BIBLE_XML_AND_JSON_THIAGO_BODRUK, // здесь много ошибок
+        BIBLEONLINE_RU, // здесь вообще не доделанное API
     };
     enum Standard {
         Western,
         EasternSynodal,
     };
 #ifdef QT_DEBUG
-    static QNetworkAccessManager mngr;
-    static void generateOnlineContent();
-
-    static void generateContent_Photos();
-    static void generateNewNameFolder_Photos();
-
     static void generateContentStandart(const Content::Standard standart, const TypeContent typeContent);
-    static void generateContent_Folders();
-    static void generateContent_Info(const Content::Standard standart);
-    static void generateContent_Info_Online(const Content::Standard standart);
-    static void generateContent_JsonText(const Content::Standard standart);
-    static void generateContent_JsonText_Online(const Content::Standard standart);
-    static void generateContent_TwoArraysBooks(const TypeContent typeContent);
 #endif
-
     static void loadContent_Photos(QVector<Book> *vecBooks, const BibleEnums::Testament testament);
     static void loadContenet_ArrayBooks(QStringList *list, const BibleEnums::Testament testament);
     static void loadContenet_OneBook(Book *book, const BibleEnums::Testament testament);
 
     static void loadTextVersesJson(QVector<Book> *vecBooks, const BibleEnums::Testament testament);
-
 private:
     static QStringList getListFileInDirectory(const QString &dir);
     static void fillPhotos(QJsonObject *objBook, const QString &pathDir);
     static QString getIndexBookStr(const int indexBook);
     static QString getIndexBookStr(int indexBook, const BibleEnums::Testament testament, const Content::Standard standart);
+
 #ifdef QT_DEBUG
+    static QNetworkAccessManager mngr;
+    static void generateContent_Photos();
+    static void generateNewNameFolder_Photos();
+
+    static void generateContent_Folders(const TypeContent typeContent);
+    static void generateContent_Info_BODRUK(const Content::Standard standart);
+    static void generateContent_Info_ONLINE(const Content::Standard standart);
+    static void generateContent_Info_KAZAKOV(const Content::Standard standart);
+    static void generateContent_JsonText_BODRUK(const Content::Standard standart);
+    static void generateContent_JsonText_ONLINE(const Content::Standard standart);
+    static void generateContent_JsonText_KAZAKOV(const Content::Standard standart);
+    static void generateContent_TwoArraysBooks(const TypeContent typeContent);
+
     static QVector<QString> getVectorFamilyBooks(const FamilyBooks familyBooks);
     static QString getNameFamilyBooks(const FamilyBooks familyBooks, const QString &language);
     static void getOnlineBookList();
     static void getOnlineBible();
+    static void generateValidJson_KAZAKOV();
     static void sendGetRequest(const QString &urlStr, const QByteArray &paramJson,
                                std::function<void (QNetworkReply *)> funcSlotReply);
-private slots:
     static void slotSSLErrors(QNetworkReply *reply, const QList<QSslError> &errors);
     static void slotGetReply(QNetworkReply* reply);
 #endif

@@ -33,24 +33,33 @@ const QString prefix = "../BibleApp";
 #else
 const QString prefix = ":/Content";
 #endif
-const QString allBibleJsonText                      = prefix + "/Resource/Content/ru_synodal.json";
-const QString tempJson                              = prefix + "/Resource/Content/temp.json";
+const QString allBibleJsonText_BODRUK   = prefix + "/TextBible_OfflineSources/Bible_XML_and_JSON/bible-master/json/ru_synodal.json";
+const QString allBibleJsonText_KAZAKOV  = prefix + "/TextBible_OfflineSources/Usfm2json/usfm2json-master/json/rst.json";
+const QString tempJson                  = prefix + "/Resource/Content/temp.json";
+
 const QString fileContent_New_Testament_Photos      = prefix + "/Resource/Content/Content_New_Testament_Photos.json";
 const QString fileContent_Old_Testament_Photos      = prefix + "/Resource/Content/Content_Old_Testament_Photos.json";
-const QString fileContent_New_Testament_Info        = prefix + "/Resource/Content/Content_New_Testament_Info.json";
-const QString fileContent_Old_Testament_Info        = prefix + "/Resource/Content/Content_Old_Testament_Info.json";
-const QString fileContent_Old_Testament_ArrayBooks  = prefix + "/Resource/Content/Content_Old_Testament_ArrayBooks.json";
-const QString fileContent_New_Testament_ArrayBooks  = prefix + "/Resource/Content/Content_New_Testament_ArrayBooks.json";
-
-const QString fileContent_New_Testament_Info_Online        = prefix + "/Resource/Content/Content_New_Testament_Info_Online.json";
-const QString fileContent_Old_Testament_Info_Online        = prefix + "/Resource/Content/Content_Old_Testament_Info_Online.json";
-const QString fileContent_Old_Testament_ArrayBooks_Online  = prefix + "/Resource/Content/Content_Old_Testament_ArrayBooks_Online.json";
-const QString fileContent_New_Testament_ArrayBooks_Online  = prefix + "/Resource/Content/Content_New_Testament_ArrayBooks_Online.json";
-
 const QString dirContent_Old_Testament_Photos       = prefix + "/Resource/Content/Old_Testament_Photos/";
 const QString dirContent_New_Testament_Photos       = prefix + "/Resource/Content/New_Testament_Photos/";
-const QString dirContent_Old_Testament_JsonText     = prefix + "/Resource/Content/Old_Testament_JsonText/";
-const QString dirContent_New_Testament_JsonText     = prefix + "/Resource/Content/New_Testament_JsonText/";
+
+const QString fileContent_New_Testament_Info_BODRUK        = prefix + "/Resource/Content/Content_New_Testament_Info_BODRUK.json";
+const QString fileContent_Old_Testament_Info_BODRUK        = prefix + "/Resource/Content/Content_Old_Testament_Info_BODRUK.json";
+const QString fileContent_Old_Testament_ArrayBooks_BODRUK  = prefix + "/Resource/Content/Content_Old_Testament_ArrayBooks_BODRUK.json";
+const QString fileContent_New_Testament_ArrayBooks_BODRUK  = prefix + "/Resource/Content/Content_New_Testament_ArrayBooks_BODRUK.json";
+const QString dirContent_Old_Testament_JsonText_BODRUK     = prefix + "/Resource/Content/Old_Testament_JsonText_BODRUK/";
+const QString dirContent_New_Testament_JsonText_BODRUK     = prefix + "/Resource/Content/New_Testament_JsonText_BODRUK/";
+
+const QString fileContent_Old_Testament_Info_KAZAKOV        = prefix + "/Resource/Content/Content_Old_Testament_Info_KAZAKOV.json";
+const QString fileContent_New_Testament_Info_KAZAKOV        = prefix + "/Resource/Content/Content_New_Testament_Info_KAZAKOV.json";
+const QString fileContent_Old_Testament_ArrayBooks_KAZAKOV  = prefix + "/Resource/Content/Content_Old_Testament_ArrayBooks_KAZAKOV.json";
+const QString fileContent_New_Testament_ArrayBooks_KAZAKOV  = prefix + "/Resource/Content/Content_New_Testament_ArrayBooks_KAZAKOV.json";
+const QString dirContent_Old_Testament_JsonText_KAZAKOV     = prefix + "/Resource/Content/Old_Testament_JsonText_KAZAKOV/";
+const QString dirContent_New_Testament_JsonText_KAZAKOV     = prefix + "/Resource/Content/New_Testament_JsonText_KAZAKOV/";
+
+const QString fileContent_New_Testament_Info_ONLINE        = prefix + "/Resource/Content/Content_New_Testament_Info_ONLINE.json";
+const QString fileContent_Old_Testament_Info_ONLINE        = prefix + "/Resource/Content/Content_Old_Testament_Info_ONLINE.json";
+const QString fileContent_Old_Testament_ArrayBooks_ONLINE  = prefix + "/Resource/Content/Content_Old_Testament_ArrayBooks_ONLINE.json";
+const QString fileContent_New_Testament_ArrayBooks_ONLINE  = prefix + "/Resource/Content/Content_New_Testament_ArrayBooks_ONLINE.json";
 }
 
 

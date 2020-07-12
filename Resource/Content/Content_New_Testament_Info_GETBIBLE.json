@@ -1,0 +1,164 @@
+{
+    "book_00": {
+        "family_books_en": "Gospels and Acts",
+        "family_books_ru": "Евангелия и Деяния",
+        "name_en": "Матфея/* finish at the end */",
+        "name_ru": "Матфея"
+    },
+    "book_01": {
+        "family_books_en": "Gospels and Acts",
+        "family_books_ru": "Евангелия и Деяния",
+        "name_en": "Марка/* finish at the end */",
+        "name_ru": "Марка"
+    },
+    "book_02": {
+        "family_books_en": "Gospels and Acts",
+        "family_books_ru": "Евангелия и Деяния",
+        "name_en": "Луки/* finish at the end */",
+        "name_ru": "Луки"
+    },
+    "book_03": {
+        "family_books_en": "Gospels and Acts",
+        "family_books_ru": "Евангелия и Деяния",
+        "name_en": "Иоанна/* finish at the end */",
+        "name_ru": "Иоанна"
+    },
+    "book_04": {
+        "family_books_en": "Gospels and Acts",
+        "family_books_ru": "Евангелия и Деяния",
+        "name_en": "Деяния/* finish at the end */",
+        "name_ru": "Деяния"
+    },
+    "book_05": {
+        "family_books_en": "Catholic Epistles",
+        "family_books_ru": "Соборные послания",
+        "name_en": "Иакова/* finish at the end */",
+        "name_ru": "Иакова"
+    },
+    "book_06": {
+        "family_books_en": "Catholic Epistles",
+        "family_books_ru": "Соборные послания",
+        "name_en": "1 Петра/* finish at the end */",
+        "name_ru": "1 Петра"
+    },
+    "book_07": {
+        "family_books_en": "Catholic Epistles",
+        "family_books_ru": "Соборные послания",
+        "name_en": "2 Петра/* finish at the end */",
+        "name_ru": "2 Петра"
+    },
+    "book_08": {
+        "family_books_en": "Catholic Epistles",
+        "family_books_ru": "Соборные послания",
+        "name_en": "1 Иоанна/* finish at the end */",
+        "name_ru": "1 Иоанна"
+    },
+    "book_09": {
+        "family_books_en": "Catholic Epistles",
+        "family_books_ru": "Соборные послания",
+        "name_en": "2 Иоанна/* finish at the end */",
+        "name_ru": "2 Иоанна"
+    },
+    "book_10": {
+        "family_books_en": "Catholic Epistles",
+        "family_books_ru": "Соборные послания",
+        "name_en": "3 Иоанна/* finish at the end */",
+        "name_ru": "3 Иоанна"
+    },
+    "book_11": {
+        "family_books_en": "Catholic Epistles",
+        "family_books_ru": "Соборные послания",
+        "name_en": "Иуда/* finish at the end */",
+        "name_ru": "Иуда"
+    },
+    "book_12": {
+        "family_books_en": "Pauline Epistles",
+        "family_books_ru": "Послания Павла",
+        "name_en": "Римлянам/* finish at the end */",
+        "name_ru": "Римлянам"
+    },
+    "book_13": {
+        "family_books_en": "Pauline Epistles",
+        "family_books_ru": "Послания Павла",
+        "name_en": "1 Коринфянам/* finish at the end */",
+        "name_ru": "1 Коринфянам"
+    },
+    "book_14": {
+        "family_books_en": "Pauline Epistles",
+        "family_books_ru": "Послания Павла",
+        "name_en": "2 Коринфянам/* finish at the end */",
+        "name_ru": "2 Коринфянам"
+    },
+    "book_15": {
+        "family_books_en": "Pauline Epistles",
+        "family_books_ru": "Послания Павла",
+        "name_en": "Галатам/* finish at the end */",
+        "name_ru": "Галатам"
+    },
+    "book_16": {
+        "family_books_en": "Pauline Epistles",
+        "family_books_ru": "Послания Павла",
+        "name_en": "Ефесянам/* finish at the end */",
+        "name_ru": "Ефесянам"
+    },
+    "book_17": {
+        "family_books_en": "Pauline Epistles",
+        "family_books_ru": "Послания Павла",
+        "name_en": "Филиппийцам/* finish at the end */",
+        "name_ru": "Филиппийцам"
+    },
+    "book_18": {
+        "family_books_en": "Pauline Epistles",
+        "family_books_ru": "Послания Павла",
+        "name_en": "Колоссянам/* finish at the end */",
+        "name_ru": "Колоссянам"
+    },
+    "book_19": {
+        "family_books_en": "Pauline Epistles",
+        "family_books_ru": "Послания Павла",
+        "name_en": "1 Фессалоникийцам/* finish at the end */",
+        "name_ru": "1 Фессалоникийцам"
+    },
+    "book_20": {
+        "family_books_en": "Pauline Epistles",
+        "family_books_ru": "Послания Павла",
+        "name_en": "2 Фессалоникийцам/* finish at the end */",
+        "name_ru": "2 Фессалоникийцам"
+    },
+    "book_21": {
+        "family_books_en": "Pauline Epistles",
+        "family_books_ru": "Послания Павла",
+        "name_en": "1 Тимофею/* finish at the end */",
+        "name_ru": "1 Тимофею"
+    },
+    "book_22": {
+        "family_books_en": "Pauline Epistles",
+        "family_books_ru": "Послания Павла",
+        "name_en": "2 Тимофею/* finish at the end */",
+        "name_ru": "2 Тимофею"
+    },
+    "book_23": {
+        "family_books_en": "Pauline Epistles",
+        "family_books_ru": "Послания Павла",
+        "name_en": "Титу/* finish at the end */",
+        "name_ru": "Титу"
+    },
+    "book_24": {
+        "family_books_en": "Pauline Epistles",
+        "family_books_ru": "Послания Павла",
+        "name_en": "Филимону/* finish at the end */",
+        "name_ru": "Филимону"
+    },
+    "book_25": {
+        "family_books_en": "Pauline Epistles",
+        "family_books_ru": "Послания Павла",
+        "name_en": "Евреям/* finish at the end */",
+        "name_ru": "Евреям"
+    },
+    "book_26": {
+        "family_books_en": "Apocalypse",
+        "family_books_ru": "Пророческие",
+        "name_en": "Откровение/* finish at the end */",
+        "name_ru": "Откровение"
+    }
+}

@@ -1,0 +1,236 @@
+{
+    "book_00": {
+        "family_books_en": "Pentateuch",
+        "family_books_ru": "Пятикнижие",
+        "name_en": "Бытие/* finish at the end */",
+        "name_ru": "Бытие"
+    },
+    "book_01": {
+        "family_books_en": "Pentateuch",
+        "family_books_ru": "Пятикнижие",
+        "name_en": "Исход/* finish at the end */",
+        "name_ru": "Исход"
+    },
+    "book_02": {
+        "family_books_en": "Pentateuch",
+        "family_books_ru": "Пятикнижие",
+        "name_en": "Левит/* finish at the end */",
+        "name_ru": "Левит"
+    },
+    "book_03": {
+        "family_books_en": "Pentateuch",
+        "family_books_ru": "Пятикнижие",
+        "name_en": "Числа/* finish at the end */",
+        "name_ru": "Числа"
+    },
+    "book_04": {
+        "family_books_en": "Pentateuch",
+        "family_books_ru": "Пятикнижие",
+        "name_en": "Второзаконие/* finish at the end */",
+        "name_ru": "Второзаконие"
+    },
+    "book_05": {
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "name_en": "Иисус Навин/* finish at the end */",
+        "name_ru": "Иисус Навин"
+    },
+    "book_06": {
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "name_en": "Судьи/* finish at the end */",
+        "name_ru": "Судьи"
+    },
+    "book_07": {
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "name_en": "Руфь/* finish at the end */",
+        "name_ru": "Руфь"
+    },
+    "book_08": {
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "name_en": "1 Царств/* finish at the end */",
+        "name_ru": "1 Царств"
+    },
+    "book_09": {
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "name_en": "2 Царств/* finish at the end */",
+        "name_ru": "2 Царств"
+    },
+    "book_10": {
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "name_en": "3 Царств/* finish at the end */",
+        "name_ru": "3 Царств"
+    },
+    "book_11": {
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "name_en": "4 Царств/* finish at the end */",
+        "name_ru": "4 Царств"
+    },
+    "book_12": {
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "name_en": "1 Паралипомен/* finish at the end */",
+        "name_ru": "1 Паралипомен"
+    },
+    "book_13": {
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "name_en": "2 Паралипомен/* finish at the end */",
+        "name_ru": "2 Паралипомен"
+    },
+    "book_14": {
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "name_en": "Ездра/* finish at the end */",
+        "name_ru": "Ездра"
+    },
+    "book_15": {
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "name_en": "Неемия/* finish at the end */",
+        "name_ru": "Неемия"
+    },
+    "book_16": {
+        "family_books_en": "Historical Books",
+        "family_books_ru": "Исторические",
+        "name_en": "Есфирь/* finish at the end */",
+        "name_ru": "Есфирь"
+    },
+    "book_17": {
+        "family_books_en": "Wisdom",
+        "family_books_ru": "Учительные",
+        "name_en": "Иов/* finish at the end */",
+        "name_ru": "Иов"
+    },
+    "book_18": {
+        "family_books_en": "Wisdom",
+        "family_books_ru": "Учительные",
+        "name_en": "Псалтирь/* finish at the end */",
+        "name_ru": "Псалтирь"
+    },
+    "book_19": {
+        "family_books_en": "Wisdom",
+        "family_books_ru": "Учительные",
+        "name_en": "Притчи/* finish at the end */",
+        "name_ru": "Притчи"
+    },
+    "book_20": {
+        "family_books_en": "Wisdom",
+        "family_books_ru": "Учительные",
+        "name_en": "Екклеcиаст/* finish at the end */",
+        "name_ru": "Екклеcиаст"
+    },
+    "book_21": {
+        "family_books_en": "Wisdom",
+        "family_books_ru": "Учительные",
+        "name_en": "Песня песней/* finish at the end */",
+        "name_ru": "Песня песней"
+    },
+    "book_22": {
+        "family_books_en": "Major Prophets",
+        "family_books_ru": "Большие пророки",
+        "name_en": "Исаия/* finish at the end */",
+        "name_ru": "Исаия"
+    },
+    "book_23": {
+        "family_books_en": "Major Prophets",
+        "family_books_ru": "Большие пророки",
+        "name_en": "Иеремия/* finish at the end */",
+        "name_ru": "Иеремия"
+    },
+    "book_24": {
+        "family_books_en": "Major Prophets",
+        "family_books_ru": "Большие пророки",
+        "name_en": "Плач Иеремии/* finish at the end */",
+        "name_ru": "Плач Иеремии"
+    },
+    "book_25": {
+        "family_books_en": "Major Prophets",
+        "family_books_ru": "Большие пророки",
+        "name_en": "Иезекииль/* finish at the end */",
+        "name_ru": "Иезекииль"
+    },
+    "book_26": {
+        "family_books_en": "Major Prophets",
+        "family_books_ru": "Большие пророки",
+        "name_en": "Даниил/* finish at the end */",
+        "name_ru": "Даниил"
+    },
+    "book_27": {
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "name_en": "Осия/* finish at the end */",
+        "name_ru": "Осия"
+    },
+    "book_28": {
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "name_en": "Иоиль/* finish at the end */",
+        "name_ru": "Иоиль"
+    },
+    "book_29": {
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "name_en": "Амос/* finish at the end */",
+        "name_ru": "Амос"
+    },
+    "book_30": {
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "name_en": "Авдий/* finish at the end */",
+        "name_ru": "Авдий"
+    },
+    "book_31": {
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "name_en": "Иона/* finish at the end */",
+        "name_ru": "Иона"
+    },
+    "book_32": {
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "name_en": "Михей/* finish at the end */",
+        "name_ru": "Михей"
+    },
+    "book_33": {
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "name_en": "Наум/* finish at the end */",
+        "name_ru": "Наум"
+    },
+    "book_34": {
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "name_en": "Аввакум/* finish at the end */",
+        "name_ru": "Аввакум"
+    },
+    "book_35": {
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "name_en": "Софония/* finish at the end */",
+        "name_ru": "Софония"
+    },
+    "book_36": {
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "name_en": "Аггей/* finish at the end */",
+        "name_ru": "Аггей"
+    },
+    "book_37": {
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "name_en": "Захария/* finish at the end */",
+        "name_ru": "Захария"
+    },
+    "book_38": {
+        "family_books_en": "Minor Prophets",
+        "family_books_ru": "Малые пророки",
+        "name_en": "Малахия/* finish at the end */",
+        "name_ru": "Малахия"
+    }
+}

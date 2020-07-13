@@ -57,7 +57,7 @@ void Content::generateNewNameFolder_Photos()
     }
 }
 
-void Content::generateContent_Folders(const Content::TypeContent typeContent)
+void Content::generateContent_Folders(const Content::TypeContent typeContent, const bool onlyRemove)
 {
     QString dirContent_Old { Path::dirContent_Old_Testament_JsonText_BODRUK };
     QString dirContent_New { Path::dirContent_New_Testament_JsonText_BODRUK };
@@ -71,6 +71,9 @@ void Content::generateContent_Folders(const Content::TypeContent typeContent)
     }
     QDir(dirContent_Old).removeRecursively();
     QDir(dirContent_New).removeRecursively();
+    if (onlyRemove) {
+        return;
+    }
     QThread::msleep(2000);
     QDir().mkdir(dirContent_Old);
     QDir().mkdir(dirContent_New);
@@ -78,87 +81,69 @@ void Content::generateContent_Folders(const Content::TypeContent typeContent)
     QDir().mkdir(Path::dirContent_New_Testament_Photos);
 }
 
-void Content::generateContent_Info(const QString &dirOld, const QString &dirNew, const Content::Standard requiredStandart)
+void Content::generateContent_Info(const QString &fileOld, const QString &fileNew, const Content::Standard requiredStandart)
 {
     QJsonObject objOldTestament;
     QJsonObject objNewTestament;
     for (int var = 0; var < BibleEnums::Old_Testament + BibleEnums::New_Testament; ++var) {
-        QVector<QString> vecFamilyBooks;
-        QString family_books_en;
-        QString family_books_ru;
+        FamilyBooks currentFamilyBooks { Pentateuch };
         QString bookIndex;
         int nextFamily { 0 };
         QJsonObject *refObjTestament = &objOldTestament;
         if (var < BibleEnums::Old_Testament) {
             if (var < FamilyBooks::Pentateuch) {
-                vecFamilyBooks = getVectorFamilyBooks(Pentateuch);
-                family_books_en = getNameFamilyBooks(Pentateuch, "en");
-                family_books_ru = getNameFamilyBooks(Pentateuch, "ru");
+                currentFamilyBooks = Pentateuch;
             }
             else if (var < FamilyBooks::HistoricalBooks) {
-                vecFamilyBooks = getVectorFamilyBooks(HistoricalBooks);
-                family_books_en = getNameFamilyBooks(HistoricalBooks, "en");
-                family_books_ru = getNameFamilyBooks(HistoricalBooks, "ru");
+                currentFamilyBooks = HistoricalBooks;
                 nextFamily = FamilyBooks::Pentateuch;
             }
             else if (var < FamilyBooks::Wisdom) {
-                vecFamilyBooks = getVectorFamilyBooks(Wisdom);
-                family_books_en = getNameFamilyBooks(Wisdom, "en");
-                family_books_ru = getNameFamilyBooks(Wisdom, "ru");
+                currentFamilyBooks = Wisdom;
                 nextFamily = FamilyBooks::HistoricalBooks;
             }
             else if (var < FamilyBooks::MajorProphets) {
-                vecFamilyBooks = getVectorFamilyBooks(MajorProphets);
-                family_books_en = getNameFamilyBooks(MajorProphets, "en");
-                family_books_ru = getNameFamilyBooks(MajorProphets, "ru");
+                currentFamilyBooks = MajorProphets;
                 nextFamily = FamilyBooks::Wisdom;
             }
             else if (var < FamilyBooks::MinorProphets) {
-                vecFamilyBooks = getVectorFamilyBooks(MinorProphets);
-                family_books_en = getNameFamilyBooks(MinorProphets, "en");
-                family_books_ru = getNameFamilyBooks(MinorProphets, "ru");
+                currentFamilyBooks = MinorProphets;
                 nextFamily = FamilyBooks::MajorProphets;
             }
             bookIndex = getIndexBookStr(var);
         }
         else{
             if (var < FamilyBooks::GospelsAndActs) {
-                vecFamilyBooks = getVectorFamilyBooks(GospelsAndActs);
-                family_books_en = getNameFamilyBooks(GospelsAndActs, "en");
-                family_books_ru = getNameFamilyBooks(GospelsAndActs, "ru");
+                currentFamilyBooks = GospelsAndActs;
                 nextFamily = FamilyBooks::MinorProphets;
             }
             else if (var < FamilyBooks::PaulineEpistles) {
-                vecFamilyBooks = getVectorFamilyBooks(PaulineEpistles);
-                family_books_en = getNameFamilyBooks(PaulineEpistles, "en");
-                family_books_ru = getNameFamilyBooks(PaulineEpistles, "ru");
+                currentFamilyBooks = PaulineEpistles;
                 nextFamily = FamilyBooks::GospelsAndActs;
             }
             else if (var < FamilyBooks::CatholicEpistles) {
-                vecFamilyBooks = getVectorFamilyBooks(CatholicEpistles);
-                family_books_en = getNameFamilyBooks(CatholicEpistles, "en");
-                family_books_ru = getNameFamilyBooks(CatholicEpistles, "ru");
+                currentFamilyBooks = CatholicEpistles;
                 nextFamily = FamilyBooks::PaulineEpistles;
             }
             else if (var < FamilyBooks::Apocalypse) {
-                vecFamilyBooks = getVectorFamilyBooks(Apocalypse);
-                family_books_en = getNameFamilyBooks(Apocalypse, "en");
-                family_books_ru = getNameFamilyBooks(Apocalypse, "ru");
+                currentFamilyBooks = Apocalypse;
                 nextFamily = FamilyBooks::CatholicEpistles;
             }
             bookIndex = getIndexBookStr(var, BibleEnums::New_Testament, Standard::Western, requiredStandart);
             refObjTestament = &objNewTestament;
         }
         QJsonObject objBook;
-        objBook.insert("name_en", vecFamilyBooks.at(var - nextFamily) + "/* finish at the end */");
-        objBook.insert("name_ru", vecFamilyBooks.at(var - nextFamily));
-        objBook.insert("family_books_en", family_books_en);
-        objBook.insert("family_books_ru", family_books_ru);
+        objBook.insert("abbrev", getAbbrev(var, Standard::Western, "ru"));
+        objBook.insert("name_en", getVectorFamilyBooks(currentFamilyBooks, "en").at(var - nextFamily));
+        objBook.insert("name_ru", getVectorFamilyBooks(currentFamilyBooks, "ru").at(var - nextFamily));
+        objBook.insert("family_books_en", getNameFamilyBooks(Apocalypse, "en"));
+        objBook.insert("family_books_ru", getNameFamilyBooks(Apocalypse, "ru"));
 
         refObjTestament->insert(bookIndex, objBook);
+        Q_ASSERT(!objBook.isEmpty());
     }
-    FileWorker::writeFileJson(QJsonDocument(objOldTestament), dirOld);
-    FileWorker::writeFileJson(QJsonDocument(objNewTestament), dirNew);
+    FileWorker::writeFileJson(QJsonDocument(objOldTestament), fileOld);
+    FileWorker::writeFileJson(QJsonDocument(objNewTestament), fileNew);
 
     //    [
     //        {
@@ -177,6 +162,7 @@ void Content::generateContent_Info(const QString &dirOld, const QString &dirNew,
 
 void Content::generateContentStandart(const Content::Standard requiredStandart, const TypeContent typeContent)
 {
+    testGetIndexBook();
     generateContent_Folders(typeContent);
     if (typeContent == GITHUB_BIBLE_XML_AND_JSON_THIAGO_BODRUK) {
         generateContent_Info_BODRUK(requiredStandart);
@@ -199,6 +185,31 @@ void Content::generateContentStandart(const Content::Standard requiredStandart, 
         generateContent_JsonText_GETBIBLE(requiredStandart);
     }
     generateContent_TwoArraysBooks(typeContent);
+}
+
+void Content::removeAllContent()
+{
+    generateContent_Folders(GETBIBLE_NET, true);
+    generateContent_Folders(GITHUB_BIBLE_XML_AND_JSON_THIAGO_BODRUK, true);
+    generateContent_Folders(GITHUB_BIBLE_USFM2JSON_RUSLAN_KAZAKOV, true);
+    generateContent_Folders(BIBLEONLINE_RU, true);
+    QFile::remove(Path::fileContent_New_Testament_Info_BODRUK);
+    QFile::remove(Path::fileContent_New_Testament_Info_KAZAKOV);
+    QFile::remove(Path::fileContent_New_Testament_Info_ONLINE);
+    QFile::remove(Path::fileContent_New_Testament_Info_GETBIBLE);
+    QFile::remove(Path::fileContent_Old_Testament_Info_BODRUK);
+    QFile::remove(Path::fileContent_Old_Testament_Info_KAZAKOV);
+    QFile::remove(Path::fileContent_Old_Testament_Info_ONLINE);
+    QFile::remove(Path::fileContent_Old_Testament_Info_GETBIBLE);
+    QFile::remove(Path::fileContent_New_Testament_ArrayBooks_BODRUK);
+    QFile::remove(Path::fileContent_New_Testament_ArrayBooks_KAZAKOV);
+    QFile::remove(Path::fileContent_New_Testament_ArrayBooks_ONLINE);
+    QFile::remove(Path::fileContent_New_Testament_ArrayBooks_GETBIBLE);
+    QFile::remove(Path::fileContent_Old_Testament_ArrayBooks_BODRUK);
+    QFile::remove(Path::fileContent_Old_Testament_ArrayBooks_KAZAKOV);
+    QFile::remove(Path::fileContent_Old_Testament_ArrayBooks_ONLINE);
+    QFile::remove(Path::fileContent_Old_Testament_ArrayBooks_GETBIBLE);
+    QFile::remove(Path::tempJson);
 }
 
 void Content::generateContent_Info_BODRUK(const Content::Standard requiredStandart)
@@ -287,6 +298,7 @@ void Content::generateContent_Info_BODRUK(const Content::Standard requiredStanda
         objBook.insert("family_books_ru", family_books_ru);
 
         refObjTestament->insert(bookIndex, objBook);
+        Q_ASSERT(!objBook.isEmpty());
     }
     FileWorker::writeFileJson(QJsonDocument(objOldTestament), Path::fileContent_Old_Testament_Info_BODRUK);
     FileWorker::writeFileJson(QJsonDocument(objNewTestament), Path::fileContent_New_Testament_Info_BODRUK);
@@ -375,6 +387,7 @@ void Content::generateContent_Info_ONLINE(const Content::Standard requiredStanda
         objBook.insert("family_books_ru", family_books_ru);
 
         refObjTestament->insert(bookIndex, objBook);
+        Q_ASSERT(!objBook.isEmpty());
     }
     FileWorker::writeFileJson(QJsonDocument(objOldTestament), Path::fileContent_Old_Testament_Info_ONLINE);
     FileWorker::writeFileJson(QJsonDocument(objNewTestament), Path::fileContent_New_Testament_Info_ONLINE);
@@ -565,6 +578,8 @@ void Content::generateContent_JsonText(const QString &pathFrom, const QString &d
     QJsonDocument doc;
     FileWorker::readFileJson(&doc, pathFrom);
     QJsonArray arrMain = doc.array();
+    qDebug() << "arrMain.size()" << arrMain.size() << Qt::endl;
+    Q_ASSERT(arrMain.size() == BibleEnums::Old_Testament + BibleEnums::New_Testament);
 
     for (int var = 0; var < arrMain.size(); ++var) {
         QJsonObject objBook = arrMain.at(var).toObject();
@@ -679,9 +694,7 @@ void Content::generateContent_JsonText_KAZAKOV(const Content::Standard requiredS
         }
         else{
             dirContent = Path::dirContent_New_Testament_JsonText_KAZAKOV;
-            const QString bookIndex = getIndexBookStr(index, BibleEnums::New_Testament, Standard::Western, requiredStandart);
-            qDebug() << "bookIndex" << bookIndex << currentBook <<
-                        qPrintable(QJsonDocument(arrChapters).toJson(QJsonDocument::Compact)) << Qt::endl;
+            const QString bookIndex = getIndexBookStr(index, BibleEnums::New_Testament, Standard::EasternSynodal, requiredStandart);
             FileWorker::writeFileJson(QJsonDocument(arrChapters), dirContent + bookIndex + ".json");
         }
         arrChapters = QJsonArray();
@@ -722,6 +735,10 @@ void Content::generateContent_TwoArraysBooks(const TypeContent typeContent)
             fileContentJsonText = var == 0 ? Path::fileContent_Old_Testament_Info_KAZAKOV : Path::fileContent_New_Testament_Info_KAZAKOV;
             fileContentArrayBooks = var == 0 ? Path::fileContent_Old_Testament_ArrayBooks_KAZAKOV : Path::fileContent_New_Testament_ArrayBooks_KAZAKOV;
         }
+        else if (typeContent == TypeContent::GETBIBLE_NET) {
+            fileContentJsonText = var == 0 ? Path::fileContent_Old_Testament_Info_GETBIBLE : Path::fileContent_New_Testament_Info_GETBIBLE;
+            fileContentArrayBooks = var == 0 ? Path::fileContent_Old_Testament_ArrayBooks_GETBIBLE : Path::fileContent_New_Testament_ArrayBooks_GETBIBLE;
+        }
 
         QJsonDocument doc;
         QJsonArray arrBooks;
@@ -730,10 +747,92 @@ void Content::generateContent_TwoArraysBooks(const TypeContent typeContent)
         QStringList listKeys { objMain.keys() };
         for (const QString &bookKey : listKeys) {
             QJsonObject objBook = objMain.value(bookKey).toObject();
-            arrBooks.append(objBook.value("name_ru"));
+            arrBooks.append(objBook.value("abbrev"));
         }
         FileWorker::writeFileJson(QJsonDocument(arrBooks), fileContentArrayBooks);
+        Q_ASSERT(arrBooks.size() == (var == 0 ? BibleEnums::Old_Testament : BibleEnums::New_Testament));
     }
+}
+
+QString Content::getAbbrev(const int index, const Content::Standard requiredStandart, const QString &language)
+{
+    QVector<QString> vecAbbrevOld {
+        "Быт",
+        "Исх",
+        "Лев",
+        "Числ",
+        "Втор",
+        "Ис Нав",
+        "Суд",
+        "Руфь",
+        "1 Цар",
+        "2 Цар",
+        "3 Цар",
+        "4 Цар",
+        "1 Пар",
+        "2 Пар",
+        "Ездр",
+        "Неем",
+        "Есф",
+        "Иов",
+        "Пс",
+        "Прит",
+        "Екл",
+        "Псн Псн",
+        "Исаия",
+        "Иер",
+        "Пл Иер",
+        "Иез",
+        "Дан",
+        "Осия",
+        "Иоил",
+        "Амос",
+        "Авд",
+        "Иона",
+        "Мих",
+        "Наум",
+        "Авв",
+        "Соф",
+        "Агг",
+        "Зах",
+        "Мал",
+    };
+    QVector<QString> vecAbbrevNew {
+        "Матф",
+        "Марк",
+        "Лук",
+        "Иоан",
+        "Деян",
+        "Рим",
+        "1 Кор",
+        "2 Кор",
+        "Гал",
+        "Еф",
+        "Фил",
+        "Кол",
+        "1 Фес",
+        "2 Фес",
+        "1 Тим",
+        "2 Тим",
+        "Тит",
+        "Фил",
+        "Евр",
+        "Иак",
+        "1 Пет",
+        "2 Пет",
+        "1 Иоан",
+        "2 Иоан",
+        "3 Иоан",
+        "Иуд",
+        "Откр",
+    };
+    if (index < BibleEnums::Old_Testament) {
+        return vecAbbrevOld.at(index);
+    }
+    if (requiredStandart == Western) {
+        return vecAbbrevNew.at(getIndexBook(index, BibleEnums::New_Testament, Western, Western));
+    }
+    return vecAbbrevNew.at(getIndexBook(index, BibleEnums::New_Testament, EasternSynodal, Western));
 }
 #endif
 
@@ -820,67 +919,100 @@ void Content::fillPhotos(QJsonObject *objBook, const QString &pathDir)
     }
 }
 
-QString Content::getIndexBookStr(const int indexBook)
+QString Content::getIndexBookStr(const int index)
 {
-    return "book_" + QString::number(indexBook).rightJustified(2, '0');
+    return "book_" + QString::number(index).rightJustified(2, '0');
 }
 
-QString Content::getIndexBookStr(int indexBook, const BibleEnums::Testament testament,
+QString Content::getIndexBookStr(int index, const BibleEnums::Testament testament,
                                  const Content::Standard currentStandart, const Content::Standard requiredStandart)
 {
+    int indexBook = getIndexBook(index, testament, currentStandart, requiredStandart);
+    return getIndexBookStr(indexBook);
+}
+
+int Content::getIndexBook(int index, const BibleEnums::Testament testament,
+                          const Content::Standard currentStandart, const Content::Standard requiredStandart)
+{
+    // сюда попадает index (currentStandart), возвращается index (requiredStandart)
+    // currentStandart == EasternSynodal (index == 5 == Иакова) --> requiredStandart == Western (index == 19 == Иакова)
     if (testament == BibleEnums::New_Testament && currentStandart != requiredStandart) {
         const int quantityCatholicEpistles { 7 };
         const int quantityPaulineEpistles { 14 };
         // Western --> EasternSynodal : Western <-- EasternSynodal
         const int firstFamily = requiredStandart == Standard::EasternSynodal ? quantityCatholicEpistles : quantityPaulineEpistles;
         const int lastFamily = requiredStandart == Standard::EasternSynodal ? quantityPaulineEpistles : quantityCatholicEpistles;
-        if (indexBook >= FamilyBooks::GospelsAndActs && indexBook < FamilyBooks::GospelsAndActs + lastFamily) {
-            indexBook += firstFamily;
+        if (index >= FamilyBooks::GospelsAndActs && index < FamilyBooks::GospelsAndActs + lastFamily) {
+            index += firstFamily;
         }
-        else if(indexBook >= FamilyBooks::GospelsAndActs + lastFamily && indexBook < FamilyBooks::GospelsAndActs + lastFamily + firstFamily) {
-            indexBook -= lastFamily;
+        else if(index >= FamilyBooks::GospelsAndActs + lastFamily && index < FamilyBooks::GospelsAndActs + lastFamily + firstFamily) {
+            index -= lastFamily;
         }
     }
     if (testament == BibleEnums::New_Testament) {
-        indexBook -= BibleEnums::Old_Testament;
+        index -= BibleEnums::Old_Testament;
     }
-    return getIndexBookStr(indexBook);
+    return index;
 }
 
-QVector<QString> Content::getVectorFamilyBooks(const Content::FamilyBooks familyBooks)
+void Content::testGetIndexBook()
 {
-    QVector<QString> vecFamilyBooks;
+    for (int var = 44; var < 58; ++var) Q_ASSERT(getIndexBook(var, BibleEnums::New_Testament, Western, EasternSynodal) == var + 7 - BibleEnums::Old_Testament);
+    for (int var = 58; var < 65; ++var) Q_ASSERT(getIndexBook(var, BibleEnums::New_Testament, Western, EasternSynodal) == var - 14 - BibleEnums::Old_Testament);
+    for (int var = 44; var < 51; ++var) Q_ASSERT(getIndexBook(var, BibleEnums::New_Testament, EasternSynodal, Western) == var + 14 - BibleEnums::Old_Testament);
+    for (int var = 51; var < 65; ++var) Q_ASSERT(getIndexBook(var, BibleEnums::New_Testament, EasternSynodal, Western) == var - 7  - BibleEnums::Old_Testament);
+}
+
+QVector<QString> Content::getVectorFamilyBooks(const Content::FamilyBooks familyBooks, const QString &language)
+{
+    QVector<QString> vecFamilyBooksRu;
+    QVector<QString> vecFamilyBooksEn;
     if (familyBooks == FamilyBooks::Pentateuch) {
-        vecFamilyBooks = { "Бытие", "Исход", "Левит", "Числа", "Второзаконие" };
+        vecFamilyBooksRu = { "Бытие", "Исход", "Левит", "Числа", "Второзаконие" };
+        vecFamilyBooksEn = { "Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy" };
     }
     else if (familyBooks == FamilyBooks::HistoricalBooks) {
-        vecFamilyBooks = { "Иисус Навин", "Судьи", "Руфь", "1 Царств", "2 Царств", "3 Царств", "4 Царств",
+        vecFamilyBooksRu = { "Иисус Навин", "Судьи", "Руфь", "1 Царств", "2 Царств", "3 Царств", "4 Царств",
                            "1 Паралипомен", "2 Паралипомен", "Ездра", "Неемия", "Есфирь" };
+        vecFamilyBooksEn = { "Joshua", "Judges", "Ruth", "1 Samuel", "2 Samuel", "3 Kings", "4 Kings",
+                             "1 Chronicles", "2 Chronicles", "Ezra", "Nehemiah", "Esther" };
     }
     else if (familyBooks == FamilyBooks::Wisdom) {
-        vecFamilyBooks = { "Иов", "Псалтирь", "Притчи", "Екклеcиаст", "Песня песней" };
+        vecFamilyBooksRu = { "Иов", "Псалтирь", "Притчи", "Екклеcиаст", "Песни песней" };
+        vecFamilyBooksEn = { "Job", "Psalms", "Proverbs", "Ecclesiastes", "Song of Solomon" };
     }
     else if (familyBooks == FamilyBooks::MajorProphets) {
-        vecFamilyBooks = { "Исаия", "Иеремия", "Плач Иеремии", "Иезекииль", "Даниил" };
+        vecFamilyBooksRu = { "Исаия", "Иеремия", "Плач Иеремии", "Иезекииль", "Даниил" };
+        vecFamilyBooksEn = { "Isaiah", "Jeremiah", "Lamentations", "Ezekiel", "Daniel" };
     }
     else if (familyBooks == FamilyBooks::MinorProphets) {
-        vecFamilyBooks = { "Осия", "Иоиль", "Амос", "Авдий", "Иона", "Михей", "Наум", "Аввакум", "Софония", "Аггей",
+        vecFamilyBooksRu = { "Осия", "Иоиль", "Амос", "Авдий", "Иона", "Михей", "Наум", "Аввакум", "Софония", "Аггей",
                            "Захария", "Малахия" };
+        vecFamilyBooksEn = { "Hosea", "Joel", "Amos", "Obadiah", "Jonah", "Micah", "Nahum", "Habakkuk", "Zephaniah", "Haggai",
+                             "Zechariah", "Malachi" };
     }
     else if (familyBooks == FamilyBooks::GospelsAndActs) {
-        vecFamilyBooks = { "Матфея", "Марка", "Луки", "Иоанна", "Деяния" };
+        vecFamilyBooksRu = { "Матфея", "Марка", "Луки", "Иоанна", "Деяния" };
+        vecFamilyBooksEn = { "Matthew", "Mark", "Luke", "John", "Acts" };
     }
     else if (familyBooks == FamilyBooks::PaulineEpistles) {
-        vecFamilyBooks = { "Римлянам", "1 Коринфянам", "2 Коринфянам", "Галатам", "Ефесянам", "Филиппийцам", "Колоссянам",
+        vecFamilyBooksRu = { "Римлянам", "1 Коринфянам", "2 Коринфянам", "Галатам", "Ефесянам", "Филиппийцам", "Колоссянам",
                            "1 Фессалоникийцам", "2 Фессалоникийцам", "1 Тимофею", "2 Тимофею", "Титу", "Филимону", "Евреям"};
+        vecFamilyBooksEn = { "Romans", "1 Corinthians", "2 Corinthians", "Galatians", "Ephesians", "Philippians", "Colossians",
+                             "1 Thessalonians", "2 Thessalonians", "1 Timothy", "2 Timothy", "Titus", "Philemon", "Hebrews"};
     }
     else if (familyBooks == FamilyBooks::CatholicEpistles) {
-        vecFamilyBooks = { "Иакова", "1 Петра", "2 Петра", "1 Иоанна", "2 Иоанна", "3 Иоанна", "Иуда" };
+        vecFamilyBooksRu = { "Иакова", "1 Петра", "2 Петра", "1 Иоанна", "2 Иоанна", "3 Иоанна", "Иуда" };
+        vecFamilyBooksEn = { "James", "1 Peter", "2 Peter", "1 Иоанна", "2 Иоанна", "3 Иоанна", "Jude" };
     }
     else if (familyBooks == FamilyBooks::Apocalypse) {
-        vecFamilyBooks = { "Откровение" };
+        vecFamilyBooksRu = { "Откровение" };
+        vecFamilyBooksEn = { "Revelation" };
     }
-    return  vecFamilyBooks;
+    if (language.toLower() == "en") {
+        return vecFamilyBooksEn;
+    }
+    return  vecFamilyBooksRu;
 }
 
 QString Content::getNameFamilyBooks(const Content::FamilyBooks familyBooks, const QString &language)

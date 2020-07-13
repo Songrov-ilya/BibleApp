@@ -37,7 +37,7 @@ class Content
     };
 public:
     enum TypeContent {
-        GETBIBLE_NET,
+        GETBIBLE_NET, // пока используем этот вариант
         GITHUB_BIBLE_USFM2JSON_RUSLAN_KAZAKOV, // ошибки с новым заветом
         GITHUB_BIBLE_XML_AND_JSON_THIAGO_BODRUK, // здесь много ошибок
         BIBLEONLINE_RU, // здесь вообще не доделанное API
@@ -53,19 +53,23 @@ public:
 
 #ifdef QT_DEBUG
     static void generateContentStandart(const Content::Standard requiredStandart, const TypeContent typeContent);
+    static void removeAllContent();
 private:
     static QNetworkAccessManager mngr;
-    static QString getIndexBookStr(const int indexBook);
-    static QString getIndexBookStr(int indexBook, const BibleEnums::Testament testament,
+    static QString getIndexBookStr(const int index);
+    static QString getIndexBookStr(int index, const BibleEnums::Testament testament,
                                    const Content::Standard currentStandart, const Content::Standard requiredStandart);
+    static int getIndexBook(int index, const BibleEnums::Testament testament,
+                            const Content::Standard currentStandart, const Content::Standard requiredStandart);
+    static void testGetIndexBook();
 
     static void generateContent_Photos();
     static void generateNewNameFolder_Photos();
     static QStringList getListFileInDirectory(const QString &dir);
     static void fillPhotos(QJsonObject *objBook, const QString &pathDir);
 
-    static void generateContent_Folders(const TypeContent typeContent);
-    static void generateContent_Info(const QString &dirOld, const QString &dirNew, const Content::Standard requiredStandart);
+    static void generateContent_Folders(const TypeContent typeContent, const bool onlyRemove = false);
+    static void generateContent_Info(const QString &fileOld, const QString &fileNew, const Content::Standard requiredStandart);
     static void generateContent_Info_BODRUK(const Content::Standard requiredStandart);
     static void generateContent_Info_ONLINE(const Content::Standard requiredStandart);
     static void generateContent_Info_KAZAKOV(const Content::Standard requiredStandart);
@@ -78,8 +82,9 @@ private:
     static void generateContent_JsonText_GETBIBLE(const Content::Standard requiredStandart);
     static void generateContent_TwoArraysBooks(const TypeContent typeContent);
 
-    static QVector<QString> getVectorFamilyBooks(const FamilyBooks familyBooks);
-    static QString getNameFamilyBooks(const FamilyBooks familyBooks, const QString &language);
+    static QString getAbbrev(const int index, const Content::Standard requiredStandart, const QString &language = "ru");
+    static QVector<QString> getVectorFamilyBooks(const FamilyBooks familyBooks, const QString &language = "ru");
+    static QString getNameFamilyBooks(const FamilyBooks familyBooks, const QString &language = "ru");
     static void getOnlineBookList();
     static void getOnlineBible();
     static void generateValidJson_KAZAKOV();

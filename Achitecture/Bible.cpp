@@ -3,8 +3,10 @@
 Bible::Bible(QObject *parent) : QObject(parent)
 {
 #ifdef QT_DEBUG
+//    Content::removeAllContent();
 //    Content::generateContentStandart(Content::EasternSynodal, Content::GITHUB_BIBLE_XML_AND_JSON_THIAGO_BODRUK);
-    Content::generateContentStandart(Content::EasternSynodal, Content::GETBIBLE_NET);
+//    Content::generateContentStandart(Content::EasternSynodal, Content::GITHUB_BIBLE_USFM2JSON_RUSLAN_KAZAKOV);
+//    Content::generateContentStandart(Content::EasternSynodal, Content::GETBIBLE_NET);
 #endif
 
     Content::loadContenet_ArrayBooks(&listOldTestamentBooks, BibleEnums::Old_Testament);

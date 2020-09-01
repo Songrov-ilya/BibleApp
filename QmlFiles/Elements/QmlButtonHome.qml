@@ -9,7 +9,7 @@ MyComonents.QmlComponentButtonImage{
     anchors.bottom: parent.bottom
     anchors.right: parent.right
     pathImage: providerQml.pathIcomButtonHome
-    onClickedButton: currentSlide = BibleEnums.Title
+    onClicked: currentSlide = BibleEnums.Title
 
     function reancorButtonHome(slideEmiter){
         buttonHomeID.anchors.bottom = undefined

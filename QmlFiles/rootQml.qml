@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Window 2.12
+import QtQuick.Controls.Material 2.12
 
 Item {
     width: screenWidth
@@ -7,6 +8,8 @@ Item {
 
     property real screenWidth: providerQml.isDebug ? 360 : Screen.width
     property real screenHeight: providerQml.isDebug ? 640 : Screen.height
+//    Material.background: Material.Blue
+//    Material.theme: Material.Dark
 
     QmlMain{
         width: parent.width

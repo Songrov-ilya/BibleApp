@@ -3,6 +3,7 @@
 
 #include <QElapsedTimer>
 #include <QApplication>
+#include <QQuickStyle>
 
 
 int main(int argc, char *argv[])
@@ -15,6 +16,9 @@ int main(int argc, char *argv[])
 #ifdef QT_NO_DEBUG
     Q_INIT_RESOURCE(ResourceFiles);
 #endif
+    QQuickStyle::setStyle("Material");
+
+
     MainWindow w;
     w.show();
 

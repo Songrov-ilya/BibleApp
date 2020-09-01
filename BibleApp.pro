@@ -2,6 +2,7 @@ QT       += core gui
 QT       += qml
 QT       += quick
 QT       += quickwidgets
+QT       += quickcontrols2
 QT       += svg
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -73,6 +74,7 @@ DISTFILES += \
     QmlFiles/Components/QmlComponentGridView.qml \
     QmlFiles/Components/QmlComponentListViewVerses.qml \
     QmlFiles/Elements/QmlButtonHome.qml \
+    QmlFiles/Elements/QmlFooterMenu.qml \
     QmlFiles/QmlMain.qml \
     QmlFiles/QmlSlideGridBooks.qml \
     QmlFiles/QmlSlideGridChapters.qml \

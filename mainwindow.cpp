@@ -28,7 +28,7 @@ void MainWindow::setElapsed(const int elapsed)
 void MainWindow::setGeneralSettings()
 {
 //    setColor("#00000000");
-    setColor(ProviderQml::getColorBackground());
+//    setColor(ProviderQml::getColorBackground());
 
     rootContext()->setContextProperty("managerQml", manager);
 #ifdef QT_DEBUG

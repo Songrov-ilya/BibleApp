@@ -6,7 +6,7 @@ import "Elements" as MyElements
 Item {
     id: main
 
-    property bool isNewTestament: true
+    property bool isNewTestament: false
     property int currentSlide: BibleEnums.Title
 
 
@@ -31,6 +31,11 @@ Item {
     QmlSlideSearch{
         id: slideSearchID
         visible: currentSlide === BibleEnums.Search
+    }
+
+    MyElements.QmlFooterMenu{
+        id: footerMenu
+        visible: true
     }
 
     MyElements.QmlButtonHome {
@@ -72,9 +77,6 @@ Item {
             PropertyChanges { target: main; x: isNewTestament ? -width * 3 : +width * 3 }
             StateChangeScript { script: {
                     reancorTestamentsSlides(slideListVersesID);
-//                    managerQml.setCurrentBook(3); // delete
-//                    managerQml.setCurrentChapter(7); // delete
-
                     managerQml.fillListVerses();
                     slideListVersesID.headerNameBookString = managerQml.getCurrentNameBook()
                 }

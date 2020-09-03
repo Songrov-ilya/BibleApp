@@ -9,6 +9,9 @@ Manager::Manager(QQmlContext *rootContext, QObject *parent) :
     m_elapsed(0)
 {
     setQmlSettings();
+#ifdef QT_DEBUG
+    fillListBooks();
+#endif
 }
 
 QString Manager::getCurrentNameBook()

@@ -9,12 +9,11 @@ Item {
     property bool isNewTestament: false
     property int currentSlide: BibleEnums.Title
 
-
-    QmlSlideTitle{
-        id: slideTitleID
-        anchors.fill: parent
-        visible: currentSlide !== BibleEnums.Search
-    }
+//    QmlSlideTitle{
+//        id: slideTitleID
+//        anchors.fill: parent
+//        visible: currentSlide !== BibleEnums.Search
+//    }
 
     QmlSlideGridChapters{
         id: slideGridChaptersID
@@ -33,16 +32,6 @@ Item {
         visible: currentSlide === BibleEnums.Search
     }
 
-    MyElements.QmlFooterMenu{
-        id: footerMenu
-        visible: true
-    }
-
-    MyElements.QmlButtonHome {
-        id: buttonHomeID
-        visible: currentSlide !== BibleEnums.Title
-    }
-
     function reancorTestamentsSlides(slideEmiter){
         var arrSlides = [slideTitleID, slideGridBooksID, slideGridChaptersID, slideListVersesID];
         for (var i = 1; i < arrSlides.length; i++) {
@@ -51,7 +40,6 @@ Item {
             arrSlides[i].anchors.left  = isNewTestament ? arrSlides[i-1].right : undefined
             arrSlides[i].anchors.right = isNewTestament ? undefined : arrSlides[i-1].left
         }
-        buttonHomeID.reancorButtonHome(slideEmiter)
     }
 
 
@@ -91,17 +79,4 @@ Item {
     transitions: Transition {
         NumberAnimation { properties: "x,y"; duration: 1200; easing.type: Easing.OutQuad }
     }
-
-    MouseArea{
-        anchors.fill: parent
-        propagateComposedEvents: true
-        onPressed: mouse.accepted = false
-        onDoubleClicked: Qt.quit()
-    }
-
-    Component.onCompleted: {
-        reancorTestamentsSlides(slideTitleID);
-//        currentSlide = BibleEnums.ListVerses
-    }
-
 }

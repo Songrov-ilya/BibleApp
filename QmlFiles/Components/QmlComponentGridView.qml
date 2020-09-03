@@ -1,6 +1,8 @@
 import QtQuick 2.12
 import QtQml 2.12
+import QtQuick.Controls 2.12
 import QtGraphicalEffects 1.0
+import QtQuick.Controls.Material 2.12
 
 import ModelViewQml 1.0
 
@@ -55,37 +57,47 @@ Item{
             width: gridViewId.cellWidth - gridViewId.horizontalSpacing;
             height: gridViewId.cellHeight - gridViewId.verticalSpacing;
 
-//            Rectangle{
-//                anchors.fill: parent
-//                color: colorCell
-//                border.color: colorTextCell
-//                radius: parent.width * 0.05
-//            }
-//            Text {
-//                anchors.fill: parent
-//                minimumPixelSize: 10;
-//                font.pixelSize: width * 0.155
-//                fontSizeMode: Text.Fit;
-//                wrapMode: Text.WordWrap
-//                color: colorTextCell
-//                horizontalAlignment: Text.AlignHCenter
-//                verticalAlignment: Text.AlignVCenter
-//                text: model.textModel
-//            }
-            QmlComponentButtonText{
+            //            Rectangle{
+            //                anchors.fill: parent
+            //                color: colorCell
+            //                border.color: colorTextCell
+            //                radius: parent.width * 0.05
+            //            }
+            //            Text {
+            //                anchors.fill: parent
+            //                minimumPixelSize: 10;
+            //                font.pixelSize: width * 0.155
+            //                fontSizeMode: Text.Fit;
+            //                wrapMode: Text.WordWrap
+            //                color: colorTextCell
+            //                horizontalAlignment: Text.AlignHCenter
+            //                verticalAlignment: Text.AlignVCenter
+            //                text: model.textModel
+            //            }
+            // =========================================
+            //            QmlComponentButtonText{
+            //                anchors.fill: parent
+            //                anchors.horizontalCenter: parent.horizontalCenter
+            //                textButton: model.textModel
+            //                colorBackgroundButton: colorCell
+            //                onClickedButton: clickedCell(model.index)
+            //            }
+            Button{
+                Material.background: Material.color(colorCell)
                 anchors.fill: parent
                 anchors.horizontalCenter: parent.horizontalCenter
-                textButton: model.textModel
-                colorBackgroundButton: colorCell
-                onClickedButton: clickedCell(model.index)
+                text: model.textModel
+                onClicked: clickedCell(model.index)
             }
-//            Component.onCompleted: console.log("gridViewId.horizontalSpacing", gridViewId.horizontalSpacing);
+
+            // =========================================
+            //            Component.onCompleted: console.log("gridViewId.horizontalSpacing", gridViewId.horizontalSpacing);
         }
-//        Component.onCompleted: {
-//            var quantityPositions = model.quantityPositions < minQuantityCells ? minQuantityCells : model.quantityPositions;
-//            quantityPositions = quantityPositions > maxQuantityCells ? maxQuantityCells : quantityPositions;
-//            gridViewId.currentQuantityCells = quantityPositions;
-//        }
+        //        Component.onCompleted: {
+        //            var quantityPositions = model.quantityPositions < minQuantityCells ? minQuantityCells : model.quantityPositions;
+        //            quantityPositions = quantityPositions > maxQuantityCells ? maxQuantityCells : quantityPositions;
+        //            gridViewId.currentQuantityCells = quantityPositions;
+        //        }
     }
 
 }

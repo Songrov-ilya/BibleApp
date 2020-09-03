@@ -45,15 +45,15 @@ Item{
             id: footerItem
             width: parent.width
             height: listViewVersesID.height / 10
-            QmlComponentButtonText{
-                anchors.fill: parent
-                anchors.horizontalCenter: parent.horizontalCenter
-                textButton: isNewTestament ? "<<<" : ">>>"
-                colorBackgroundButton: "transparent"
-                colorBorderButton: "transparent"
-                colorTextButton: "red"
-                onClickedButton: footerClicked()
-            }
+//            QmlComponentButtonText{
+//                anchors.fill: parent
+//                anchors.horizontalCenter: parent.horizontalCenter
+//                textButton: isNewTestament ? "<<<" : ">>>"
+//                colorBackgroundButton: "transparent"
+//                colorBorderButton: "transparent"
+//                colorTextButton: "red"
+//                onClickedButton: footerClicked()
+//            }
         }
 
         onAddChanged: {

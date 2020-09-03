@@ -1,8 +1,8 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#pragma once
 
 #include <QMainWindow>
-#include <QQuickView>
+#include <QQuickStyle>
+#include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QQmlEngine>
 #include <QGuiApplication>
@@ -11,17 +11,16 @@
 
 #include "Manager.h"
 
-class MainWindow : public QQuickView
+class MainApplicationWindow : public QQmlApplicationEngine
 {
     Q_OBJECT
 
     Manager *manager;
 public:
-    MainWindow(QWindow *parent = nullptr);
-    ~MainWindow();
+    MainApplicationWindow(QObject *parent = nullptr);
+    ~MainApplicationWindow();
 
     void setElapsed(const int elapsed);
 private:
     void setGeneralSettings();
 };
-#endif // MAINWINDOW_H

@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+#include "MainApplicationWindow.h"
 
 
 #include <QElapsedTimer>
@@ -11,16 +11,15 @@ int main(int argc, char *argv[])
     QElapsedTimer elapsedTimer;
     elapsedTimer.start();
 
+    QQuickStyle::setStyle("Material");
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QApplication a(argc, argv);
 #ifdef QT_NO_DEBUG
     Q_INIT_RESOURCE(ResourceFiles);
 #endif
-    QQuickStyle::setStyle("Material");
 
 
-    MainWindow w;
-    w.show();
+    MainApplicationWindow w;
 
     w.setElapsed(elapsedTimer.elapsed());
     qDebug() << "elapsedTimer.elapsed()" << elapsedTimer.elapsed() << Qt::endl;

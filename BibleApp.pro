@@ -1,9 +1,9 @@
-QT       += core gui
-QT       += qml
-QT       += quick
-QT       += quickwidgets
-QT       += quickcontrols2
-QT       += svg
+QT      += core gui
+QT      += qml
+QT      += quick
+QT      += quickwidgets
+QT      += quickcontrols2
+QT      += svg
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -40,12 +40,12 @@ SOURCES += \
     Adjutants/Data.cpp \
     Adjutants/FileWorker.cpp \
     Extensions/Search.cpp \
+    MainApplicationWindow.cpp \
     Manager.cpp \
     Provider/ProviderQml.cpp \
     View/BibleList.cpp \
     View/ModelView.cpp \
-    main.cpp \
-    mainwindow.cpp
+    main.cpp
 
 HEADERS += \
     Achitecture/Bible.h \
@@ -56,11 +56,11 @@ HEADERS += \
     Adjutants/Data.h \
     Adjutants/FileWorker.h \
     Extensions/Search.h \
+    MainApplicationWindow.h \
     Manager.h \
     Provider/ProviderQml.h \
     View/BibleList.h \
-    View/ModelView.h \
-    mainwindow.h
+    View/ModelView.h
 
 
 # Default rules for deployment.
@@ -69,18 +69,15 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-    QmlFiles/Components/QmlComponentButtonImage.qml \
-    QmlFiles/Components/QmlComponentButtonText.qml \
     QmlFiles/Components/QmlComponentGridView.qml \
     QmlFiles/Components/QmlComponentListViewVerses.qml \
-    QmlFiles/Elements/QmlButtonHome.qml \
-    QmlFiles/Elements/QmlFooterMenu.qml \
+    QmlFiles/Elements/QmlSidePanel.qml \
+    QmlFiles/Elements/QmlToolBar.qml \
     QmlFiles/QmlMain.qml \
     QmlFiles/QmlSlideGridBooks.qml \
     QmlFiles/QmlSlideGridChapters.qml \
     QmlFiles/QmlSlideListVerses.qml \
     QmlFiles/QmlSlideSearch.qml \
-    QmlFiles/QmlSlideTitle.qml \
     QmlFiles/rootQml.qml
 
 
